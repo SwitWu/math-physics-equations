@@ -1,0 +1,95 @@
+\documentclass{report}
+\usepackage{ctex}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{mathrsfs}
+\usepackage{bbm}
+\usepackage{xcolor}
+\usepackage[shortlabels]{enumitem}
+
+\usepackage[unicode=true,colorlinks=true,linkcolor=red]{hyperref}
+\usepackage{fixdif}
+
+\setlist{nosep}
+
+\newcommand\diff{\mathop{}\!\mathrm{d}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\upi}{\mathrm{i}}
+\newcommand{\closure}[1]{\overline{#1}}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\dist}{dist}
+
+\setlist[enumerate,1]{left=\parindent}
+
+\setCJKmainfont{FandolSong}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{注}
+\newtheoremstyle{PDE}{3pt}{3pt}{\rmfamily}{\parindent}{\bfseries}{}{.5em}{}
+\theoremstyle{PDE}
+\newtheorem{note}{Note}[section]
+\newtheorem{property}{性质}
+
+\makeatletter
+\renewenvironment{proof}{\par
+	\pushQED{\qed}%
+	\normalfont \topsep1\p@\@plus6\p@\relax
+	\trivlist
+	\item\relax
+	{\hspace*{\parindent}{\bfseries 证明}\@addpunct{:}}\hspace\labelsep\ignorespaces
+}{%
+	\popQED\endtrivlist\@endpefalse
+}
+\newenvironment{solve}{\par
+	\pushQED{\qed}%
+	\normalfont \topsep1\p@\@plus6\p@\relax
+	\trivlist
+	\item\relax
+	{\hspace*{\parindent}{\bfseries 解}\@addpunct{:}}\hspace\labelsep\ignorespaces
+}{%
+	\popQED\endtrivlist\@endpefalse
+}
+
+
+\newenvironment{solution}{\par
+	\pushQED{\qed}%
+	\normalfont \topsep1\p@\@plus6\p@\relax
+	\trivlist
+	\item\relax
+	{\hspace*{\parindent}{\bfseries 解}\@addpunct{:}}\hspace\labelsep\ignorespaces
+}{%
+	\popQED\endtrivlist\@endpefalse
+}
+\makeatother
+\newcounter{exercise}[section]
+\NewDocumentEnvironment{exercise}{o d<> +b}
+  {%
+    \IfNoValueTF{#1}
+      {\stepcounter{exercise}}
+      {\setcounter{exercise}{#1}}
+    \par\textbf{\theexercise.}\hspace{.333em}%
+	\IfNoValueTF{#2}
+	  {#3}
+	  {\textbf{(#2)}\hspace{.333em}#3}
+  }
+  {\ignorespacesafterend}
+\renewcommand{\div}{\operatorname{div}}
+
+\title{\textbf{数学物理方程习题解答}}
+\author{2017301000046武思豫}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\input{chapter1.tex}
+\input{chapter2.tex}
+\input{chapter3.tex}
+% \input{chapter4.tex}
+% \input{chapter5.tex}
+% \input{chapter6.tex}
+
+\end{document}

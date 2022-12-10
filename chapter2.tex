@@ -1,0 +1,443 @@
+\chapter{热传导方程}
+
+\section{热传导方程及其定解问题的导出}
+
+\section{初边值问题的分离变量法}
+
+
+\begin{exercise}
+  用分离变量法求下列定解问题的解:
+  \[\begin{cases}
+    \frac{\partial u}{\partial t} = a^2 \frac{\partial^2u}{\partial x^2}
+      \quad (t>0, 0<x<\pi), \\
+    u(0,t) = \frac{\partial u}{\partial x}(\pi,t) = 0\quad (t>0), \\
+    u(x,0) = f(x)\quad (0<x<\pi).
+  \end{cases}\]
+\end{exercise}
+
+\begin{solution}
+  利用分离变量法, 设 $u(x,t)=X(x)T(t)$, 则
+  \[X(x)T'(t) = a^2X''(x)T(t).\]
+  由此得
+  \begin{align}
+    X''(x)+\lambda X(x) & = 0, \tag{$*$} \\
+    T'(t)+a^2\lambda T(t) & = 0. \tag{$**$} 
+  \end{align}
+  由 ($*$) 及 $X(x)$ 满足的边界条件 $X(0)=0$, $X'(\pi)=0$, 得
+  \begin{enumerate}[(i)]
+    \item 当 $\lambda\leq 0$ 时只有零解;
+    \item 当 $\lambda>0$ 时, $X(x)=A\cos\sqrt{\lambda}x+B\sin\sqrt{\lambda}x$,
+      代入边界条件得固有值为 $\lambda_k=\left(k+\frac{1}{2}\right)^2$,
+      相应的固有函数 $X_k(x)=B_k\sin\sqrt{\lambda_k}x=B_k\sin\left(k+\frac{1}{2}\right)x$.
+  \end{enumerate}
+  将 $\lambda=\lambda_k$ 代入 ($**$) 得 $T_k(t)=C_ke^{-a^2\lambda_kt}$, 故
+  \[u_k(x,t) = A_ke^{-a^2\lambda_kt}\sin\left(k+\frac{1}{2}\right)x,u(x,t)
+    = \sum_{k=1}^{\infty}u_k(x,t).\]
+  利用初始条件得
+  \[f(x) = \sum_{k=1}^{\infty}A_k\sin\left(k+\frac{1}{2}\right)x\Rightarrow A_k
+    = \frac{2}{\pi}\int_0^{\pi}f(\xi)\sin\left(k+\frac{1}{2}\right)\xi\diff\xi.\]
+  因此原问题的解为
+  \[u(x,t) = \sum_{k=1}^{\infty}\frac{2}{\pi}\int_0^{\pi} f(\xi)\sin\left(k+\frac{1}{2}\right)
+    \xi\diff\xi\cdot e^{-a^2\lambda_kt}\sin\left(k+\frac{1}{2}\right)x. \qedhere\]
+\end{solution}
+
+
+\begin{exercise}[3]
+  如果有一根长度为 $l$ 的均匀细棒, 其周围以及两端 $x=0$, $x=l$
+  均为绝热, 初始温度分布为 $u(x,0)=f(x)$, 问以后的温度分布如何?
+  且证明当 $f(x)$ 等于常数 $u_0$ 时, 恒有 $u(x,t)=u_0$.
+\end{exercise}
+
+\begin{solution}
+  因为细棒的两端均为绝热,故根据傅里叶定律知$u_x|_{x=0}=u_x|_{x=l}=0$,此初边值问题为
+  \[\begin{cases}
+  u_t=a^2u_{xx}\\
+  u_x|_{x=0}=u_x|_{x=l}=0\\
+  u|_{t=0}=f(x)
+  \end{cases}\Rightarrow u(x,t)=\sum_{k=0}^{\infty}D_ke^{-a^2\lambda_kt}\cos\frac{k\pi}{l}x,\lambda_k=\left(\frac{k\pi}{l}\right)^2\]
+  其中\[D_0=\frac{1}{l}\int_0^lf(\xi)\diff\xi,D_k=\frac{2}{l}\int_0^lf(\xi)\diff\xi(k\geq1)\]
+  当$f(x)\equiv u_0$时,$D_0=u_0,D_k=0(k=1,2,\cdots)\Rightarrow u(x,t)=u_0$\\\\
+\end{solution}
+
+
+\begin{exercise}
+  在区域 $t>0$, $0<x<l$ 中求解如下的定解问题:
+  \[\begin{cases}
+    \frac{\partial u}{\partial t} = a^2 \frac{\partial^2u}{\partial x^2} - \beta(u-u_0), \\
+    u(0,t) = u(l,t) = u_0, \\
+    u(x,0) = f(x),
+  \end{cases}\]
+  其中 $a$, $\beta$, $u_0$ 均为常数, $f(x)$ 为已知函数.
+\end{exercise}
+
+\begin{solution}
+  作变量代换,令$v(x,t)=(u-u_0)e^{\beta t}$,则$v(x,t)$满足的定解问题为:
+  \[\begin{cases}
+  v_t=a^2v_{xx}\\
+  v(0,t)=v(l,t)=0\\
+  v(x,0)=f(x)-u_0
+  \end{cases}\Rightarrow v(x,t)=\sum_{k=1}^{\infty}A_ke^{-a^2\lambda_kt}\sin\frac{k\pi}{l}x,\lambda_k=\left(\frac{k\pi}{l}\right)^2\]
+  其中\[A_k=\frac{2}{l}\int_0^l(f(\xi)-u_0)\sin\frac{k\pi}{l}\xi\diff\xi\]
+  因此\[u(x,t)=u_0+\sum_{k=1}^{\infty}\frac{2}{l}\int_0^l(f(\xi)-u_0)\sin\frac{k\pi}{l}\xi\diff\xi\cdot e^{-\left(\frac{a^2k^2\pi^2}{l^2}+\beta\right)t}\sin\frac{k\pi}{l}x\]
+\end{solution}
+
+
+\section{柯西问题}
+
+\begin{exercise}
+  求下列函数的 Fourier 变换:
+  \begin{enumerate}[(1),left=\parindent]
+    \item $\e^{-\eta x^2}$ $(\eta>0)$;
+    \item $\e^{-a|x|}$ $(a>0)$;
+    \item $\frac{x}{(a^2+x^2)^k}$, $\frac{1}{(a^2+x^2)^k}$ ($a>0$, $k$ 为自然数).
+  \end{enumerate}
+\end{exercise}
+
+\begin{solution}
+  (1) 直接计算得
+  \begin{align*}
+    \widehat{\e^{-\eta x^2}}(\xi)
+    & = \int_{-\infty}^{\infty} \e^{-\eta x^2}\cdot \e^{-\upi x\xi}\diff x
+      = \e^{-\frac{\xi^2}{4\eta}} \int_{-\infty}^{\infty}
+      \e^{-\eta\left(\xi+\frac{\upi\xi}{2\eta}\right)^2} \diff x \\
+    & = \e^{-\frac{\xi^2}{4\eta}} \int_{-\infty}^{\infty}
+      \e^{-y^2} \frac{1}{\sqrt{\eta}} \diff y
+      = \biggl(\frac{\pi}{\eta}\biggr)^{1/2} \e^{-\frac{\xi^2}{4\eta}}.
+    \end{align*}
+
+  (2) 直接计算得
+  \begin{align*}
+    \widehat{\e^{-a|x|}} (\xi)
+    & = \int_{-\infty}^{\infty} \e^{-a|x|}\cdot\e^{-\upi x\xi} \diff x \\
+    & = 2\int_0^{\infty} \e^{-ax} \cos\xi x \diff x = \frac{2a}{a^2+\xi^2}.
+  \end{align*}
+\end{solution}
+
+
+\begin{exercise}
+  证明: 当 $f(x)$ 在 $(-\infty,\infty)$ 上绝对可积时, $F[f]$ 为连续函数.
+\end{exercise}
+
+\begin{proof}
+  记 $F[f]=\int_{-\infty}^{\infty} f(\xi)\e^{-\upi\lambda\xi}\diff\xi = \tilde{f}(\lambda)$,则
+  \[\begin{split}
+    \bigl|\tilde{f}(\lambda+h)-\tilde{f}(\lambda)\bigr|
+    & = \left|\int_{-\infty}^{\infty}f(\xi)
+        \left(\e^{-\upi(\lambda+h)\xi} - \e^{-\upi\lambda\xi}\right)\diff\xi\right| \\
+    & \leq \int_{-\infty}^{\infty}|f(\xi)|\cdot|\e^{-\upi h\xi}-1|\diff\xi\to 0
+      \quad(\text{as } h\to 0),
+  \end{split}\]
+  故 $F[f]$ 为连续函数.
+\end{proof}
+
+
+\begin{exercise}[4]
+  证明 (3.29) 所表示的函数满足非齐次方程 (3.15) 以及初始条件 (3.16).
+\end{exercise}
+
+\begin{proof}
+  同教材上面验证齐次方程的情形.
+\end{proof}
+
+
+\begin{exercise}[5]
+  求解热传导方程 (3.17) 的柯西问题, 已知
+  \begin{enumerate}[(1)]
+    \item $u|_{t=0} = \sin x$,
+    \item 用延拓法求解半有界直线上的热传导方程 (3.17), 假设
+      \[\begin{cases}
+        u(x,0) = \varphi(x)\quad (0<x<\infty), \\
+        u(0,t) = 0.
+      \end{cases}\]
+  \end{enumerate}
+\end{exercise}
+
+\begin{solution}
+  由泊松公式知
+  \[\begin{split}
+    u(x,t)
+    & = \frac{1}{2a\sqrt{\pi t}} \int_{-\infty}^{\infty}
+        \sin\xi\cdot \e^{-\frac{(x-\xi)^2}{4a^2t}}\diff\xi \\
+    & = \frac{1}{2a\sqrt{\pi t}}\cdot 2a\sqrt{t}\int_{-\infty}^{\infty}
+        \sin(x-2a\sqrt{t}\zeta)\cdot \e^{-\zeta^2}\diff\zeta \\
+    & = \frac{1}{\sqrt{\pi}} \int_{-\infty}^{\infty}
+        \sin x\cos 2a\sqrt{t}\zeta\cdot e^{-\zeta^2}\diff\zeta \\
+    & = \frac{2\sin x}{\sqrt{\pi}} \int_0^{\infty}
+        \cos 2a\sqrt{t}\zeta\cdot e^{-\zeta^2}\diff\zeta \\
+    & = \e^{-a^2t}\sin x.
+  \end{split}\]
+
+  (2) 对 $\varphi(x)$ 作奇延拓, 即
+  \[\varPhi(x) = \begin{cases}
+    \varphi(x),   & x\geq 0, \\
+    -\varphi(-x), & x<0.
+  \end{cases}\]
+  求解如下 Cauchy 问题
+  \[\begin{cases}
+    u_t = a^2 u_{xx}, \\
+    u|_{t=0} = \varPhi(x).
+  \end{cases}\]
+  得
+  \begin{align*}
+    u(x,t)
+    & = \frac{1}{2a\sqrt{\pi t}} \int_{-\infty}^{\infty}
+        \varPhi(\xi) \e^{-\frac{(x-\xi)^2}{4a^2t}} \diff\xi \\
+    & = \frac{1}{2a\sqrt{\pi t}} \biggl[
+        \int_0^{\infty} \varphi(\xi) \e^{-\frac{(x-\xi)^2}{4a^2t}} \diff\xi
+        + \int_{-\infty}^0 -\varphi(-\xi) \e^{-\frac{(x-\xi)^2}{4a^2t}}\diff\xi\biggr] \\
+    & = \frac{1}{a\sqrt{\pi t}} \int_0^{\infty} \varphi(\xi)
+        \e^{-\frac{x^2+\xi^2}{4a^2 t}}\sinh \frac{x\xi}{2a^2 t}\diff\xi. \qedhere
+  \end{align*}
+\end{solution}
+
+
+\begin{exercise}[7]
+  证明: 如果 $u_1(x,t)$, $u_2(y,t)$ 分别是下述两个定解问题的解:
+  \[\begin{cases}
+    \frac{\partial u_1}{\partial t} = a^2 \frac{\partial^2u_1}{\partial x^2}, \\
+    u_1|_{t=0} = \varphi_1(x);
+  \end{cases}
+  \qquad
+  \begin{cases}
+    \frac{\partial u_2}{\partial t} = a^2 \frac{\partial^2u_2}{\partial y^2}, \\
+    u_2|_{t=0} = \varphi_2(y).
+  \end{cases}\]
+  则 $u(x,y,t) = u_1(x,t)u_2(y,t)$ 是定解问题
+  \[\begin{cases}
+    \frac{\partial u}{\partial t} = a^2\biggl(
+      \frac{\partial^2u}{\partial x^2} + \frac{\partial^2u}{\partial y^2}\biggr), \\
+    u|_{t=0} = \varphi_1(x) \varphi_2(y)
+  \end{cases}\]
+  的解.
+\end{exercise}
+
+\begin{solution}
+  直接验证.
+\end{solution}
+
+
+\begin{exercise}[8]
+  导出下列热传导方程柯西问题解的表达式:
+  \[\begin{cases}
+    \frac{\partial u}{\partial t} 
+      = a^2\biggl(\frac{\partial^2u}{\partial x^2} +
+                  \frac{\partial^2u}{\partial y^2}\biggr), \\
+    u|_{t=0} = \sum_{i=1}^n \alpha_i(x)\beta_i(y).
+  \end{cases}\]
+\end{exercise}
+
+\begin{solution}
+  由叠加原理与上题结果或直接应用 Fourier 变换可得解为
+  \[u(x,y,t) = \frac{1}{4a^2\pi t} \sum_{i=1}^n \int_{-\infty}^{\infty}
+    \int_{-\infty}^{\infty} \alpha_i(\xi) \beta_i(\eta)
+      \exp\biggl(-\frac{(x-\xi)^2+(y-\eta)^2}{4a^2 t}\biggr) \diff\xi\diff\eta.\qedhere\]
+\end{solution}
+
+
+\begin{exercise}[9]
+  验证二维热传导方程柯西问题
+  \[\begin{cases}
+    \frac{\partial u}{\partial t} = a^2 
+      \Bigl(\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2}\Bigr), \\
+    u|_{t=0} = \varphi(x,y)
+  \end{cases}\]
+  的解的表达式为
+  \[u(x,y,t) = \frac{1}{4\pi a^2t} \int_{-\infty}^{\infty}
+    \int_{-\infty}^{\infty} \varphi(\xi,\eta) \e^{-\frac{(x-\xi)^2+(y-\eta)^2}{4a^2t}}
+    \diff\xi\diff\eta.\]
+\end{exercise}
+
+\begin{proof}
+  本习题应该添加假设: $\varphi(x,y)$有界, 因为
+  \[u(x,y,t) = \frac{1}{4\pi a^2t}\int_{-\infty}^{\infty}
+    \int_{-\infty}^{\infty}\varphi(\xi,\eta)
+      \e^{-\frac{(x-\xi)^2+(y-\eta)^2}{4a^2t}}\diff\xi\diff\eta,\]
+  所以
+  \[\begin{split}
+    \frac{\partial u}{\partial t}
+    ={} & \frac{-1}{4\pi a^2t^2}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
+      \varphi(\xi,\eta) \e^{-\frac{(x-\xi)^2+(y-\eta)^2}{4a^2t}}\diff\xi\diff\eta \\
+        & + \frac{1}{4\pi a^2t}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
+          \varphi(\xi,\eta) \e^{-\frac{(x-\xi)^2+(y-\eta)^2}{4a^2t}}
+          \cdot\frac{(x-\xi)^2+(y-\eta)^2}{4a^2t^2}\diff\xi\diff\eta.
+  \end{split}\]
+  又
+  \[\frac{\partial u}{\partial x} = 
+    \frac{1}{4\pi a^2t}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
+    \varphi(\xi,\eta) \e^{-\frac{(x-\xi)^2+(y-\eta)^2}{4a^2t}}
+    \cdot\frac{-(x-\xi)}{2a^2t}\diff\xi\diff\eta.\]
+  故
+  \[\frac{\partial^2u}{\partial x^2} =
+    \frac{1}{4\pi a^2t}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
+    \varphi(\xi,\eta) \e^{-\frac{(x-\xi)^2+(y-\eta)^2}{4a^2t}}
+    \left(\frac{-1}{2a^2t} + \frac{(x-\xi)^2}{4a^4t^2}\right) \diff\xi\diff\eta.\]
+  显然 $\frac{\partial^2u}{\partial y^2}$ 的结果形式同 $\frac{\partial^2u}{\partial x^2}$, 故
+  \begin{align*}
+    & a^2\left(\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2}\right) \\
+    ={} & \frac{1}{4\pi t}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
+          \varphi(\xi,\eta) e^{-\frac{(x-\xi)^2+(y-\eta)^2}{4a^2t}}
+          \left(\frac{-1}{a^2t}+\frac{(x-\xi)^2+(y-\eta)^2}{4a^4t^2}\right)\diff\xi\diff\eta.
+  \end{align*}
+  对比可知
+  \[\frac{\partial u}{\partial t}
+    = a^2\left(\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2}\right).\]
+  
+  对于初值的检验可对照教材P61的方法,下面不妨简单叙述一下.
+  要证明当 $t\to 0$, $x\to x_0$, $y\to y_0$ 时,
+  $u(x,y,t)\to\varphi(x_0,y_0)$, 令 $\zeta=\frac{x-\xi}{2a\sqrt{t}}$,
+  $\theta=\frac{y-\eta}{2a\sqrt{t}}$,则
+  \[u(x,y,t) =
+    \frac{1}{\pi}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
+    \varphi(x-2a\sqrt{t}\zeta,y-2a\sqrt{t}\theta) \e^{-(\zeta^2+\theta^2)}
+    \diff\zeta\diff\theta.\]
+  而
+  \[\varphi(x_0,y_0) =
+    \frac{1}{\pi}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
+    \varphi(x_0,y_0) \e^{-(\zeta^2+\theta^2)} \diff\zeta\diff\theta.\]
+  故
+  \[u(x,y,t) - \varphi(x_0,y_0) =
+    \frac{1}{\pi} \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
+    \left[\varphi(x-2a\sqrt{t}\zeta,y-2a\sqrt{t}\theta)-\varphi(x_0,y_0)\right]
+    \e^{-(\zeta^2+\theta^2)}\diff\zeta\diff\theta.\]
+  将 $(\zeta,\theta)$ 平面用正方形 (四个顶点为$(\pm N,\pm N)$) 分成两个部分.
+  在正方形内部, 利用$\varphi(x,y)$的连续性控制, 在正方形的外部,
+  用积分$\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}e^{-(\zeta^2+\theta^2)}\diff\zeta\diff\theta$ 可以任意小以及$\varphi(x,y)$是有界的来进行控制即可证明.
+\end{proof}
+
+
+\section{极值原理,定解问题解的唯一性和稳定性}
+
+\begin{exercise}
+  证明方程 $\frac{\partial u}{\partial t} = a^2 \frac{\partial^2 u}{\partial x^2} + cu$
+  ($c\geq 0$) 具狄利克雷边界条件的初边值问题解的唯一性和稳定性.
+\end{exercise}
+
+\begin{proof}
+  设$u(x,t)$满足的定解问题为
+  \[\begin{cases}
+    u_t = a^2 u_{xx} + cu, \\
+    u(x,0) = \varphi(x), \\
+    u(\alpha,t) = \mu_1(t),\,u(\beta,t)=\mu_2(t).
+  \end{cases}\]
+  则令 $v(x,t)=u(x,t) \e^{-ct}$, 可得 $v(x,t)$ 满足的定解问题为
+  \[\begin{cases}
+    v_t = a^2v_{xx}, \\
+    v(x,0) = \varphi(x), \\
+    v(\alpha,t) = \mu_1(t)\e^{-ct},\,v(\beta,t) = \mu_2(t)\e^{-ct}.
+  \end{cases}\]
+  由定理4.2知上述定解问题的解是唯一的且稳定的,
+  记为 $v=v_0(x,t)$, 则原定解问题的解为$u = u_0(x,t) = \e^{ct}v_0(x,t)$, 显然也是唯一的且稳定的.
+\end{proof}
+
+
+\begin{exercise}
+  利用热传导方程极值原理的方法, 证明二维调和函数在有界区域上的最大值不会超过
+  它在边界上的最大值.
+\end{exercise}
+
+\begin{proof}
+  记有界闭区域为 $\Omega$, 其边界为 $\Gamma$.
+  设 $u(x,y)$ 在 $\Omega$ 上的最大值为 $M$, 在 $\Gamma$ 上的最大值为 $m$.
+  假设在区域内部存在某点 $(x_0,y_0)$ 使得
+  \[u(x_0,y_0) = M > m.\]
+  作辅助函数
+  \[V(x,y) = u(x,y)+\frac{M-m}{4R^2}\left[(x-x_0)^2+(y-y_0)^2\right].\]
+  其中 $\Omega\subset B(0,R)$,我们有
+  \[V(x_0,y_0)=u(x_0,y_0)=M.\]
+  而在 $\Gamma$ 上
+  \[V(x,y) < m+\frac{M-m}{4}=\theta M\quad (0<\theta<1).\]
+  因此 $V(x,y)$ 必在区域 $\Omega$ 内部某点 $(x_1,y_1)$ 取得最大值,
+  在这个点应有 $V_{xx}\leq0,V_{yy}\leq 0$, 但是
+  \[V_{xx}+V_{yy}=u_{xx}+u_{yy}+\frac{M-m}{2R^2}>0.\]
+  矛盾, 故成立 $M=m$.
+\end{proof}
+
+
+\begin{exercise}
+  导出初边值问题
+  \[\begin{cases}
+    u_t - a^2 u_{xx} = f(x,t), \\
+    u|_{x=0} = \mu_1(t),\quad
+      \Bigl(\frac{\partial u}{\partial x} + hu\Bigr)\Bigm|_{x=l} = \mu_2(t)\quad (h>0), \\
+    u|_{t=0} = \varphi(x)
+  \end{cases}\]
+  的解 $u(x,t)$ 在 $R_T=\{0\leq t\leq T, 0\leq x\leq l\}$ 中满足估计
+  \[u(x,t) \leq \e^{\lambda T} \max\biggl\{
+    0, \max_{0\leq x\leq l} \varphi(x),
+    \max_{0\leq t\leq T} \biggl(\e^{-\lambda t}\mu_1(t),
+      \frac{\e^{-\lambda t}\mu_2(t)}{h}\biggr),
+      \frac{1}{\lambda} \max_{R_T} (\e^{-\lambda t}f)
+  \biggr\},\]
+  其中 $\lambda>0$ 为任意正常数.
+\end{exercise}
+
+\begin{proof}
+  令 $v = \e^{-\lambda t}u$, 则 $v$ 满足的定解问题为
+  \[\begin{cases}
+    v_t-a^2v_{xx}+\lambda v = \e^{-\lambda t}f(x,t), \\
+    v(x,0) = \varphi(x), \\
+    v(0,t) = \e^{-\lambda t}\mu_1(t),\ (v_x+hv)|_{x=l} = \e^{-\lambda t}\mu_2(t).
+  \end{cases}\]
+  由极值原理知 $v$ 的极大值只能在边界 $x=0,x=l,t=0$上取到, 记极大值点为$(x_0,t_0)$.
+
+  当 $(x_0,t_0)\in\{x=0\}\cup\{t=0\}$ 时,
+  \[v(x_0,t_0) \leq \max\left(\max_{0\leq x\leq l} \varphi(x),
+    \max_{0\leq t\leq T} \e^{-\lambda t}\mu_1(t)\right).\]
+
+  当 $(x_0,t_0)\in\{x=l\}$ 时,
+  由 $\frac{\partial v}{\partial x}\geq 0$ 知
+  \[v(x_0,t_0)\leq\max_{0\leq t\leq T} \frac{1}{h} \e^{-\lambda t}\mu_2(t).\]
+  故
+  \[u(x,t)\leq \e^{\lambda t}\max\left(0,\max_{0\leq x\leq l}\varphi(x),
+    \max_{0\leq t\leq T} \e^{-\lambda t}\mu_1(t),
+    \max_{0\leq t\leq T} \frac{1}{h} \e^{-\lambda t}\mu_2(t)\right). \qedhere\]
+\end{proof}
+
+
+\section{解的渐近性态}
+
+\begin{exercise}
+  证明方程
+  \[\begin{cases}
+    u_t - a^2 u_{xx} = 0, \\
+    u|_{x=0} = u|_{x=l} = 0, \\
+    u|_{t=0} = \varphi(x)
+  \end{cases}\]
+  的解当 $t\to +\infty$ 时指数地衰减于零, 其中 $\varphi\in C^2$,
+  且 $\varphi(0) = \varphi(l) = 0$.
+\end{exercise}
+
+\begin{proof}
+  运用分离变量法求得定解问题的解为
+  \[u(x,t) = \sum_{k=1}^{\infty} A_k \e^{-\frac{k^2\pi^2a^2}{l^2}t}\sin\frac{k\pi}{l}x.\]
+  其中 $A_k=\frac{2}{l} \int_0^l \varphi(\xi) \sin\frac{k\pi}{l}\xi\diff\xi$,
+  由 $\varphi$ 有界知 $\exists C_1>0$, 使得 $|A_k|\leq C_1$, 故当 $t>1$ 时,
+  \[\begin{split}
+  |u(x,t)|
+  & \leq C_1\sum_{k=1}^{\infty} \e^{-\frac{k^2\pi^2a^2}{l^2}t} \\
+  & = C_1\biggl(1+\sum_{k=2}^{\infty}e^{-\frac{(k^2-1)\pi^2a^2}{l^2}t}\biggr)
+      \e^{-\frac{\pi^2a^2}{l^2}t} \\
+  & \leq C_1\biggl(1+\sum_{k=2}^{\infty}e^{-\frac{(k^2-1)\pi^2a^2}{l^2}}\biggr)
+      \e^{-\frac{\pi^2a^2}{l^2}t} \\
+  & < C\e^{-\frac{\pi^2a^2}{l^2}t}.
+  \end{split}\]
+  因此解当 $t\to+\infty$ 时指数地衰减于零.
+\end{proof}
+
+
+\begin{exercise}
+  证明: 当 $\varphi(x,y)$ 为 $\mathbb{R}^2$ 上的有界连续函数, 且 $\varphi\in L^1(\mathbb{R}^2)$
+  时, 二维热传导方程柯西问题的解, 当 $t\to +\infty$ 时, 以 $t^{-1}$ 衰减率趋于零.
+\end{exercise}
+
+\begin{proof}
+  \[\begin{split}
+    |u(x,y,t)|
+    & = \left|\frac{1}{4\pi a^2t} \iint_{\mathbb{R}^2} \varphi(\xi,\eta)
+        \e^{-\frac{(x-\xi)^2+(y-\eta)^2}{4a^2t}}\diff\xi\diff\eta\right| \\
+    & \leq \frac{1}{4\pi a^2t} \iint_{\mathbb{R}^2} |\varphi(x,y)|
+        \e^{-\frac{(x-\xi)^2+(y-\eta)^2}{4a^2t}}\diff\xi\diff\eta \\
+    & \leq Ct^{-1},
+  \end{split}\]
+  其中 $C$ 是仅与 $a$ 和 $\|\varphi\|_{L^1(\mathbb{R}^2)}$ 有关的正常数.
+\end{proof}
