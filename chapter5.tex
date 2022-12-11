@@ -1,96 +1,192 @@
 \chapter{一阶偏微分方程组}
+
 \section{引言}
-1.解:令$p=\frac{\partial u}{\partial t},q_1=\frac{\partial u}{\partial x},q_2=\frac{\partial u}{\partial y},q_3=\frac{\partial u}{\partial z}$,则
-\[\begin{cases}
-\frac{\partial p}{\partial t}=a^2\left(\frac{\partial q_1}{\partial x}+\frac{\partial q_2}{\partial y}+\frac{\partial q_3}{\partial z}\right)&(1)\\
-\frac{\partial p}{\partial x}=\frac{\partial q_1}{\partial t},\frac{\partial p}{\partial y}=\frac{\partial q_2}{\partial t},\frac{\partial p}{\partial z}=\frac{\partial q_3}{\partial t}&(2)\\
-t=0:p=\psi,q_1=\frac{\partial\varphi}{\partial x},q_2=\frac{\partial\varphi}{\partial y},q_3=\frac{\partial\varphi}{\partial z}&(3)
-\end{cases}\]
-原方程的解显然满足新方程,而如果新方程的解为$(p,q_1,q_2,q_3)$,则
-\[u(x,y,z,t)=\varphi(x,y,z)+\int_{(0,0,0,0)}^{(x,y,x,t)}p\diff t+q_1\diff x+q_2\diff y+q_3\diff z\]
-是原方程的解,其中条件(2)确保了积分与路径无关,故积分定义是合理的
+
+\begin{exercise}
+  把波动方程
+  \[\frac{\partial^2u}{\partial t^2} = a^2 
+    \biggl(\frac{\partial^2u}{\partial x^2} + \frac{\partial^2u}{\partial y^2}
+    + \frac{\partial^2u}{\partial z^2}\biggr)\]
+  带初始条件
+  \[\begin{cases}
+    u|_{t=0} = \varphi(x,y,z), \\
+    \frac{\partial u}{\partial t}|_{t=0} = \psi(x,y,z)
+  \end{cases}\]
+  的柯西问题化为一个一阶方程组的柯西问题, 并证明其解的等价性.
+\end{exercise}
+
+\begin{proof}
+  令$p=\frac{\partial u}{\partial t},q_1=\frac{\partial u}{\partial x},q_2=\frac{\partial u}{\partial y},q_3=\frac{\partial u}{\partial z}$,则
+  \[\begin{cases}
+  \frac{\partial p}{\partial t}=a^2\left(\frac{\partial q_1}{\partial x}+\frac{\partial q_2}{\partial y}+\frac{\partial q_3}{\partial z}\right)&(1)\\
+  \frac{\partial p}{\partial x}=\frac{\partial q_1}{\partial t},\frac{\partial p}{\partial y}=\frac{\partial q_2}{\partial t},\frac{\partial p}{\partial z}=\frac{\partial q_3}{\partial t}&(2)\\
+  t=0:p=\psi,q_1=\frac{\partial\varphi}{\partial x},q_2=\frac{\partial\varphi}{\partial y},q_3=\frac{\partial\varphi}{\partial z}&(3)
+  \end{cases}\]
+  原方程的解显然满足新方程,而如果新方程的解为$(p,q_1,q_2,q_3)$,则
+  \[u(x,y,z,t)=\varphi(x,y,z)+\int_{(0,0,0,0)}^{(x,y,x,t)}p\diff t+q_1\diff x+q_2\diff y+q_3\diff z\]
+  是原方程的解,其中条件(2)确保了积分与路径无关,故积分定义是合理的
+\end{proof}
+
+
 \section{两个自变量的一阶线性偏微分方程组的特征理论}
-1.解:特征线为$x=\int_0^ta(x,\tau)\diff\tau$\\\\
-2.解:(1)令$x=\frac{1}{2}(y+z),t=\frac{1}{2}(y-z)$,则
-\[u_y=u_xx_y+u_tt_y=\frac{1}{2}(u_x+u_t)=0\]
-故$u=\Phi(z)=\Phi(x-t)$,令$t=0$得$\Phi(x)=\varphi(x)$,故解为$u=\varphi(x-t)$\\
-(2)令$x=\frac{1}{2}(y+z),t=\frac{1}{2}(y-z)$,则
-\[u_y=\frac{1}{2}(u_x+u_t)=\frac{1}{2}u\]
-故$u=Ce^y+\Phi(z)=Ce^{x+t}+\Phi(x-t)$,令$t=0$得$Ce^x+\Phi(x)=\varphi(x)$,故解为
-\[u=Ce^{x+t}-Ce^{x-t}+\varphi(x-t)\]
-\newline
-3.解:
-\[A=\begin{pmatrix}
-a&-b\\b&a
-\end{pmatrix}\Rightarrow(\lambda-a)^2+b^2=0\]
-故当$b=0$时为双曲型,当$b\neq0$时为椭圆型\\\\
-4.解:\\
-(1)\[A=\begin{pmatrix}
-1+\sin x&2\\0&0\end{pmatrix}\Rightarrow\lambda=0\mbox{或}\lambda=1+\sin x\]
-相应的特征向量为$(-2,1+\sin x)^T,(c,0)^T$,作变换
-\[\begin{cases}
-u=-2v_1+cv_2\\
-v=(1+\sin x)v_1
-\end{cases}\]
-则得
-\[\begin{cases}
-(1+\sin x)\frac{\partial v_1}{\partial t}-2v_1+cv_2=0\\
-c(1+\sin x)\frac{\partial v_2}{\partial t}+c(1+\sin x)^2\frac{\partial v_2}{\partial x}+x(1+\sin x)-4v_1+2cv_2=0
-\end{cases}\]
-(2)\[A=\begin{pmatrix}
-x&1\\a^2&x
-\end{pmatrix}\Rightarrow(\lambda-x)^2-a^2=0\Rightarrow\lambda=x\pm a\]
-对应特征向量为$(-1,a)^T,(1,a)^T$,作变换
-\[\begin{cases}
-u=-v_1+v_2\\
-v=av_1+av_2
-\end{cases}\]
-则得
-\[\begin{cases}
-\frac{\partial v_1}{\partial t}=(x-a)\frac{\partial v_1}{\partial x}\\
-\frac{\partial v_2}{\partial t}=(x+a)\frac{\partial v_2}{\partial x}
-\end{cases}\]
-(3)\[A=
-\begin{pmatrix}
-6&5&0\\5&6&0\\-1&0&2
-\end{pmatrix}\Rightarrow
-\begin{vmatrix}
-\lambda-6&-5&0\\-5&\lambda-6&0\\1&0&\lambda-2
-\end{vmatrix}=0\Rightarrow(\lambda-2)(\lambda^2-12\lambda+11)=0\Rightarrow\lambda=1,2,11\]
-对应特征向量为$(1,-1,1)^T,(0,0,1)^T,(9,9,-1)^T$,作变换
-\[\begin{cases}
-u_1=v_1+9v_3\\
-u_2=-v_1+9v_3\\
-u_3=v_1+v_2-v_3
-\end{cases}\]
-\[R=\begin{pmatrix}
-1&0&9\\-1&0&9\\1&1&-1
-\end{pmatrix}
-\Rightarrow
-R^{-1}=
-\begin{pmatrix}
-1/2&-1/2&0\\-4/9&5/9&1\\1/18&1/18&0
-\end{pmatrix}\]
-又因为
-\[B=\begin{pmatrix}
-0&0&0\\-2&0&0\\1&-2/3&-1
-\end{pmatrix},C=\begin{pmatrix}
-0\\0\\0
-\end{pmatrix}\]
-所以
-\[R^{-1}BR=\begin{pmatrix}
-1&0&9\\-4/9&-1&-6\\-1/9&0&-1
-\end{pmatrix},R^{-1}C=\begin{pmatrix}
-0\\0\\0
-\end{pmatrix}\]
-即得对角型方程组
-\[\begin{cases}
-\frac{\partial v_1}{\partial t}+\frac{\partial v_1}{\partial x}+v_1+9v_3=0\\
-\frac{\partial v_2}{\partial t}+2\frac{\partial v_2}{\partial x}-\frac{4}{9}v_1-v_2-6v_3=0\\
-\frac{\partial v_3}{\partial t}+11\frac{\partial v_3}{\partial x}-\frac{1}{9}v_1-v_3=0
-\end{cases}\]\\\\
-5.\textit{Proof}:原方程为
-\[\frac{\partial U}{\partial t}+A\frac{\partial U}{\partial x}+BU+C=0\]
-未知函数作可逆线性变换$U=RV$后,有
-\[R\frac{\partial V}{\partial t}+AR\frac{\partial V}{\partial x}+\left(\frac{\partial R}{\partial t}+A\frac{\partial R}{\partial x}+BR\right)V+C=0\]
-原特征方程为$\det(A-\lambda I)=0$,新的特征方程仍然不变,因此方程组在每一点的特征线方向保持不变
+
+\begin{exercise}
+  求一阶方程
+  \begin{enumerate}[(1)]
+    \item $\frac{\partial u}{\partial t} + a(x,t) \frac{\partial u}{\partial x} 
+      b(x,t)u + c(x,t) = 0$,
+    \item $\frac{\partial u}{\partial t} + a(x,t) \frac{\partial u}{\partial x}
+      + b(x,t,u) = 0$
+  \end{enumerate}
+  的特征线和解沿特征线应成立的关系式.
+\end{exercise}
+
+\begin{solve}
+  特征线为$x=\int_0^ta(x,\tau)\diff\tau$.
+\end{solve}
+
+
+\begin{exercise}
+  求下列一阶方程带初始条件 $u|_{t=0} = \varphi(x)$ 的柯西问题的解:
+  \begin{enumerate}[(1)]
+    \item $\frac{\partial u}{\partial t} + \frac{\partial u}{\partial x} = 0$;
+    \item $\frac{\partial u}{\partial t} + \frac{\partial u}{\partial x} = u$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{solve}
+  (1)令$x=\frac{1}{2}(y+z),t=\frac{1}{2}(y-z)$,则
+  \[u_y=u_xx_y+u_tt_y=\frac{1}{2}(u_x+u_t)=0\]
+  故$u=\Phi(z)=\Phi(x-t)$,令$t=0$得$\Phi(x)=\varphi(x)$,故解为$u=\varphi(x-t)$.
+
+  (2)令$x=\frac{1}{2}(y+z),t=\frac{1}{2}(y-z)$,则
+  \[u_y=\frac{1}{2}(u_x+u_t)=\frac{1}{2}u\]
+  故$u=Ce^y+\Phi(z)=Ce^{x+t}+\Phi(x-t)$,令$t=0$得$Ce^x+\Phi(x)=\varphi(x)$,故解为
+  \[u=Ce^{x+t}-Ce^{x-t}+\varphi(x-t)\]
+\end{solve}
+
+
+\begin{exercise}
+  判断方程组
+  \begin{align*}
+    & \frac{\partial u_1}{\partial t} = a(x,t) \frac{\partial u_1}{\partial x}
+      - b(x,t) \frac{\partial u_2}{\partial x} + f_1, \\
+    & \frac{\partial u_2}{\partial t} = b(x,t) \frac{\partial u_1}{\partial x}
+      + a(x,t) \frac{\partial u_2}{\partial x} + f_2
+  \end{align*}
+  属于何种类型.
+\end{exercise}
+
+\begin{solve}
+  \[A=\begin{pmatrix}
+  a&-b\\b&a
+  \end{pmatrix}\Rightarrow(\lambda-a)^2+b^2=0\]
+  故当$b=0$时为双曲型,当$b\neq0$时为椭圆型.
+\end{solve}
+
+
+\begin{exercise}
+  将下列各方程组化为对角型方程组:
+  \begin{enumerate}[(1)]
+    \item $\begin{cases}
+             \frac{\partial u}{\partial t} + (1+\sin x)\frac{\partial u}{\partial x}
+                + 2 \frac{\partial v}{\partial x} + x = 0, \\
+             \frac{\partial v}{\partial t} + u = 0;  
+           \end{cases}$
+    \item $\begin{cases}
+             \frac{\partial u}{\partial t} = x \frac{\partial u}{\partial x}
+               + \frac{\partial v}{\partial x}, \\
+             \frac{\partial v}{\partial t} = a^2 \frac{\partial u}{\partial x}
+               + x \frac{\partial v}{\partial x}\quad (a>0);
+           \end{cases}$
+    \item $\begin{cases}
+             \frac{\partial u_1}{\partial t} + 6 \frac{\partial u_1}{\partial x}
+               + 5 \frac{\partial u_2}{\partial x} = 0, \\
+             \frac{\partial u_2}{\partial t} + 5 \frac{\partial u_1}{\partial x}
+               + 6 \frac{\partial u_2}{\partial x} = 2u_1, \\
+             3 \frac{\partial u_3}{\partial t} + 6 \frac{\partial u_3}{\partial x}
+               - 3 \frac{\partial u_1}{\partial x} = 2u_2 + 3u_3 - 3u_1.
+           \end{cases}$
+  \end{enumerate}
+\end{exercise}
+
+\begin{solve}
+  (1)\[A=\begin{pmatrix}
+  1+\sin x&2\\0&0\end{pmatrix}\Rightarrow\lambda=0\mbox{或}\lambda=1+\sin x\]
+  相应的特征向量为$(-2,1+\sin x)^T,(c,0)^T$,作变换
+  \[\begin{cases}
+  u=-2v_1+cv_2\\
+  v=(1+\sin x)v_1
+  \end{cases}\]
+  则得
+  \[\begin{cases}
+  (1+\sin x)\frac{\partial v_1}{\partial t}-2v_1+cv_2=0\\
+  c(1+\sin x)\frac{\partial v_2}{\partial t}+c(1+\sin x)^2\frac{\partial v_2}{\partial x}+x(1+\sin x)-4v_1+2cv_2=0
+  \end{cases}\]
+  (2)\[A=\begin{pmatrix}
+  x&1\\a^2&x
+  \end{pmatrix}\Rightarrow(\lambda-x)^2-a^2=0\Rightarrow\lambda=x\pm a\]
+  对应特征向量为$(-1,a)^T,(1,a)^T$,作变换
+  \[\begin{cases}
+  u=-v_1+v_2\\
+  v=av_1+av_2
+  \end{cases}\]
+  则得
+  \[\begin{cases}
+  \frac{\partial v_1}{\partial t}=(x-a)\frac{\partial v_1}{\partial x}\\
+  \frac{\partial v_2}{\partial t}=(x+a)\frac{\partial v_2}{\partial x}
+  \end{cases}\]
+  (3)\[A=
+  \begin{pmatrix}
+  6&5&0\\5&6&0\\-1&0&2
+  \end{pmatrix}\Rightarrow
+  \begin{vmatrix}
+  \lambda-6&-5&0\\-5&\lambda-6&0\\1&0&\lambda-2
+  \end{vmatrix}=0\Rightarrow(\lambda-2)(\lambda^2-12\lambda+11)=0\Rightarrow\lambda=1,2,11\]
+  对应特征向量为$(1,-1,1)^T,(0,0,1)^T,(9,9,-1)^T$,作变换
+  \[\begin{cases}
+  u_1=v_1+9v_3\\
+  u_2=-v_1+9v_3\\
+  u_3=v_1+v_2-v_3
+  \end{cases}\]
+  \[R=\begin{pmatrix}
+  1&0&9\\-1&0&9\\1&1&-1
+  \end{pmatrix}
+  \Rightarrow
+  R^{-1}=
+  \begin{pmatrix}
+  1/2&-1/2&0\\-4/9&5/9&1\\1/18&1/18&0
+  \end{pmatrix}\]
+  又因为
+  \[B=\begin{pmatrix}
+  0&0&0\\-2&0&0\\1&-2/3&-1
+  \end{pmatrix},C=\begin{pmatrix}
+  0\\0\\0
+  \end{pmatrix}\]
+  所以
+  \[R^{-1}BR=\begin{pmatrix}
+  1&0&9\\-4/9&-1&-6\\-1/9&0&-1
+  \end{pmatrix},R^{-1}C=\begin{pmatrix}
+  0\\0\\0
+  \end{pmatrix}\]
+  即得对角型方程组
+  \[\begin{cases}
+  \frac{\partial v_1}{\partial t}+\frac{\partial v_1}{\partial x}+v_1+9v_3=0\\
+  \frac{\partial v_2}{\partial t}+2\frac{\partial v_2}{\partial x}-\frac{4}{9}v_1-v_2-6v_3=0\\
+  \frac{\partial v_3}{\partial t}+11\frac{\partial v_3}{\partial x}-\frac{1}{9}v_1-v_3=0
+  \end{cases}\]
+\end{solve}
+
+
+\begin{exercise}
+  证明: 经过未知函数的任何实系数的可逆线性变换, 方程组 (2.1) 在每一点的特征线方向
+  (或特征曲线) 保持不变, 因此也不会改变方程组 (2.1) 所属的类型.
+\end{exercise}
+
+\begin{proof}
+  原方程为
+  \[\frac{\partial U}{\partial t}+A\frac{\partial U}{\partial x}+BU+C=0\]
+  未知函数作可逆线性变换$U=RV$后,有
+  \[R\frac{\partial V}{\partial t}+AR\frac{\partial V}{\partial x}+\left(\frac{\partial R}{\partial t}+A\frac{\partial R}{\partial x}+BR\right)V+C=0\]
+  原特征方程为$\det(A-\lambda I)=0$,新的特征方程仍然不变,因此方程组在每一点的特征线方向保持不变
+\end{proof}

@@ -2,254 +2,351 @@
 
 \section{二阶线性方程的分类}
 
-1.\textit{Proof}:因为
-\[\begin{cases}
-\bar{a}_{11}=a_{11}\xi_x^2+2a_{12}\xi_x\xi_y+a_{22}\xi_y^2\\
-\bar{a}_{12}=a_{11}\xi_x\eta_x+a_{12}(\xi_x\eta_y+\xi_y\eta_x)+a_{22}\xi_x\eta_y\\
-\bar{a}_{22}=a_{11}\eta_x^2+2a_{12}\eta_x\eta_y+a_{22}\eta_y^2
-\end{cases}\]
-所以
-\[\begin{split}\overline{\Delta}&=\bar{a}_{12}^2-\bar{a}_{11}\bar{a}_{22}\\
-&=a_{12}^2(\xi_x\eta_y+\xi_y\eta_x)^2-4a_{12}^2\xi_x\xi_y\eta_x\eta_y+2a_{11}a_{22}\xi_x\xi_y\eta_x\eta_y-a_{11}a_{22}(\xi_x^2\eta_y^2+\xi_y^2\eta_x^2)\\
-&=(a_{12}^2-a_{11}a_{22})(\xi_x\eta_y-\xi_y\eta_x)^2\\
-&=\Delta\cdot\left[\frac{D(\xi,\eta)}{D(x,y)}\right]^2
-\end{split}\]
-故$\Delta$与$\overline{\Delta}$的符号相同\\\\
-3.解:\\
-(1)$u_{xx}+4u_{xy}+5u_{yy}+u_x+2u_y=0$\\
-$\Delta=4-5=-1<0$,故方程为椭圆型\\
-特征方程为$\diff y^2-4\diff x\diff y+5\diff x^2=0\Rightarrow\frac{\diff y}{\diff x}=2\pm i\Rightarrow y=(2\pm i)x+C$,取$y=(2+i)x+C$,即$y-2x-ix=C$\\
-令\[\begin{cases}
-\xi=2x-y\\\eta=x
-\end{cases}\]
-则\[\begin{cases}
-u_x=2u_{\xi}+u_{\eta}\\
-u_y=-u_{\xi}\\
-u_{xx}=2(2u_{\xi\xi}+u_{\xi\eta})+2u_{\xi\eta}+u_{\eta\eta}=4u_{\xi\xi}+4u_{\xi\eta}+u_{\eta\eta}\\
-u_{yy}=-(-u_{\xi\xi})=u_{\xi\xi}\\
-u_{xy}=-(2u_{\xi\xi}+u_{\xi\eta})
-\end{cases}\]
-代入原方程即得标准形式为
-\[u_{\xi\xi}+u_{\eta\eta}+u_{\eta}=0\]
-(2)$x^2u_{xx}+2xyu_{xy}+y^2u_{yy}=0$\\
-$\Delta=x^2y^2-x^2y^2=0$,故方程为抛物型\\
-特征方程为$x^2\diff y^2-2xy\diff x\diff y+y^2\diff x^2=0\Rightarrow y=Cx$\\
-令\[\begin{cases}
-\xi=\frac{y}{x}\\\eta=x
-\end{cases}\]
-则\[\begin{cases}
-u_x=-\frac{y}{x^2}u_{\xi}+u_{\eta}\\
-u_y=\frac{1}{x}u_{\xi}\\
-u_{xx}=\frac{2y}{x^3}u_{\xi}-\frac{y}{x^2}\left(-\frac{y}{x^2}u_{\xi\xi}+u_{\xi\eta}\right)-\frac{y}{x^2}u_{\eta\xi}+u_{\eta\eta}=\frac{2y}{x^3}u_{\xi}+\frac{y^2}{x^4}u_{\xi\xi}-\frac{2y}{x^2}u_{\xi\eta}+u_{\eta\eta}\\
-u_{yy}=\frac{1}{x^2}u_{\xi\xi}\\
-u_{xy}=-\frac{1}{x^2}u_{\xi}+\frac{1}{x}\left(-\frac{y}{x^2}u_{\xi\xi}+u_{\xi\eta}\right)=-\frac{1}{x^2}u_{\xi}-\frac{y}{x^3}u_{\xi\xi}+\frac{1}{x}u_{\xi\eta}
-\end{cases}\]
-代入原方程即得标准形式为
-\[x^2u_{\eta\eta}=0\Rightarrow u_{\eta\eta}=0\]
-(3)$u_{xx}+yu_{yy}=0$\\
-$\Delta=-y$,故$y>0$时为椭圆型,$y=0$时为抛物型,$y<0$时为双曲型\\
-特征方程为$\diff y^2+y\diff x^2=0$\\
-(i)$y>0$时,$\frac{\diff y}{\diff x}=\pm\sqrt{y}i$,取$\frac{\diff y}{\diff x}=\sqrt{y}i\Rightarrow 2\sqrt{y}-ix=C$,令
-\[\begin{cases}
-\xi=2\sqrt{y}\\\eta=-x
-\end{cases}\]
-则\[\begin{cases}
-u_x=-u_{\eta}\\
-u_{xx}=u_{\eta\eta}\\
-u_{y}=\frac{1}{\sqrt{y}}u_{\xi}\\
-u_{yy}=-\frac{1}{2}y^{-3/2}u_{\xi}+\frac{1}{y}u_{\xi\xi}
-\end{cases}\]
-代入原方程即得标准形式为
-\[u_{\eta\eta}+u_{\xi\xi}-\frac{1}{\xi}u_{\xi}=0\]
-(ii)$y=0$时,$u_{xx}=0$即为标准形式\\
-(iii)$y<0$时,$\frac{\diff y}{\diff x}=\pm\sqrt{-y}\Rightarrow 2\sqrt{-y}\pm x=C$,令
-\[\begin{cases}
-\xi=2\sqrt{-y}+x\\\eta=2\sqrt{-y}-x
-\end{cases}\]
-则
-\[\begin{cases}
-u_x=u_{\xi}-u_{\eta}\\
-u_{xx}=u_{\xi\xi}-2u_{\xi\eta}+u_{\eta\eta}\\
-u_{y}=\frac{-1}{\sqrt{-y}}(u_{\xi}+u_{\eta})\\
-u_{yy}=-\frac{1}{2}(-y)^{-3/2}(u_{\xi}+u_{\eta})-\frac{1}{y}u_{\xi\xi}-\frac{1}{y}u_{\eta\eta}-\frac{2}{y}u_{\xi\eta}
-\end{cases}\]
-代入原方程即得标准形式为
-\[u_{\xi\eta}-\frac{1}{2(\xi+\eta)}(u_{\xi}+u_{\eta})=0\]
-(4)$u_{xx}-2\cos xu_{xy}-(3+\sin^2x)u_{yy}-yu_y=0$\\
-$\Delta=\cos^2x+3+\sin^2x=4>0$,故方程为双曲型\\
-特征方程为$\diff y^2+2\cos x\diff x\diff y-(3+\sin^2x)\diff x^2\Rightarrow\frac{\diff y}{\diff x}=-\cos x\pm2\Rightarrow y+\sin x\pm2x=C\Rightarrow y+\sin x\pm 2x=C$\\
-令\[\begin{cases}
-\xi=y+\sin x+2x\\\eta=y+\sin x-2x
-\end{cases}\]
-则
-\[\begin{cases}
-u_x=(\cos x+2)u_{\xi}+(\cos x-2)u_{\eta}\\
-u_y=u_{\xi}+u_{\eta}\\
-u_{xx}=-\sin x(u_{\xi}+u_{\eta})+(\cos x+2)^2u_{\xi\xi}+(\cos x-2)^2u_{\eta\eta}+2(\cos^2x-4)u_{\xi\eta}\\
-u_{yy}=u_{\xi\xi}+2u_{\xi\eta}+u_{\eta\eta}\\
-u_{xy}=(\cos x+2)u_{\xi\xi}+2\cos xu_{\xi\eta}+(\cos x-2)u_{\eta\eta}
-\end{cases}\]
-代入原方程即得标准形式为
-\[u_{\xi\eta}+\frac{\xi+\eta}{32}(u_{\xi}+u_{\eta})=0\]
-(5)$(1+x^2)u_{xx}+(1+y^2)u_{yy}+xu_x+yu_y=0$\\
-$\Delta=-(1+x^2)(1+y^2)<0$,故方程为椭圆型\\
-特征方程为$(1+x^2)\diff y^2+(1+y^2)\diff x^2=0\Rightarrow\frac{\diff y}{\diff x}=\pm\sqrt{\frac{1+y^2}{1+x^2}}i\Rightarrow\frac{\diff y}{\sqrt{1+y^2}}=\pm i\frac{\diff x}{\sqrt{1+x^2}}\Rightarrow\ln(y+\sqrt{1+y^2})\pm i\ln(x+\sqrt{1+x^2})=C$\\
-令\[\begin{cases}
-\xi=\ln(y+\sqrt{1+y^2})\\\eta=\ln(x+\sqrt{1+x^2})
-\end{cases}\]
-则
-\[\begin{cases}
-u_x=\frac{1}{\sqrt{1+x^2}}u_{\eta}\\
-u_y=\frac{1}{\sqrt{1+y^2}}u_{\xi}\\
-u_{xx}=-x(1+x^2)^{-3/2}u_{\eta}+\frac{1}{1+x^2}u_{\eta\eta}\\
-u_{yy}=-y(1+y^2)^{-3/2}u_{\xi}+\frac{1}{1+y^2}u_{\xi\xi}
-\end{cases}\]
-代入原方程即得标准形式为
-\[u_{\xi\xi}+u_{\eta\eta}=0\]
-\newline
-4.\textit{Proof}:已知两个自变量的二阶常系数双曲型方程或椭圆型方程可以通过可逆变换化为标准形式:
-\[u_{\xi\xi}\pm u_{\eta\eta}+au_{\xi}+bu_{\eta}+cu+f=0\]
-下面以椭圆型方程为例,因为$u=e^{\lambda\xi+\mu\eta}v$,所以
-\[\begin{cases}
-u_{\xi}=e^{\lambda\xi+\mu\eta}(\lambda v+v_{\xi})\\
-u_{\eta}=e^{\lambda\xi+\mu\eta}(\mu v+v_{\eta})\\
-u_{\xi\xi}=e^{\lambda\xi+\mu\eta}(v_{\xi\xi}+2\lambda v_{\xi}+\lambda^2v)\\
-u_{\eta\eta}=e^{\lambda\xi+\mu\eta}(v_{\eta\eta}+2\mu v_{\eta}+\mu^2v)
-\end{cases}\]
-故
-\[\begin{split}
-u_{\xi\xi}&+u_{\eta\eta}+au_{\xi}+bu_{\eta}+cu+f\\
-&=e^{\lambda\xi+\mu\eta}\big[v_{\xi\xi}+v_{\eta\eta}+(2\lambda+a)v_{\xi}+(2\mu+b)v_{\eta}+(\lambda^2+\mu^2+a\lambda+b\mu+c)v\big]+f\\
-&=0
-\end{split}\]
-令\[\lambda=-\frac{a}{2},\mu=-\frac{b}{2},c_1=c-\frac{a^2}{4}-\frac{b^2}{4},f_1=-fe^{-(\lambda\xi+\mu\eta)}\]
-即可将原方程化简为
-\[v_{\xi\xi}+v_{\eta\eta}+c_1v=f_1\]
-对于双曲型方程的情形可以进行类似证明\\
+\begin{exercise}
+  证明: 两个自变量的二阶线性方程经过自变量的可逆变换后, 其类型不会改变,
+  即变换后 $\Delta = a_{12}^2 - a_{11}a_{22}$ 的符号不变.
+\end{exercise}
+
+
+\begin{proof}
+  因为
+  \[\begin{cases}
+  \bar{a}_{11}=a_{11}\xi_x^2+2a_{12}\xi_x\xi_y+a_{22}\xi_y^2\\
+  \bar{a}_{12}=a_{11}\xi_x\eta_x+a_{12}(\xi_x\eta_y+\xi_y\eta_x)+a_{22}\xi_x\eta_y\\
+  \bar{a}_{22}=a_{11}\eta_x^2+2a_{12}\eta_x\eta_y+a_{22}\eta_y^2
+  \end{cases}\]
+  所以
+  \[\begin{split}\overline{\Delta}&=\bar{a}_{12}^2-\bar{a}_{11}\bar{a}_{22}\\
+  &=a_{12}^2(\xi_x\eta_y+\xi_y\eta_x)^2-4a_{12}^2\xi_x\xi_y\eta_x\eta_y+2a_{11}a_{22}\xi_x\xi_y\eta_x\eta_y-a_{11}a_{22}(\xi_x^2\eta_y^2+\xi_y^2\eta_x^2)\\
+  &=(a_{12}^2-a_{11}a_{22})(\xi_x\eta_y-\xi_y\eta_x)^2\\
+  &=\Delta\cdot\left[\frac{D(\xi,\eta)}{D(x,y)}\right]^2
+  \end{split}\]
+  故$\Delta$与$\overline{\Delta}$的符号相同.
+\end{proof}
+
+
+\begin{exercise}[3]
+  化下列方程为标准形式:
+  \begin{enumerate}[(1)]
+    \item $u_{xx} + 4u_{xy} 5u_{yy} + u_x + 2u_y = 0$;
+    \item $x^2 u_{xx} + 2xy u_{xy} + y^2 u_{yy} = 0$;
+    \item $u_{xx} + yu_{yy} = 0$;
+    \item $u_{xx} - 2\cos x u_{xy} - (3 + \sin^2 x)u_{yy} - yu_y = 0$;
+    \item $(1+x^2)u_{xx} + (1+y^2)u_{yy} + xu_x + yu_y = 0$;
+  \end{enumerate}
+\end{exercise}
+
+\begin{solve}
+  (1) $u_{xx}+4u_{xy}+5u_{yy}+u_x+2u_y=0$.
+  $\Delta=4-5=-1<0$, 故方程为椭圆型.
+  特征方程为 $\diff y^2-4\diff x\diff y+5\diff x^2=0\Rightarrow\frac{\diff y}{\diff x}=2\pm i\Rightarrow y=(2\pm i)x+C$,取$y=(2+i)x+C$, 即$y-2x-ix=C$. 令
+  \[\begin{cases}
+  \xi=2x-y\\\eta=x
+  \end{cases}\]
+  则\[\begin{cases}
+  u_x=2u_{\xi}+u_{\eta}\\
+  u_y=-u_{\xi}\\
+  u_{xx}=2(2u_{\xi\xi}+u_{\xi\eta})+2u_{\xi\eta}+u_{\eta\eta}=4u_{\xi\xi}+4u_{\xi\eta}+u_{\eta\eta}\\
+  u_{yy}=-(-u_{\xi\xi})=u_{\xi\xi}\\
+  u_{xy}=-(2u_{\xi\xi}+u_{\xi\eta})
+  \end{cases}\]
+  代入原方程即得标准形式为
+  \[u_{\xi\xi}+u_{\eta\eta}+u_{\eta} = 0.\]
+
+  (2) $x^2u_{xx}+2xyu_{xy}+y^2u_{yy}=0$.
+  $\Delta=x^2y^2-x^2y^2=0$, 故方程为抛物型.
+  特征方程为 $x^2\diff y^2-2xy\diff x\diff y+y^2\diff x^2=0\Rightarrow y=Cx$. 令
+  \[\begin{cases}
+  \xi=\frac{y}{x}\\\eta=x
+  \end{cases}\]
+  则\[\begin{cases}
+  u_x=-\frac{y}{x^2}u_{\xi}+u_{\eta}\\
+  u_y=\frac{1}{x}u_{\xi}\\
+  u_{xx}=\frac{2y}{x^3}u_{\xi}-\frac{y}{x^2}\left(-\frac{y}{x^2}u_{\xi\xi}+u_{\xi\eta}\right)-\frac{y}{x^2}u_{\eta\xi}+u_{\eta\eta}=\frac{2y}{x^3}u_{\xi}+\frac{y^2}{x^4}u_{\xi\xi}-\frac{2y}{x^2}u_{\xi\eta}+u_{\eta\eta}\\
+  u_{yy}=\frac{1}{x^2}u_{\xi\xi}\\
+  u_{xy}=-\frac{1}{x^2}u_{\xi}+\frac{1}{x}\left(-\frac{y}{x^2}u_{\xi\xi}+u_{\xi\eta}\right)=-\frac{1}{x^2}u_{\xi}-\frac{y}{x^3}u_{\xi\xi}+\frac{1}{x}u_{\xi\eta}
+  \end{cases}\]
+  代入原方程即得标准形式为
+  \[x^2u_{\eta\eta}=0\Rightarrow u_{\eta\eta} = 0.\]
+
+  (3) $u_{xx}+yu_{yy}=0$.
+  $\Delta=-y$,故$y>0$时为椭圆型,$y=0$时为抛物型,$y<0$时为双曲型.
+  特征方程为 $\diff y^2+y\diff x^2=0$.
+
+  (i) $y>0$ 时, $\frac{\diff y}{\diff x}=\pm\sqrt{y}i$,
+  取 $\frac{\diff y}{\diff x}=\sqrt{y}i\Rightarrow 2\sqrt{y}-ix=C$,令
+  \[\begin{cases}
+  \xi=2\sqrt{y}\\\eta=-x
+  \end{cases}\]
+  则\[\begin{cases}
+  u_x=-u_{\eta}\\
+  u_{xx}=u_{\eta\eta}\\
+  u_{y}=\frac{1}{\sqrt{y}}u_{\xi}\\
+  u_{yy}=-\frac{1}{2}y^{-3/2}u_{\xi}+\frac{1}{y}u_{\xi\xi}
+  \end{cases}\]
+  代入原方程即得标准形式为
+  \[u_{\eta\eta}+u_{\xi\xi}-\frac{1}{\xi}u_{\xi} = 0.\]
+
+  (ii) $y=0$ 时, $u_{xx}=0$即为标准形式.
+
+  (iii) $y<0$ 时, $\frac{\diff y}{\diff x}=\pm\sqrt{-y}\Rightarrow 2\sqrt{-y}\pm x=C$,令
+  \[\begin{cases}
+  \xi=2\sqrt{-y}+x\\\eta=2\sqrt{-y}-x
+  \end{cases}\]
+  则
+  \[\begin{cases}
+  u_x=u_{\xi}-u_{\eta}\\
+  u_{xx}=u_{\xi\xi}-2u_{\xi\eta}+u_{\eta\eta}\\
+  u_{y}=\frac{-1}{\sqrt{-y}}(u_{\xi}+u_{\eta})\\
+  u_{yy}=-\frac{1}{2}(-y)^{-3/2}(u_{\xi}+u_{\eta})-\frac{1}{y}u_{\xi\xi}-\frac{1}{y}u_{\eta\eta}-\frac{2}{y}u_{\xi\eta}
+  \end{cases}\]
+  代入原方程即得标准形式为
+  \[u_{\xi\eta}-\frac{1}{2(\xi+\eta)}(u_{\xi}+u_{\eta}) = 0.\]
+
+  (4) $u_{xx}-2\cos xu_{xy}-(3+\sin^2x)u_{yy}-yu_y=0$.
+  $\Delta=\cos^2x+3+\sin^2x=4>0$,故方程为双曲型.
+  特征方程为 $\diff y^2+2\cos x\diff x\diff y-(3+\sin^2x)\diff x^2\Rightarrow\frac{\diff y}{\diff x}=-\cos x\pm2\Rightarrow y+\sin x\pm2x=C\Rightarrow y+\sin x\pm 2x=C$.
+  令\[\begin{cases}
+  \xi=y+\sin x+2x\\\eta=y+\sin x-2x
+  \end{cases}\]
+  则
+  \[\begin{cases}
+  u_x=(\cos x+2)u_{\xi}+(\cos x-2)u_{\eta}\\
+  u_y=u_{\xi}+u_{\eta}\\
+  u_{xx}=-\sin x(u_{\xi}+u_{\eta})+(\cos x+2)^2u_{\xi\xi}+(\cos x-2)^2u_{\eta\eta}+2(\cos^2x-4)u_{\xi\eta}\\
+  u_{yy}=u_{\xi\xi}+2u_{\xi\eta}+u_{\eta\eta}\\
+  u_{xy}=(\cos x+2)u_{\xi\xi}+2\cos xu_{\xi\eta}+(\cos x-2)u_{\eta\eta}
+  \end{cases}\]
+  代入原方程即得标准形式为
+  \[u_{\xi\eta}+\frac{\xi+\eta}{32}(u_{\xi}+u_{\eta}) = 0.\]
+
+  (5) $(1+x^2)u_{xx}+(1+y^2)u_{yy}+xu_x+yu_y=0$.
+  $\Delta=-(1+x^2)(1+y^2)<0$,故方程为椭圆型.
+  特征方程为$(1+x^2)\diff y^2+(1+y^2)\diff x^2=0\Rightarrow\frac{\diff y}{\diff x}=\pm\sqrt{\frac{1+y^2}{1+x^2}}i\Rightarrow\frac{\diff y}{\sqrt{1+y^2}}=\pm i\frac{\diff x}{\sqrt{1+x^2}}\Rightarrow\ln(y+\sqrt{1+y^2})\pm i\ln(x+\sqrt{1+x^2})=C$\\
+  令\[\begin{cases}
+  \xi=\ln(y+\sqrt{1+y^2})\\\eta=\ln(x+\sqrt{1+x^2})
+  \end{cases}\]
+  则
+  \[\begin{cases}
+  u_x=\frac{1}{\sqrt{1+x^2}}u_{\eta}\\
+  u_y=\frac{1}{\sqrt{1+y^2}}u_{\xi}\\
+  u_{xx}=-x(1+x^2)^{-3/2}u_{\eta}+\frac{1}{1+x^2}u_{\eta\eta}\\
+  u_{yy}=-y(1+y^2)^{-3/2}u_{\xi}+\frac{1}{1+y^2}u_{\xi\xi}
+  \end{cases}\]
+  代入原方程即得标准形式为
+  \[u_{\xi\xi}+u_{\eta\eta}=0\]
+\end{solve}
+
+
+\begin{exercise}
+  证明: 两个自变量的二阶常系数双曲型方程或椭圆型方程一定可以经过自变量
+  及未知函数的可逆变换
+  \[u = \e^{\lambda\xi + \mu\eta} v\]
+  将它化成
+  \[v_{\xi\xi} \pm v_{\eta\eta} + cv = f\]
+  的形式.
+\end{exercise}
+
+\begin{proof}
+  已知两个自变量的二阶常系数双曲型方程或椭圆型方程可以通过可逆变换化为标准形式:
+  \[u_{\xi\xi}\pm u_{\eta\eta}+au_{\xi}+bu_{\eta}+cu+f=0\]
+  下面以椭圆型方程为例,因为$u=e^{\lambda\xi+\mu\eta}v$,所以
+  \[\begin{cases}
+  u_{\xi}=e^{\lambda\xi+\mu\eta}(\lambda v+v_{\xi})\\
+  u_{\eta}=e^{\lambda\xi+\mu\eta}(\mu v+v_{\eta})\\
+  u_{\xi\xi}=e^{\lambda\xi+\mu\eta}(v_{\xi\xi}+2\lambda v_{\xi}+\lambda^2v)\\
+  u_{\eta\eta}=e^{\lambda\xi+\mu\eta}(v_{\eta\eta}+2\mu v_{\eta}+\mu^2v)
+  \end{cases}\]
+  故
+  \[\begin{split}
+  u_{\xi\xi}&+u_{\eta\eta}+au_{\xi}+bu_{\eta}+cu+f\\
+  &=e^{\lambda\xi+\mu\eta}\big[v_{\xi\xi}+v_{\eta\eta}+(2\lambda+a)v_{\xi}+(2\mu+b)v_{\eta}+(\lambda^2+\mu^2+a\lambda+b\mu+c)v\big]+f\\
+  &=0
+  \end{split}\]
+  令\[\lambda=-\frac{a}{2},\mu=-\frac{b}{2},c_1=c-\frac{a^2}{4}-\frac{b^2}{4},f_1=-fe^{-(\lambda\xi+\mu\eta)}\]
+  即可将原方程化简为
+  \[v_{\xi\xi}+v_{\eta\eta}+c_1v=f_1\]
+  对于双曲型方程的情形可以进行类似证明.
+\end{proof}
+
+
 \section{二阶线性方程的特征理论}
-2.解:特征方程为
-\[\alpha_0^2-a^2(\alpha_1^1+\alpha_2^2)=0\]
-又因为$\alpha_0^2+\alpha_1^2+\alpha_2^2=1$,所以解出
-\[\alpha_0=\pm\frac{a}{\sqrt{1+a^2}},\alpha_1=\frac{\cos\theta}{\sqrt{1+a^2}},\alpha_2=\frac{\sin\theta}{\sqrt{1+a^2}}\]
-故过直线$t=0,y=2x$的特征平面为:$at+\cos\theta\cdot(x-x_0)+\sin\theta\cdot(y-2x_0)=0$,其中$\theta,x_0$为参数\\\\
-3.\textit{Proof}:考虑二阶线性方程
-\[\sum_{i,j=1}^nA_{ij}\frac{\partial^2u}{\partial x_i\partial x_j}+\sum_{i=1}^nB_i\frac{\partial u}{\partial x_i}+Cu=F\]
-设$G(x_1,\cdots,x_n)=0$为其特征曲面,则
-\[\sum_{i,j=1}^nA_{ij}\frac{\partial G}{\partial x_i}\frac{\partial G}{\partial x_j}=0\]
-经过可逆的坐标变换:$x_i=f_i(y_1,\cdots,y_n)$,有
-\[\frac{\partial u}{\partial x_i}=\sum_{l=1}^n\frac{\partial u}{\partial y_l}\frac{\partial y_l}{\partial x_i}\]
-\[\frac{\partial^2u}{\partial x_i\partial x_j}=\sum_{k,l=1}^n\frac{\partial^2u}{\partial y_l\partial y_k}\frac{\partial y_l}{\partial x_i}\frac{\partial y_k}{\partial x_j}+\sum_{l=1}^n\frac{\partial u}{\partial y_l}\frac{\partial^2y_l}{\partial x_i\partial x_j}\]
-将上面两式代入原方程得
-\[\sum_{i,j=1}^nA_{ij}\left(\sum_{k,l=1}^n\frac{\partial^2u}{\partial y_l\partial y_k}\frac{\partial y_l}{\partial x_i}\frac{\partial y_k}{\partial x_j}+\sum_{l=1}^n\frac{\partial u}{\partial y_l}\frac{\partial^2y_l}{\partial x_i\partial x_j}\right)+\sum_{i=1}^nB_i\left(\sum_{l=1}^n\frac{\partial u}{\partial y_l}\frac{\partial y_l}{\partial x_i}\right)+Cu=F\]
-整理上式并简记一次偏导数项得
-\[\sum_{k,l=1}^n\left(\sum_{i,j=1}^nA_{ij}\frac{\partial y_l}{\partial x_i}\frac{\partial y_k}{\partial x_j}\right)\frac{\partial^2u}{\partial y_l\partial y_k}+\sum_{l=1}^n\widetilde{B}_l\frac{\partial u}{\partial y_l}+Cu=F\]
-设$G^*(y_1,\cdots,y_n)$为其特征曲面,则需满足
-\[\sum_{k,l=1}^n\left(\sum_{i,j=1}^nA_{ij}\frac{\partial y_l}{\partial x_i}\frac{\partial y_k}{\partial x_j}\right)\frac{\partial G^*}{\partial y_k}\frac{\partial G^*}{\partial y_l}=0\]
-另一方面,对原方程的特征曲面经过可逆变换后的特征曲面为:
-\[G(x_1,\cdots,x_n)=G(f_1(y_1,\cdots,y_n),\cdots,f_n(y_1,\cdots,y_n))=G_1(y_1,\cdots,y_n)\]
-故
-\[\sum_{i,j=1}^nA_{ij}\frac{\partial G}{\partial x_i}\frac{\partial G}{\partial x_j}=0\Rightarrow\sum_{i,j=1}^nA_{ij}\left(\sum_{l=1}^n\frac{\partial G_1}{\partial y_l}\frac{\partial y_l}{\partial x_i}\right)\left(\sum_{k=1}^n\frac{\partial G_1}{\partial y_k}\frac{\partial y_k}{\partial x_j}\right)=\sum_{k,l=1}^n\left(\sum_{i,j=1}^nA_{ij}\frac{\partial y_l}{\partial x_i}\frac{\partial y_k}{\partial x_j}\right)\frac{\partial G_1}{\partial y_k}\frac{\partial G_1}{\partial y_l}=0\]
-对比即得$G^*=G_1$,即特征曲面关于可逆坐标变换具有不变性
+
+\begin{exercise}
+  对波动方程 $u_{tt} - a^2(u_{xx}+u_{yy}) = 0$, 求过直线 $l: t = 0, y = 2x$ 的特征平面.
+\end{exercise}
+
+\begin{solve}
+  特征方程为
+  \[\alpha_0^2-a^2(\alpha_1^1+\alpha_2^2) = 0.\]
+  又因为$\alpha_0^2+\alpha_1^2+\alpha_2^2=1$, 所以解出
+  \[\alpha_0 = \pm\frac{a}{\sqrt{1+a^2}},
+    \quad \alpha_1=\frac{\cos\theta}{\sqrt{1+a^2}},
+    \quad \alpha_2=\frac{\sin\theta}{\sqrt{1+a^2}}.\]
+  故过直线 $t=0,y=2x$ 的特征平面为: $at+\cos\theta\cdot(x-x_0)+\sin\theta\cdot(y-2x_0)=0$,
+  其中$\theta$, $x_0$为参数.
+\end{solve}
+
+
+\begin{exercise}
+  证明: 经过可逆的坐标变换 $x_i = f_i(y_1, \ldots, y_n)$ $(i=1, \ldots, n)$,
+  原方程的特征曲面变为经变换后的新方程的特征曲面,
+  即特征曲面关于可逆坐标变换具有不变形.
+\end{exercise}
+
+\begin{proof}
+  考虑二阶线性方程
+  \[\sum_{i,j=1}^nA_{ij}\frac{\partial^2u}{\partial x_i\partial x_j}+\sum_{i=1}^nB_i\frac{\partial u}{\partial x_i}+Cu=F\]
+  设$G(x_1,\cdots,x_n)=0$为其特征曲面,则
+  \[\sum_{i,j=1}^nA_{ij}\frac{\partial G}{\partial x_i}\frac{\partial G}{\partial x_j}=0\]
+  经过可逆的坐标变换:$x_i=f_i(y_1,\cdots,y_n)$,有
+  \[\frac{\partial u}{\partial x_i}=\sum_{l=1}^n\frac{\partial u}{\partial y_l}\frac{\partial y_l}{\partial x_i}\]
+  \[\frac{\partial^2u}{\partial x_i\partial x_j}=\sum_{k,l=1}^n\frac{\partial^2u}{\partial y_l\partial y_k}\frac{\partial y_l}{\partial x_i}\frac{\partial y_k}{\partial x_j}+\sum_{l=1}^n\frac{\partial u}{\partial y_l}\frac{\partial^2y_l}{\partial x_i\partial x_j}\]
+  将上面两式代入原方程得
+  \[\sum_{i,j=1}^nA_{ij}\left(\sum_{k,l=1}^n\frac{\partial^2u}{\partial y_l\partial y_k}\frac{\partial y_l}{\partial x_i}\frac{\partial y_k}{\partial x_j}+\sum_{l=1}^n\frac{\partial u}{\partial y_l}\frac{\partial^2y_l}{\partial x_i\partial x_j}\right)+\sum_{i=1}^nB_i\left(\sum_{l=1}^n\frac{\partial u}{\partial y_l}\frac{\partial y_l}{\partial x_i}\right)+Cu=F\]
+  整理上式并简记一次偏导数项得
+  \[\sum_{k,l=1}^n\left(\sum_{i,j=1}^nA_{ij}\frac{\partial y_l}{\partial x_i}\frac{\partial y_k}{\partial x_j}\right)\frac{\partial^2u}{\partial y_l\partial y_k}+\sum_{l=1}^n\widetilde{B}_l\frac{\partial u}{\partial y_l}+Cu=F\]
+  设$G^*(y_1,\cdots,y_n)$为其特征曲面,则需满足
+  \[\sum_{k,l=1}^n\left(\sum_{i,j=1}^nA_{ij}\frac{\partial y_l}{\partial x_i}\frac{\partial y_k}{\partial x_j}\right)\frac{\partial G^*}{\partial y_k}\frac{\partial G^*}{\partial y_l}=0\]
+  另一方面,对原方程的特征曲面经过可逆变换后的特征曲面为:
+  \[G(x_1,\cdots,x_n)=G(f_1(y_1,\cdots,y_n),\cdots,f_n(y_1,\cdots,y_n))=G_1(y_1,\cdots,y_n)\]
+  故
+  \[\sum_{i,j=1}^nA_{ij}\frac{\partial G}{\partial x_i}\frac{\partial G}{\partial x_j}=0\Rightarrow\sum_{i,j=1}^nA_{ij}\left(\sum_{l=1}^n\frac{\partial G_1}{\partial y_l}\frac{\partial y_l}{\partial x_i}\right)\left(\sum_{k=1}^n\frac{\partial G_1}{\partial y_k}\frac{\partial y_k}{\partial x_j}\right)=\sum_{k,l=1}^n\left(\sum_{i,j=1}^nA_{ij}\frac{\partial y_l}{\partial x_i}\frac{\partial y_k}{\partial x_j}\right)\frac{\partial G_1}{\partial y_k}\frac{\partial G_1}{\partial y_l}=0\]
+  对比即得$G^*=G_1$,即特征曲面关于可逆坐标变换具有不变性.
+\end{proof}
+
+
+
 \section{三类方程的比较}
-2.\textit{Proof}:利用分离变量法得该初边值问题的解为
-\[u(x,t)=\sum_{n=1}^{\infty}C_ne^{-\frac{n^2\pi^2a^2}{l^2}t}\sin\frac{n\pi}{l}x\]
-其中$C_n=\frac{2}{l}\int_0^l\varphi(x)\sin\frac{n\pi}{l}x\diff x,|C_n|\leq M$,只需要证明级数逐项微分任意次后仍然是绝对且一致收敛即可,对$t$微分$\alpha$次,对$x$微分$\beta$次需要级数
-\[\sum_{n=1}^{\infty}C_n\left(-\frac{n^2\pi^2a^2}{l^2}\right)^{\alpha}\left(\frac{n\pi}{l}\right)^{\beta}\left(\sin\frac{n\pi}{l}x\right)^{(\beta)}e^{-\frac{n^2\pi^2a^2}{l^2}t}\]
-绝对且一致收敛,而当$t\geq t_0>0$时,上述级数以
-\[\sum_{n=1}^{\infty}M\left(\frac{n\pi a}{l}\right)^{2\alpha}\left(\frac{n\pi}{l}\right)^{\beta}e^{-\frac{n^2\pi^2a^2}{l^2}t_0}\]
-为优级数,易知此级数收敛,故原级数绝对且一致收敛
+
+
+\begin{exercise}
+  证明热传导方程
+  \[\frac{\partial u}{\partial t} = a^2 \frac{\partial^2 u}{\partial x^2}\]
+  的初边值问题
+  \[\begin{cases}
+    u(0, t) = u(l, t) = 0, \\
+    u(x, 0) = \varphi(x)
+  \end{cases}\]
+  的解关于自变量 $x$ ($0<x<l$) 和 $t$ ($t>0$) 可进行任意次微分.
+\end{exercise}
+
+\begin{proof}
+  利用分离变量法得该初边值问题的解为
+  \[u(x,t) = \sum_{n=1}^{\infty}C_ne^{-\frac{n^2\pi^2a^2}{l^2}t}\sin\frac{n\pi}{l}x,\]
+  其中 $C_n=\frac{2}{l}\int_0^l\varphi(x)\sin\frac{n\pi}{l}x\diff x$,
+  $|C_n|\leq M$, 只需要证明级数逐项微分任意次后仍然是绝对且一致收敛即可,
+  对 $t$ 微分 $\alpha$ 次, 对 $x$ 微分 $\beta$ 次需要级数
+  \[\sum_{n=1}^{\infty}C_n\left(-\frac{n^2\pi^2a^2}{l^2}\right)^{\alpha}\left(\frac{n\pi}{l}\right)^{\beta}\left(\sin\frac{n\pi}{l}x\right)^{(\beta)}e^{-\frac{n^2\pi^2a^2}{l^2}t}\]
+  绝对且一致收敛,而当$t\geq t_0>0$时,上述级数以
+  \[\sum_{n=1}^{\infty}M\left(\frac{n\pi a}{l}\right)^{2\alpha}\left(\frac{n\pi}{l}\right)^{\beta}e^{-\frac{n^2\pi^2a^2}{l^2}t_0}\]
+  为优级数,易知此级数收敛,故原级数绝对且一致收敛.
+\end{proof}
+
+
 \section{先验估计}
-\[\mbox{解释}:-\int_{\Omega}u_t\sum_{i,j=1}^na_{ij}u_{x_ix_j}\diff x=\int_{\Omega}\sum_{i,j=1}^n(u_ta_{ij})_{x_j}u_{x_i}\diff x\]
-将左右侧相加得
-\[\begin{split}\int_{\Omega}u_t\sum_{i,j=1}^na_{ij}u_{x_ix_j}\diff x+\int_{\Omega}\sum_{i,j=1}^n(u_ta_{ij})_{x_j}u_{x_i}\diff x
-&=\int_{\Omega}\sum_{i,j=1}^n\frac{\partial}{\partial x_j}(u_ta_{ij}u_{x_i})\diff x\\
-&=\int_{\Omega}\sum_{j=1}^n\frac{\partial}{\partial x_j}\sum_{i=1}^n(u_ta_{ij}u_{x_i})\diff x\\
-&=\int_{\Gamma}\sum_{i,j=1}^n(u_ta_{ij}u_{x_i})\cos(\vec{n},x_j)\diff x(\vec{n}\mbox{表示单位外法向量})\\
-&=0(\mbox{因为}u_t|_{\Gamma}=0)
-\end{split}\]
-\newline
-1.设$u(x_1,\cdots,x_n)$在区域$\Omega$上非负,且满足不等式
-\[\sum_{i,j=1}^na_{ij}(x)u_{x_ix_j}+\sum_{i=1}^nb_i(x)u_{x_i}+c(x)u\geq0\]
-其中$a_{ij},b_i,c$在$\overline{\Omega}$上具有一阶连续偏导数,满足(4.38)式,且$c(x)\leq0$,证明极值原理$\max\limits_{\overline{\Omega}}u=\max\limits _{\Gamma}u$成立\\
-\textit{Proof}:$u(x)$为常数时极值原理显然成立,当$u(x)$不恒为常数时,假设极值原理不成立,即在区域$\Omega$内部存在最大值点$x_0$,则必有$u(x_0)>0$,而且
-\[u_{x_i}|_{x_0}=0\mbox{且}(u_{x_ix_j})|_{x_0}\mbox{负定}\]
-由题目条件知
-\[\sum_{i,j=1}^na_{ij}(x_0)u_{x_ix_j}|_{x_0}+\sum_{i=1}^nb_i(x_0)u_{x_i}|_{x_0}+c(x_0)u(x_0)\geq0\]
-因为$\sum_{i,j=1}^na_{ij}(x_0)u_{x_ix_j}|_{x_0}<0,\sum_{i=1}^nb_i(x_0)u_{x_i}|_{x_0}=0$,故有
-\[c(x_0)u(x_0)>0\Rightarrow u(x_0)<0\]
-矛盾,故假设不成立,因此极值原理成立\\\\
-3.\textit{Proof}:令
-\[E_1(t)=\frac{1}{2}\int_0^l(u_t^2+a^2u_x^2)\diff x+\frac{1}{2}a^2ku^2|_{x=l},E_0(t)=\frac{1}{2}\int_0^lu^2\diff x\]
-则
-\[E_1'(t)=\int_0^l(u_tu_{tt}+a^2u_xu_{xt})\diff x+a^2k(uu_t)|_{x=l}\]
-代入方程和边界条件得
-\[\begin{split}
-E_1'(t)
-&=\int_0^la^2(u_tu_{xx}+u_xu_{xt})\diff x-a^2u_xu_t|_{x=l}-\int_0^lb(x,t)u_tu_x\diff x\\
-&-\int_0^lb_0(x,t)u_t^2\diff x-\int_0^lc(x,t)u_tu\diff x+\frac{1}{2}\int_0^lu_tf(x,t)\diff x\\
-&=\left(\int_0^la^2(u_tu_x)_x\diff x-a^2u_tu_x|_{x=l}\right)-\int_0^lb(x,t)u_tu_x\diff x\\
-&-\int_0^lb_0(x,t)u_t^2\diff x-\int_0^lc(x,t)u_tu\diff x+\frac{1}{2}\int_0^lu_tf(x,t)\\diff x
-\end{split}\]
-注意到$\int_0^la^2(u_tu_x)_x\diff x-a^2u_xu_t|_{x=l}=0$,记$|b(x,t)|,|b_0(x,t)|,|c(x,t)|$在$\overline{Q}_T$上的最大值为$M$,记$C_0=\frac{M}{2}\max(1,\frac{1}{a^2})$,则有
-\[\begin{split}
-E_1'(t)&=C_0\int_0^l(u_t^2+a^2u_x^2)\diff x+C_0\int_0^lu_t^2\diff x+C_0\int_0^lu_t^2\diff x\\
-&+C_0\int_0^lu^2\diff x+\frac{1}{4}\int_0^lu_t^2\diff x+\frac{1}{4}\int_0^lf^2\diff x\\
-&=C\left(E_1(t)+E_0(t)+\int_0^lf^2\diff x\right)
-\end{split}\]
-因为$E_0(t)=\frac{1}{2}\int_0^lu^2\diff x$,故
-\[E_0'(t)=\int_0^luu_t\diff x\leq\frac{1}{2}\int_0^lu^2\diff x+\frac{1}{2}\int_0^lu_t^2\diff x\leq\frac{1}{2}(E_1(t)+E_0(t))\]
-记$E(t)=E_1(t)+E_0(t)$,则
-\[E'(t)\leq C(E(t)+\int_0^lf^2\diff x)\Rightarrow E(t)\leq e^{Ct}\left(E(0)+C\int_0^te^{-Ct}\int_0^lf^2\diff x\right)\]
-\newline
-4.解:任取$T>0$,下面在$[0,T]$上建立能量估计式,记$E(t)=\int_{\Omega}u^2(x,t)\diff x$,则$E'(t)=2\int_{\Omega}uu_t\diff x$,代入原方程得
-\[E'(t)=2\int_{\Omega}u\Delta u\diff x-2\sum_{i=1}^n\int_{\Omega}b_iuu_{x_i}\diff x-2\int_{\Omega}cu^2\diff x+2\int_{\Omega}uf\diff x\]
-由格林公式及边界条件得
-\[\begin{split}
-\int_{\Omega}u\Delta u\diff x&=\int_{\Omega}\sum_{k=1}(uu_{x_k})_{x_k}\diff x-\int_{\Omega}|\nabla u|^2\diff x\\
-&=\int_{\partial\Omega}\sum_{k=1}^nuu_{x_k}\cos(\vec{n},x_k)\diff x-\int_{\Omega}|\nabla u|^2\diff x\\
-&=\int_{\partial\Omega}u\frac{\partial u}{\partial\vec{n}}\diff x-\int_{\Omega}|\nabla u|^2\diff x=-\int_{\Omega}|\nabla u|^2\diff x
-\end{split}\]
-再设$|b(x,t)|,|c(x,t)|$在$\overline{R}_T=\overline{\Omega}\times[0,T]$上的最大值为$M$,记$C_0=\frac{M}{2}\max(1,\frac{1}{a^2})$,利用加权平均值不等式$2ab\leq\epsilon a^2+\frac{1}{\epsilon}b^2(\epsilon>0)$得
-\[\begin{split}
-E'(t)&=-2\int_{\Omega}|\nabla u|^2\diff x+2M\sum_{i=1}^n\int_{\Omega}|uu_{x_i}|\diff x+2M\int_{\Omega}u^2\diff x+2\int_{\Omega}|uf|\diff x\\
-&\leq-2\int_{\Omega}|\nabla u|^2\diff x+M\left(\epsilon\int_{\Omega}|\nabla u|^2\diff x+\frac{n}{\epsilon}\int_{\Omega}u^2\diff x\right)+(2M+1)\int_{\Omega}u^2\diff x+\int_{\Omega}f^2\diff x
-\end{split}\]
-取$\epsilon=\frac{1}{M}$,并记$\widehat{C}=nM^2+2M+1$,则
-\[\begin{split}
-E'(t)&\leq-\int_{\Omega}|\nabla u|^2\diff x+(nM^2+2M+1)\int_{\Omega}u^2\diff x+\int_{\Omega}f^2\diff x\\
-&\leq-\int_{\Omega}|\nabla u|^2\diff x+\widehat{C}\int_{\Omega}u^2\diff x+\int_{\Omega}f^2\diff x
-\end{split}\]
-由Gronwall不等式得
-\[\begin{split}
-E(t)&\leq e^{\widehat{C}t}E(0)-\int_0^te^{\widehat{C}(t-s)}\diff s\int_{\Omega}|\nabla u|^2\diff x+\int_0^te^{\widehat{C}(t-s)}\diff s\int_{\Omega}f^2\diff x\\
-&\leq e^{\widehat{C}t}E(0)-\int_0^t\diff s\int_{\Omega}|\nabla u|^2\diff x+\int_0^te^{\widehat{C}(t-s)}\diff s\int_{\Omega}f^2\diff x
-\end{split}\]
-故
-\[\int_{\Omega}u^2(x,t)\diff x+\int_0^t\diff s\int_{\Omega}|\nabla u|^2\diff x\leq e^{\widehat{C}t}\left(\int_{\Omega}\varphi^2(x)\diff x+\int_0^t\diff s\int_{\Omega}f^2\diff x\right)\]
-\newline
-6.\textit{Proof}:在方程两边同时乘以$u$并在$\Omega$上积分得
-\[\int_{\Omega}fu\diff x=\int_{\Omega}\left(cu^2+\sum_{i=1}^nb_iu_{x_i}u+u\Delta u\right)\diff x\]
-利用格林公式及边界条件得
-\[\begin{split}
-\int_{\Omega}u\Delta u\diff x
-&=\int_{\Omega}\sum_{k=1}^n(uu_{x_k})_{x_k}\diff x-\int_{\Omega}|\nabla u|^2\diff x\\
-&=\int_{\partial\Omega}\sum_{k=1}^nuu_{x_k}\cos(\vec{n},x_k)\diff x-\int_{\Omega}|\nabla u|^2\diff x\\
-&=\int_{\partial\Omega}u\frac{\partial u}{\partial\vec{n}}\diff x-\int_{\Omega}|\nabla u|^2\diff x=-\int_{\Omega}|\nabla u|^2\diff x
-\end{split}\]
-故
-\[\int_{\Omega}fu\diff x\leq-\int_{\Omega}|\nabla u|^2\diff x+\int_{\Omega}\sum b_iu_{x_i}u\diff x+\int_{\Omega}cu^2\diff x\]
-记$M=\max_{1\leq i\leq n}\max_{x\in\Omega}|b_i(x)|$,则
-\[\begin{split}
-\int_{\Omega}|\nabla u|^2\diff x-\int_{\Omega}cu^2\diff x
-&\leq\sum_{i=1}^n\int_{\Omega}b_iu_{x_i}u\diff x-\int_{\Omega}fu\diff x\\
-&\leq2M\int_{\Omega}\sum_{i=1}^n|u_{x_i}u|\diff x+\int_{\Omega}|fu|\diff x\\
-&\leq2M\left(\frac{\epsilon}{2}\int_{\Omega}|\nabla u|^2\diff x+\frac{n}{2\epsilon}\int_{\Omega}u^2\diff x\right)+\int_{\Omega}\left(\frac{1}{2}u^2+\frac{1}{2}f^2\right)\diff x
-\end{split}\]
-取$\epsilon=\frac{1}{2M}$,则
-\[\int_{\Omega}|\nabla u|^2\diff x-\int_{\Omega}cu^2\diff x\leq\frac{1}{2}\int_{\Omega}|\nabla u|^2\diff x+\left(2nM+\frac{1}{2}\right)\int_{\Omega}u^2\diff x+\frac{1}{2}\int_{\Omega}f^2\diff x\]
-令$\gamma_0=2nM^2+1$,则当$c(x)\leq-\gamma_0$时,有
-\[\int_{\Omega}|\nabla u|^2\diff x+\left(2nM^2+1\right)\int_{\Omega}u^2\diff x\leq\int_{\Omega}|\nabla u|^2\diff x-\int_{\Omega}cu^2\diff x\]
-将上面两式结合,得
-\[\int_{\Omega}|\nabla u|^2\diff x+(2nM^2+1)\int_{\Omega}u^2\diff x\leq\frac{1}{2}\int_{\Omega}|\nabla u|^2\diff x+\left(2nM^2+\frac{1}{2}\right)\int_{\Omega}u^2\diff x+\frac{1}{2}\int_{\Omega}f^2\diff x\]
-所以
-\[\frac{1}{2}\int_{\Omega}|\nabla u|^2\diff x+\frac{1}{2}\int_{\Omega}u^2\diff x\leq\frac{1}{2}\int_{\Omega}f^2\diff x\Rightarrow\int_{\Omega}(|\nabla u|^2+u^2)\diff x\leq C\int_{\Omega}f^2\diff x\]
+
+\begin{exercise}
+  设 $u(x_1,\cdots,x_n)$ 在区域 $\Omega$ 上非负, 且满足不等式
+  \[\sum_{i,j=1}^n a_{ij}(x) u_{x_ix_j} + \sum_{i=1}^n b_i(x) u_{x_i} + c(x)u\geq 0,\]
+  其中 $a_{ij}$, $b_i$, $c$ 在 $\overline{\Omega}$ 上具有一阶连续偏导数,
+  满足 (4.38) 式, 且 $c(x)\leq 0$,
+  证明极值原理 $\max_{\overline{\Omega}}u=\max_{\Gamma}u$ 成立.
+\end{exercise}
+
+\begin{proof}
+  See \emph{Elliptic Partial Differential Equations} (Han Qing \& Lin Fanghua) 
+  Lemma 2.1 and Theorem 2.3.
+\end{proof}
+
+
+\begin{exercise}[3]
+  在 $Q_T = (0,l)\times (0,T)$ 中考察下列初边值问题
+  \begin{align*}
+    & u_{tt} - a^2 u_{xx} + b(x,t)u_x + b_0(x,t)u_x + c(x,t)u = f(x,t), \\
+    & u|_{x=0} = 0,\qquad (u_x + ku)|_{x=l} = 0, \\
+    & u|_{t=0} = \varphi(x), \qquad u_t|_{t=0} = \psi(x),
+  \end{align*}
+  证明其解的唯一性及稳定性.
+\end{exercise}
+
+\begin{proof}
+  令
+\end{proof}
+
+
+\begin{exercise}
+  建立下列初边值问题的能量估计式:
+  \[u_t - \Delta u + \sum_{i=1}^n b_i(x,t) u_{x_i} + c(x,t)u = f(x,t),\]
+  \[\frac{\partial u}{\partial n}\bigg|_{\varGamma} = 0,
+    \qquad u|_{t=0} = \varphi(x).\]
+\end{exercise}
+
+\begin{proof}
+  任取 $T>0$,下面在$[0,T]$上建立能量估计式, 记$E(t)=\int_{\Omega}u^2(x,t)\diff x$,
+  则$E'(t)=2\int_{\Omega}uu_t\diff x$,代入原方程得
+  \[E'(t)=2\int_{\Omega}u\Delta u\diff x-2\sum_{i=1}^n\int_{\Omega}b_iuu_{x_i}\diff x-2\int_{\Omega}cu^2\diff x+2\int_{\Omega}uf\diff x\]
+  由格林公式及边界条件得
+  \[\begin{split}
+  \int_{\Omega}u\Delta u\diff x&=\int_{\Omega}\sum_{k=1}(uu_{x_k})_{x_k}\diff x-\int_{\Omega}|\nabla u|^2\diff x\\
+  &=\int_{\partial\Omega}\sum_{k=1}^nuu_{x_k}\cos(\vec{n},x_k)\diff x-\int_{\Omega}|\nabla u|^2\diff x\\
+  &=\int_{\partial\Omega}u\frac{\partial u}{\partial\vec{n}}\diff x-\int_{\Omega}|\nabla u|^2\diff x=-\int_{\Omega}|\nabla u|^2\diff x
+  \end{split}\]
+  再设$|b(x,t)|,|c(x,t)|$在$\overline{R}_T=\overline{\Omega}\times[0,T]$上的最大值为$M$,记$C_0=\frac{M}{2}\max(1,\frac{1}{a^2})$,利用加权平均值不等式$2ab\leq\epsilon a^2+\frac{1}{\epsilon}b^2(\epsilon>0)$得
+  \[\begin{split}
+  E'(t)&=-2\int_{\Omega}|\nabla u|^2\diff x+2M\sum_{i=1}^n\int_{\Omega}|uu_{x_i}|\diff x+2M\int_{\Omega}u^2\diff x+2\int_{\Omega}|uf|\diff x\\
+  &\leq-2\int_{\Omega}|\nabla u|^2\diff x+M\left(\epsilon\int_{\Omega}|\nabla u|^2\diff x+\frac{n}{\epsilon}\int_{\Omega}u^2\diff x\right)+(2M+1)\int_{\Omega}u^2\diff x+\int_{\Omega}f^2\diff x
+  \end{split}\]
+  取$\epsilon=\frac{1}{M}$,并记$\widehat{C}=nM^2+2M+1$,则
+  \[\begin{split}
+  E'(t)&\leq-\int_{\Omega}|\nabla u|^2\diff x+(nM^2+2M+1)\int_{\Omega}u^2\diff x+\int_{\Omega}f^2\diff x\\
+  &\leq-\int_{\Omega}|\nabla u|^2\diff x+\widehat{C}\int_{\Omega}u^2\diff x+\int_{\Omega}f^2\diff x
+  \end{split}\]
+  由Gronwall不等式得
+  \[\begin{split}
+  E(t)&\leq e^{\widehat{C}t}E(0)-\int_0^te^{\widehat{C}(t-s)}\diff s\int_{\Omega}|\nabla u|^2\diff x+\int_0^te^{\widehat{C}(t-s)}\diff s\int_{\Omega}f^2\diff x\\
+  &\leq e^{\widehat{C}t}E(0)-\int_0^t\diff s\int_{\Omega}|\nabla u|^2\diff x+\int_0^te^{\widehat{C}(t-s)}\diff s\int_{\Omega}f^2\diff x
+  \end{split}\]
+  故
+  \[\int_{\Omega}u^2(x,t)\diff x+\int_0^t\diff s\int_{\Omega}|\nabla u|^2\diff x\leq e^{\widehat{C}t}\left(\int_{\Omega}\varphi^2(x)\diff x+\int_0^t\diff s\int_{\Omega}f^2\diff x\right)\]
+\end{proof}
+
+
+\begin{exercise}
+  考察初边值问题
+  \begin{align*}
+    & \Delta u + \sum_{i=1}^{n} b_i(x) u_{x_i} + c(x)u = f, \\
+    & \frac{\partial u}{\partial n}\bigg|_{\varGamma} = 0.
+  \end{align*}
+  试证当 $c(x)$ 充分负时, 其解在能量模意义下的稳定性.
+\end{exercise}
+
+\begin{proof}
+  在方程两边同时乘以 $u$ 并在 $\Omega$ 上积分得
+  \[\int_{\Omega}fu\diff x 
+    = \int_{\Omega}\left(cu^2+\sum_{i=1}^nb_iu_{x_i}u+u\Delta u\right)\diff x.\]
+  利用格林公式及边界条件得
+  \[\begin{split}
+  \int_{\Omega}u\Delta u\diff x
+  &=\int_{\Omega}\sum_{k=1}^n(uu_{x_k})_{x_k}\diff x-\int_{\Omega}|\nabla u|^2\diff x\\
+  &=\int_{\partial\Omega}\sum_{k=1}^nuu_{x_k}\cos(\vec{n},x_k)\diff x-\int_{\Omega}|\nabla u|^2\diff x\\
+  &=\int_{\partial\Omega}u\frac{\partial u}{\partial\vec{n}}\diff x-\int_{\Omega}|\nabla u|^2\diff x=-\int_{\Omega}|\nabla u|^2\diff x
+  \end{split}\]
+  故
+  \[\int_{\Omega}fu\diff x\leq-\int_{\Omega}|\nabla u|^2\diff x+\int_{\Omega}\sum b_iu_{x_i}u\diff x+\int_{\Omega}cu^2\diff x\]
+  记$M=\max_{1\leq i\leq n}\max_{x\in\Omega}|b_i(x)|$,则
+  \[\begin{split}
+  \int_{\Omega}|\nabla u|^2\diff x-\int_{\Omega}cu^2\diff x
+  &\leq\sum_{i=1}^n\int_{\Omega}b_iu_{x_i}u\diff x-\int_{\Omega}fu\diff x\\
+  &\leq2M\int_{\Omega}\sum_{i=1}^n|u_{x_i}u|\diff x+\int_{\Omega}|fu|\diff x\\
+  &\leq2M\left(\frac{\epsilon}{2}\int_{\Omega}|\nabla u|^2\diff x+\frac{n}{2\epsilon}\int_{\Omega}u^2\diff x\right)+\int_{\Omega}\left(\frac{1}{2}u^2+\frac{1}{2}f^2\right)\diff x
+  \end{split}\]
+  取$\epsilon=\frac{1}{2M}$,则
+  \[\int_{\Omega}|\nabla u|^2\diff x-\int_{\Omega}cu^2\diff x\leq\frac{1}{2}\int_{\Omega}|\nabla u|^2\diff x+\left(2nM+\frac{1}{2}\right)\int_{\Omega}u^2\diff x+\frac{1}{2}\int_{\Omega}f^2\diff x\]
+  令$\gamma_0=2nM^2+1$,则当$c(x)\leq-\gamma_0$时,有
+  \[\int_{\Omega}|\nabla u|^2\diff x+\left(2nM^2+1\right)\int_{\Omega}u^2\diff x\leq\int_{\Omega}|\nabla u|^2\diff x-\int_{\Omega}cu^2\diff x\]
+  将上面两式结合,得
+  \[\int_{\Omega}|\nabla u|^2\diff x+(2nM^2+1)\int_{\Omega}u^2\diff x\leq\frac{1}{2}\int_{\Omega}|\nabla u|^2\diff x+\left(2nM^2+\frac{1}{2}\right)\int_{\Omega}u^2\diff x+\frac{1}{2}\int_{\Omega}f^2\diff x\]
+  所以
+  \[\frac{1}{2}\int_{\Omega}|\nabla u|^2\diff x+\frac{1}{2}\int_{\Omega}u^2\diff x\leq\frac{1}{2}\int_{\Omega}f^2\diff x\Rightarrow\int_{\Omega}(|\nabla u|^2+u^2)\diff x\leq C\int_{\Omega}f^2\diff x\]
+\end{proof}
