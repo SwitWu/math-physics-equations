@@ -1,6 +1,6 @@
 % !TeX program = xelatex
 
-\documentclass{report}
+\documentclass[11pt]{report}
 \usepackage{ctex}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -14,9 +14,9 @@
 \usepackage[unicode=true,colorlinks=true,linkcolor=red]{hyperref}
 \usepackage{fixdif}
 
+\setCJKmainfont{FandolSong}
 \setlist{nosep}
 
-\geometry{left=4cm,right=4cm}
 \newcommand\diff{\mathop{}\!\mathrm{d}}
 \newcommand{\e}{\mathrm{e}}
 \newcommand{\upi}{\mathrm{i}}
@@ -25,8 +25,6 @@
 \DeclareMathOperator{\dist}{dist}
 
 \setlist[enumerate,1]{left=\parindent}
-
-\setCJKmainfont{FandolSong}
 
 \theoremstyle{remark}
 \newtheorem*{remark}{注}
@@ -41,7 +39,7 @@
 	\normalfont \topsep1\p@\@plus6\p@\relax
 	\trivlist
 	\item\relax
-	{\hspace*{\parindent}{\bfseries 证明}\@addpunct{:}}\hspace\labelsep\ignorespaces
+	{\hspace*{\parindent}{\itshape\bfseries Proof}\@addpunct{.}}\hspace\labelsep\ignorespaces
 }{%
 	\popQED\endtrivlist\@endpefalse
 }
@@ -50,7 +48,7 @@
 	\normalfont \topsep1\p@\@plus6\p@\relax
 	\trivlist
 	\item\relax
-	{\hspace*{\parindent}{\bfseries 解}\@addpunct{:}}\hspace\labelsep\ignorespaces
+	{\hspace*{\parindent}{\itshape\bfseries Solution}\@addpunct{.}}\hspace\labelsep\ignorespaces
 }{%
 	\popQED\endtrivlist\@endpefalse
 }
@@ -61,7 +59,7 @@
 	\normalfont \topsep1\p@\@plus6\p@\relax
 	\trivlist
 	\item\relax
-	{\hspace*{\parindent}{\bfseries 解}\@addpunct{:}}\hspace\labelsep\ignorespaces
+	{\hspace*{\parindent}{\itshape\bfseries Solution}\@addpunct{.}}\hspace\labelsep\ignorespaces
 }{%
 	\popQED\endtrivlist\@endpefalse
 }
@@ -81,7 +79,6 @@
 \renewcommand{\div}{\operatorname{div}}
 
 \title{\textbf{数学物理方程习题解答}}
-\author{2017301000046武思豫}
 
 \begin{document}
 

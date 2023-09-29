@@ -153,11 +153,13 @@
   齐次波动方程初值问题的解仅由右传播波组成?
 \end{exercise}
 
-\begin{proof}
-  \[\varphi(x) + \frac{1}{a} \Psi(x) = C\]
-  or
-  \[\varphi'(x) + \frac{1}{a} \psi(x) = 0.\qedhere\]
-\end{proof}
+\begin{solution}
+  If the solution to the homogeneous IVP only consists of right propagation
+  waves, then
+  \[ G(x) = \frac12\varphi(x) + \frac{1}{2a}\int_{x_0}^x \psi(\alpha) \d\alpha
+    - \frac{C}{2\alpha} \]
+  is a constant, which is equivalent to $\varphi'(x) + \frac1a \psi(x) = 0$.
+\end{solution}
 
 
 \begin{exercise}[3]
@@ -193,11 +195,50 @@
 \end{exercise}
 
 \begin{solution}
+  Suppose the solution is
+  \[ u(x,t) = F(x-at) + G(x+at). \]
+  Then according to the initial value condition we have
+  \begin{equation}\label{eq:a1}
+    \begin{aligned}
+      u(x,0) & = F(x) + G(x) = \varphi(x), \\
+      u_t(x,0) & = -a F'(x) + a G'(x) = 0.
+    \end{aligned}
+  \end{equation}
+  The solution to \eqref{eq:a1} is
+  \begin{equation}\label{eq:a2}
+    \begin{cases}
+      F(x) = \frac12 \varphi(x) + C, \\
+      G(x) = \frac12 \varphi(x) - C,
+    \end{cases}
+  \end{equation}
+  where $C$ satisfies
+  \begin{equation}\label{eq:a3}
+    F(0) + G(0) = 2C.
+  \end{equation}
   If $x-at\geq 0$, then
   \[ \boxed{u(x,t) = \frac12 \bigl(\varphi(x+at) + \varphi(x-at)\bigr).} \]
-  If $x-at\leq 0$, then
-  \[ \boxed{u(x,t) = \frac{1-ak}{2(1+ak)}\varphi(at-x)
-    + \frac12\varphi(x+at) + \frac{ak}{1+ak}\varphi(0).}\qedhere \]
+  If $x-at\leq 0$, then by the boundary condition we have
+  \begin{equation}\label{eq:a4}
+    F'(-at) = \frac{ka-1}{ka+1} G'(at).
+  \end{equation}
+  Integrate on both sides to get
+  \begin{equation}\label{eq:a5}
+    F(x) = - \frac{ka-1}{ka+1} G(-x),
+  \end{equation}
+  where
+  \begin{equation}\label{eq:a6}
+    C_1 = F(0) + \frac{ka-1}{ka+1} G(0).
+  \end{equation}
+  Hence by \eqref{eq:a2}, \eqref{eq:a3}, \eqref{eq:a5} and \eqref{eq:a6} we have
+  \begin{align*}
+    u(x,t)
+    & = F(x-at) + G(x+at) \\
+    & = - \frac{ka-1}{ka+1} G(at-x) + G(x+at) + C_1 \\
+    & = - \frac{ka-1}{2(ka+1)} \varphi(at-x) + \frac{ka-1}{ka+1} C
+        + \frac12\varphi(x+at) - C + C_1 \\
+    & = \frac{ka-1}{2(ka+1)} \varphi(at-x) + \frac12 \varphi(x+at)
+        + \frac{ka}{ka+1} \varphi(0).
+  \end{align*}
 \end{solution}
 
 \begin{exercise}[6]
@@ -212,17 +253,45 @@
 \end{exercise}
 
 \begin{solve}
-  当$x-t\geq 0$时,由d'Alembert公式有
-  \[u(x,t)=\frac{1}{2}(\varphi_0(x-t)+\varphi_0(x+t))+\frac{1}{2}\int_{x-t}^{x+t}\varphi_1(\xi)d\xi\]
-  当$x-t<0$时,设$u=F(x-t)+G(x+t)$,利用边界条件得
-  \[F((1-k)x)+G((1+k)x)=\psi(x)\cdots(*1)\]
-  又\[F(0)+G(2x)=\frac{1}{2}(\varphi_0(0)+\varphi_0(2x))+\frac{1}{2}\int_0^{2x}\varphi_1(\xi)d\xi\cdots(*2)\]
-  由$(*2)$有
-  \[F(0)+G((1+k)x)=\frac{1}{2}(\varphi_0(0)+\varphi_0((1+k)x))+\frac{1}{2}\int_0^{(k+1)x}\varphi_1(\xi)d\xi\cdots(*3)\]
-  $(*1)-(*3)$得\[F((1-k)x)-F(0)=\psi(x)-\frac{1}{2}(\varphi_0(0)+\varphi_0((1+k)x))-\frac{1}{2}\int_0^{(k+1)x}\varphi_1(\xi)d\xi\cdots(*4)\]
-  故\[\begin{split}F(x-t)-F(0)=&\psi\left(\frac{x-t}{1-k}\right)-\frac{1}{2}\left(\varphi_0(0)+\varphi_0\left(\frac{1+k}{1-k}(x-t)\right)\right)\\&-\frac{1}{2}\int_0^{\frac{k+1}{1-k}(x-t)}\varphi_1(\xi)d\xi\cdots(*5)\end{split}\]
-  又由$(*2)$有\[F(0)+G(x+t)=\frac{1}{2}(\varphi_0(0)+\varphi_0(x+t))+\frac{1}{2}\int_0^{x+t}\varphi_1(\xi)d\xi\cdots(*6)\]
-  结合$(*5)(*6)$得\[\begin{split}u(x,t)&=F(x-t)+G(x+t)=\psi\left(\frac{x-t}{1-k}\right)+\frac{1}{2}\left[\varphi_0(x+t)-\varphi_0\left(\frac{1+k}{1-k}(x-t)\right)\right]\\&+\frac{1}{2}\int_{\frac{k+1}{1-k}(x-t)}^{x+t}\varphi_1(\xi)d\xi\end{split}\]
+  If $x-t\geq 0$, by d'Alembert formula we have
+  \[u(x,t) = \frac{1}{2}(\varphi_0(x-t)+\varphi_0(x+t))
+    + \frac{1}{2}\int_{x-t}^{x+t}\varphi_1(\xi)\d\xi.\]
+  If $x-t<0$, suppose $u(x,t) = F(x-t) + G(x+t)$, then
+  \begin{equation}\label{eq:b1}
+    F((1-k)x)+G((1+k)x)=\psi(x).
+  \end{equation}
+  Since
+  \begin{equation}\label{eq:b2}
+    F(0)+G(2x)=\frac{1}{2}(\varphi_0(0)+\varphi_0(2x))+\frac{1}{2}\int_0^{2x}\varphi_1(\xi)\d\xi.
+  \end{equation}
+  It follows that
+  \begin{equation}\label{eq:b3}
+    F(0)+G((1+k)x) = \frac{1}{2}(\varphi_0(0)+\varphi_0((1+k)x))
+      + \frac{1}{2}\int_0^{(k+1)x}\varphi_1(\xi) \d\xi.
+  \end{equation}
+  By \eqref{eq:b1} and \eqref{eq:b3} we have
+  \begin{equation}\label{eq:b4}
+    F((1-k)x)-F(0) = \psi(x)-\frac{1}{2}(\varphi_0(0)+\varphi_0((1+k)x))
+      - \frac{1}{2}\int_0^{(k+1)x}\varphi_1(\xi) \d\xi.
+  \end{equation}
+  So
+  \begin{equation}\label{eq:b5}
+    \begin{aligned}
+      F(x-t)-F(0) ={}
+      & \psi\left(\frac{x-t}{1-k}\right)-\frac{1}{2}\left(\varphi_0(0)+\varphi_0\left(\frac{1+k}{1-k}(x-t)\right)\right) \\
+      & -\frac{1}{2}\int_0^{\frac{k+1}{1-k}(x-t)}\varphi_1(\xi) \d\xi.
+    \end{aligned}
+  \end{equation}
+  By \eqref{eq:b2} we have
+  \begin{equation}\label{eq:b6}
+    F(0)+G(x+t)=\frac{1}{2}(\varphi_0(0)+\varphi_0(x+t))+\frac{1}{2}\int_0^{x+t}\varphi_1(\xi) \d\xi.
+  \end{equation}
+  Combining \eqref{eq:b5} and \eqref{eq:b6}, we find
+  \[\begin{split}
+    u(x,t)
+    & = F(x-t)+G(x+t)=\psi\left(\frac{x-t}{1-k}\right)+\frac{1}{2}\left[\varphi_0(x+t)-\varphi_0\left(\frac{1+k}{1-k}(x-t)\right)\right] \\
+    & + \frac{1}{2}\int_{\frac{k+1}{1-k}(x-t)}^{x+t}\varphi_1(\xi) \d\xi
+  \end{split}\]
 \end{solve}
 
 
@@ -234,14 +303,41 @@
     u|_{x = f(t)} = \psi(t),
   \end{cases}\]
   where $\varphi(0)=\psi(0)=0$ and $x = f(t)$ is a smooth curve
-  passing the origin point and between $x=t$ and $x=-t$,
+  passing the origin point and lying between $x=t$ and $x=-t$,
   and $|f'(t)|\neq 1$ for all $t$.
 \end{exercise}
 
 \begin{solution}
+  Let
+  \[ u(x,t) = F(x-t) + G(x+t). \]
+  Then
+  \begin{equation}\label{eq:a7}
+    \begin{cases}
+      u(t,t) = F(0) + G(2t) = \varphi(t), \\
+      u(f(t),t) = F(f(t)-t) + G(f(t)+t) = \psi(t).
+    \end{cases}
+  \end{equation}
+  By the first equality of \eqref{eq:a7} we have
+  \begin{equation}\label{eq:a10}
+    G(t) = \varphi\Bigl(\frac{t}{2}\Bigr) - F(0).
+  \end{equation}
+  Let $s = f(t) - t$, then by the inverse function theorem we know that
+  $t$ can be represented as the function of $s$, say, $t = g(s)$.
+  Hence $f(t)+t = f(t)-t+2t = s + 2g(s)$ and 
+  \begin{equation}\label{eq:a8}
+    F(s) = \psi(g(s)) - G(s+2g(s)).
+  \end{equation}
+  So by \eqref{eq:a8} and \eqref{eq:a10},
+  \begin{equation}\label{eq:a9}
+    F(x-t) = \psi(g(x-t)) - \varphi\biggl(g(x-t) + \frac{x-t}{2}\biggr) + F(0).
+  \end{equation}
+  On the other hand,
+  \begin{equation}\label{eq:a11}
+    G(x+t) = \varphi\Bigl(\frac{x+t}{2}\Bigr) - F(0).
+  \end{equation}
+  By \eqref{eq:a9} and \eqref{eq:a11} we find
   \[\boxed{u(x,t) = \varphi\biggl(\frac{x+t}{2}\biggr)
-    - \varphi\biggl(g(x-t) + \frac{x-t}{2}\biggr) + \psi(g(x-t)),}\]
-  where $t = g(h)$ is the inverse function of $h = f(t) - t$.
+    - \varphi\biggl(g(x-t) + \frac{x-t}{2}\biggr) + \psi(g(x-t)).}\]
 \end{solution}
 
 
@@ -328,14 +424,9 @@
   \[A_k=\frac{2}{l}\int_0^l\frac{h}{l}x\sin \frac{(2k+1)\pi}{2l}x\diff x
     =(-1)^k\frac{8h}{(2k+1)^2\pi^2},\quad B_k = 0.\]
   因此
-  \[u(x,t) = \sum_{k=0}^{\infty}(-1)^k\frac{8h}{(2k+1)^2\pi^2}\cos\frac{(2k+1)\pi at}{2l}
-    \sin\frac{(2k+1)\pi x}{2l}.\qedhere\]
+  \[\boxed{u(x,t) = \sum_{k=0}^{\infty}(-1)^k\frac{8h}{(2k+1)^2\pi^2}\cos\frac{(2k+1)\pi at}{2l}
+    \sin\frac{(2k+1)\pi x}{2l}.}\qedhere\]
 \end{solve}
-
-\begin{remark}
-  从上述过程中可以看出, 给齐次 Dirichlet 边界条件和给齐次 Neumann 边界条件时的
-  特征值是不一样的.
-\end{remark}
 
 \begin{remark}
   $\int_{-l}^l\sin\alpha x\sin\beta x\diff x=0$ 及 $\int_0^l\sin\alpha x\sin\beta x\diff x=0$
@@ -388,22 +479,48 @@
 \end{exercise}
 
 \begin{solve}
-  令 $v=u+\frac{g}{2a^2}x(x-2l)$,则
+  Let $v=u+\frac{g}{2a^2}x(x-2l)$, then it is straightforward to verify that
+  $v$ satisfies the following equation
   \[\begin{cases}
     v_{tt}-a^2v_{xx}=0,0<x<l,t>0, \\
     v(0,t)=\frac{\partial v}{\partial x}(l,t)=0, \\
     v(x,0)=\frac{g}{2a^2}x(x-2l),\quad\frac{\partial v}{\partial t}(x,0)=\sin\frac{\pi x}{2l}.
   \end{cases}\]
-  其通解为
+  Let
+  \[ v(x,t) = X(x)T(t). \]
+  Then
+  \[ \frac{X''(x)}{X(x)} = \frac{T''(t)}{T(t)} = -\lambda. \]
+  First of all, since $X''(x) + \lambda X(x) = 0$ with $X(0) = X'(l) = 0$, we have
+  \begin{itemize}
+    \item If $\lambda\leq 0$, there only exists trivial solution $X\equiv 0$;
+    \item If $\lambda>0$, we have $\lambda_k = \bigl(\frac{(2k+1)\pi}{2l}\bigr)^2$
+      and $X_k(x) = C_k \sin\frac{(2k+1)\pi}{2l}x$.
+  \end{itemize}
+  On the other hand, since $T(t)$ satisfies
+  \[ T''(t) + \biggl(\frac{(2k+1)\pi a}{2l}\biggr)^2 T = 0. \]
+  We can solve that
+  \begin{equation}\label{eq:a12}
+    T_k(t) = A_k \cos \frac{(2k+1)\pi a}{2l} t + B_k \sin \frac{(2k+1)\pi a}{2l} t.
+  \end{equation}
+  Therefore
+  \begin{equation}\label{eq:a13}
+    v(x,t) = \sum_{k=0}^\infty \left(A_k\cos\frac{(2k+1)\pi a}{2l}t+B_k\sin\frac{(2k+1)\pi a}{2l}t\right)\sin\frac{(2k+1)\pi}{2l}x.
+  \end{equation}
+  Combining with the initial value condition we have
+  \begin{equation}\label{eq:a14}
+    \begin{aligned}
+      A_k & = \frac{2}{l}\int_0^l\frac{g}{2a^2}x(x-2l)\sin\frac{(2k+1)\pi}{2l}x\diff x
+        = -\frac{16l^2g}{(2k+1)^3a^2\pi^3}, \\
+      B_0 & = \frac{2l}{\pi a},\quad B_k=0\quad (k\geq 1).
+    \end{aligned}
+  \end{equation}
+  Therefore,
   \begin{align*}
     u(x,t)
-    ={} & \sum_{k=0}^{\infty}\left(A_n\cos\frac{(2k+1)\pi a}{2l}t+B_k\sin\frac{(2k+1)\pi a}{2l}t\right)\sin\frac{(2k+1)\pi}{2l}x \\
+    ={} & \sum_{k=0}^{\infty}\left(A_k\cos\frac{(2k+1)\pi a}{2l}t+B_k\sin\frac{(2k+1)\pi a}{2l}t\right)\sin\frac{(2k+1)\pi}{2l}x \\
     & - \frac{g}{2a^2}x(x-2l),
   \end{align*}
-  其中
-  \[A_k=\frac{2}{l}\int_0^l\frac{g}{2a^2}x(x-2l)\sin\frac{(2k+1)\pi}{2l}x\diff x
-    = -\frac{16l^2g}{(2k+1)^3a^2\pi^3},\]
-  \[B_0=\frac{2l}{\pi a},\quad B_k=0\quad (k\geq 1).\]
+  where the coefficients $A_k$, $B_k$ are given by \eqref{eq:a14}.
 \end{solve}
 
 
@@ -445,7 +562,7 @@
     \frac{\partial^2 u}{\partial t^2} + 2b \frac{\partial u}{\partial t}
       = a^2 \frac{\partial^2u}{\partial x^2} \quad (b>0), \\
     u|_{x=0} = u|_{x=l} = 0, \\
-    u|_{t=0} = \frac{h}{l}x,\ \frac{u}{t}\bigg|_{t=0} = 0.
+    u|_{t=0} = \frac{h}{l}x,\ \frac{u}{t}\big|_{t=0} = 0.
   \end{cases}\]
 \end{exercise}
 
@@ -455,7 +572,7 @@
 
   First of all, $X'' + \lambda X = 0$.
   \begin{itemize}
-    \item If $\lambda\leq 0$, there only exists trivial solution;
+    \item If $\lambda\leq 0$, there only exists trivial solution $X\equiv 0$;
     \item If $\lambda>0$, then $\lambda_k = \bigl(\frac{k\pi}{l}\bigr)^2$
       and $X_k(x) = C_k\sin\frac{k\pi x}{l}$.
   \end{itemize}
