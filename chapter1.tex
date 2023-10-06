@@ -671,15 +671,27 @@
 \end{exercise}
 
 \begin{solve}
-  (1) 利用泊松公式知该柯西问题的解为:
+  (1) By Poisson's formula the solution is
   \begin{align*}
     u(x,y,x,t)
     ={} & \frac{\partial}{\partial t}\left(\frac{1}{4\pi a^2t}\iint_{S_{at}^M}0\diff S\right)
           + \frac{1}{4\pi a^2t}\iint_{S_{at}^M}(\xi^2+\eta\zeta)\diff S \\
-    ={} & \frac{1}{4\pi a^2t}\int_0^{\pi}\int_0^{2\pi}(x+at\sin\theta\cos\varphi)^2 \\
-        & + (y+at\sin\theta\sin\varphi)(z+at\cos\theta)
+    ={} & \frac{1}{4\pi a^2t}\int_0^{\pi}\int_0^{2\pi} \bigl[(x+at\sin\theta\cos\varphi)^2 \\
+        & + (y+at\sin\theta\sin\varphi)(z+at\cos\theta) \bigr]
           a^2t^2\sin\theta\diff\varphi\diff\theta \\
-    ={} & (x^2+	yz)t+\frac{a^2t^3}{3}. \qedhere
+    ={} & (x^2+	yz)t + a^2t^3/3.
+  \end{align*}
+
+  (2) By Poisson's formula the solution is
+  \begin{align*}
+    u(x,y,z,t)
+    & = \frac{\partial}{\partial t} \biggl(\frac{1}{4\pi a^2 t}\iint_{S_{at}^M} \xi^3
+        + \zeta^2\eta \d S\biggr) \\
+    & = \frac{\partial}{\partial t} \biggl(\frac{1}{4\pi a^2 t} \int_0^\pi \int_0^{2\pi}
+        \bigl[ (x+at\sin\theta\cos\phi)^3 \\
+    & \qquad + (y+at\sin\theta\phi)^2(z+at\cos\theta) \bigr] 
+        a^2t^2\sin\theta \d \phi \d \theta\biggr) \\
+    & = x^3 + y^2z + 3a^2t^2x + a^2t^2z.
   \end{align*}
 \end{solve}
 
@@ -755,7 +767,7 @@
 \end{exercise}
 
 \begin{solve}
-  (1) 根据二维波动方程柯西问题的泊松公式有
+  (1) By Poisson's formula we have
   \begin{align*}
     u(x,y,t)
     & = \frac{1}{2\pi a}\frac{\partial}{\partial t}\int_0^{at}\int_0^{2\pi}\frac{\varphi(x         
@@ -769,8 +781,59 @@
       \frac{2x^2(x+y)+a^2t^2\sin^2\beta(3x+y)}{at\cos\beta}
       at\sin\beta\cdot at\cos\beta \diff\beta \\
     & = \frac{1}{2a}\frac{\partial}{\partial t}\left(2x^2(x+y)at+\frac{2}{3}a^2t^2(3x+y)\right)\\
-    & = x^2(x+y)+at^2(3x+y).\qedhere
+    & = x^2(x+y)+at^2(3x+y).
   \end{align*}
+
+  (2) First of all, we consider the homogeneous equation
+  \begin{equation}\label{eq:a15}
+    \begin{cases}
+      u_{tt} = 3(u_{xx} + u_{yy}), \\
+      u|_{t=0} = 0, \\
+      u_t|_{t=0} = x^2.
+    \end{cases}
+  \end{equation}
+  By Poisson's formula, the solution to~\eqref{eq:a15} is
+  \begin{equation}\label{eq:a16}
+    \begin{aligned}
+      u_1(x,y,t)
+      & = \frac{1}{2\sqrt{3}\pi} \int_0^{\sqrt3 t}\int_0^{2\pi} 
+          \frac{(x+r\cos\theta)^2}{\sqrt{3t^2 - r^2}} r \d\theta\d r \\
+      & = x^2 t + t^3.
+    \end{aligned}
+  \end{equation}
+  Then we consider the nonhomogeneous equation with homogeneous initial condition
+  \begin{equation}\label{eq:a17}
+    \begin{cases}
+      u_{tt} = 3(u_{xx}+u_{yy}) + x^3 + y^3, \\
+      u|_{t=0} = 0, \\
+      u_t|_{t=0} = 0.
+    \end{cases}
+  \end{equation}
+  By Duhamel's principle, the solution to~\eqref{eq:a17} is
+  \begin{equation}\label{eq:18}
+    u_2(x,y,t) = \int_0^t w(x,y,t;\tau) \d\tau,
+  \end{equation}
+  where $w$ is the solution to
+  \[\begin{cases}
+    w_{tt} = 3(w_{xx} + w_{yy}), \\
+    w|_{t=\tau} = 0, \\
+    w_t|_{t=\tau} = x^3 + y^3.
+  \end{cases}\]
+  By Poisson's formula we have
+  \[ w(x,y,t;\tau) = (t-\tau)(x^3+y^3) + 3(t-\tau)^3(x+y). \]
+  Hence
+  \begin{equation}\label{eq:a19}
+    \begin{aligned}
+      u_2(x,y,t) 
+      & = \int_0^t (t-\tau)(x^3+y^3) + 3(t-\tau)^3(x+y) \d\tau \\
+      & = \frac{t^2}{2}(x^3+y^3) + \frac{3}{4}t^4 (x+y).
+    \end{aligned}
+  \end{equation}
+  By \eqref{eq:a16} and \eqref{eq:a19} we find the solution to the original
+  equation is
+  \begin{equation}\label{eq:a20}
+    u(x,y,t) = x^2t + t^3 + \frac{t^2}{2}(x^3+y^3) + \frac{3}{4}t^4 (x+y).
+  \end{equation}
 \end{solve}
 
 
