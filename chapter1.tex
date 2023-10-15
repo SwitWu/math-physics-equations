@@ -646,16 +646,6 @@
 
 \section{高维波动方程的柯西问题}
 
-教材P26格林公式过程:
-\begin{align*}
-  \int_{\Gamma}T\frac{\partial u}{\partial\vec{n}}\diff s
-  = \int_{\Gamma}(T\nabla u)\cdot\vec{n}\diff s
-  & = \iint_{\Omega}\nabla\cdot(T\nabla u)\diff x\diff y \\
-  & = \iint_{\Omega}T\Delta u\diff x\diff y \\
-  & = \iint_{\Omega}T\left(\frac{\partial^2u}{\partial x^2}
-    + \frac{\partial^2u}{\partial y^2}\right)\diff x\diff y.
-\end{align*}
-
 \begin{exercise}
   利用泊松公式求解波动方程的柯西问题:
   \begin{enumerate}[(1)]
@@ -1006,9 +996,9 @@
   而在 $[-\rho,\rho]$ 内成立 $|\varphi|\leq C$, $|\psi|\leq C$, 那么对充分大的 $t$, 有
   \begin{align*}
     u(x,t)
-    & = \frac{1}{2}(\varphi(x-at)
-        +\varphi(x+at))+\frac{1}{2a}\int_{x-at}^{x+at}\psi(\xi)\diff\xi \\
-    & = \frac{1}{2a}\int_{-\rho}^{\rho}\psi(\xi)\diff\xi= \text{const}.
+    & = \frac{1}{2}\bigl(\varphi(x-at)
+        +\varphi(x+at)\bigr)+\frac{1}{2a}\int_{x-at}^{x+at}\psi(\xi)\diff\xi \\
+    & = \frac{1}{2a}\int_{-\rho}^{\rho}\psi(\xi)\diff\xi= \text{constant}.
   \end{align*}
   故一维波动方程柯西问题的解没有衰减性.
 \end{solve}
@@ -1021,12 +1011,10 @@
 \end{exercise}
 
 \begin{proof}
-  因为初始资料 $\varphi$, $\psi$ 具有紧支集, 所以存在以原点为圆心,
-  以某一个正常数 $\rho$ 为半径的圆 $\Sigma_{\rho}^O$ 
-  使得 $\varphi,\psi$ 在 $\Sigma_{\rho}^O$ 外恒为零,
-  在 $\Sigma_{\rho}^O$ 内满足 $|\varphi|\leq C,|\psi|\leq C$ ($C$是一个正常数),
-  对于任意固定的 $M=(x_0,y_0)\in\mathbb{R}^2$
-  和充分大的 $t$ (此时 $\Sigma_{\rho}^O\subset\Sigma_{at}^M$), 有
+  For any fixed point $M=(x_0,y_0)\in\mathbb{R}^2$, there exists some $\rho>0$
+  such that both $\varphi$ and $\psi$ vanish outside $\Sigma_\rho^M$ and are
+  bounded in $\Sigma_\rho^M$.
+  For sufficient large time $t$ such that $\Sigma_\rho^M\subset \Sigma_{at}^M$ we have
   \begin{align*}
     u(x_0,y_0,t) = {} 
     & \frac{1}{2\pi a}\biggl[\frac{\partial}{\partial t}
@@ -1047,12 +1035,12 @@
     & + \int_0^{\rho}\int_0^{2\pi}\frac{\psi(x_0+r\cos\theta,y_0+r\sin\theta)}
       {\sqrt{a^2t^2-r^2}}r\diff\theta\diff r\bigg].
   \end{align*}
-  故当 $t\to\infty$ 时,
+  Thus when $t\to +\infty$,
   \[\begin{split}
   |u(x_0,y_0,t)|&\leq \frac{1}{2\pi a}\left[2\pi C\int_0^{\rho}-a^2t(a^2t^2-r^2)^{-\frac{3}{2}}r\diff r+2\pi C\int_0^{\rho}\frac{r}{\sqrt{a^2t^2-r^2}}\diff r\right]\\
-  &=\frac{1}{2\pi a}\left[2\pi C\left(a-\frac{a^2t}{\sqrt{a^2t^2-\rho^2}}\right)+2\pi C(at-\sqrt{a^2t^2-\rho^2})\right]\to 0.
+  &=\frac{1}{2\pi a}\left[2\pi C\left(a-\frac{a^2t}{\sqrt{a^2t^2-\rho^2}}\right)+2\pi C(at-\sqrt{a^2t^2-\rho^2})\right]\to 0,
   \end{split}\]
-  即
+  i.e.,
   \[\lim_{t\to+\infty}u(x_0,y_0,t) = 0.\qedhere\]
 \end{proof}
 

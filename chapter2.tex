@@ -20,17 +20,17 @@
   \[X(x)T'(t) = a^2X''(x)T(t).\]
   由此得
   \begin{align}
-    X''(x)+\lambda X(x) & = 0, \tag{$*$} \\
-    T'(t)+a^2\lambda T(t) & = 0. \tag{$**$} 
+    X''(x)+\lambda X(x) & = 0, \label{eq:c1} \\
+    T'(t)+a^2\lambda T(t) & = 0. \label{eq:c2} 
   \end{align}
-  由 ($*$) 及 $X(x)$ 满足的边界条件 $X(0)=0$, $X'(\pi)=0$, 得
+  由 \eqref{eq:c1} 及 $X(x)$ 满足的边界条件 $X(0)=0$, $X'(\pi)=0$, 得
   \begin{enumerate}[(i)]
     \item 当 $\lambda\leq 0$ 时只有零解;
     \item 当 $\lambda>0$ 时, $X(x)=A\cos\sqrt{\lambda}x+B\sin\sqrt{\lambda}x$,
       代入边界条件得固有值为 $\lambda_k=\left(k+\frac{1}{2}\right)^2$,
       相应的固有函数 $X_k(x)=B_k\sin\sqrt{\lambda_k}x=B_k\sin\left(k+\frac{1}{2}\right)x$.
   \end{enumerate}
-  将 $\lambda=\lambda_k$ 代入 ($**$) 得 $T_k(t)=C_ke^{-a^2\lambda_kt}$, 故
+  将 $\lambda=\lambda_k$ 代入 \eqref{eq:c2} 得 $T_k(t)=C_ke^{-a^2\lambda_kt}$, 故
   \[u_k(x,t) = A_ke^{-a^2\lambda_kt}\sin\left(k+\frac{1}{2}\right)x,u(x,t)
     = \sum_{k=1}^{\infty}u_k(x,t).\]
   利用初始条件得
@@ -42,7 +42,52 @@
 \end{solution}
 
 
-\begin{exercise}[3]
+\begin{exercise}
+  用分离变量法求解热传导方程的初边值问题:
+  \[\begin{cases}
+    \frac{\partial u}{\partial t} = \frac{\partial^2 u}{\partial x^2} \quad (t>0,\, 0<x<1), \\
+    u(x,0) = \begin{cases}
+               x,     & 0 < x \leq\frac12, \\
+               1 - x, & \frac12 < x < 1,
+             \end{cases} \\
+    u(0,t) = u(1,t) = 0 \quad (t>0).
+  \end{cases}\]
+\end{exercise}
+
+\begin{solution}
+  Suppose $u(x,t) = X(x)T(t)$, then
+  \[ \frac{X''(x)}{X(x)} = \frac{T'(t)}{T(t)} = -\lambda. \]
+  First of all, the function $X$ satisfies the following condition
+  \begin{equation}\label{eq:c3}
+    \begin{cases}
+      X''(x) + \lambda X(x) = 0, \\
+      X(0) = X(1) = 0.
+    \end{cases}
+  \end{equation}
+  We can solve that the eigenvalues are $\lambda_k = (k\pi)^2$ and $X_k(x) = A_k\sin k\pi x$.
+
+  Then $T(t)$ satisfies the following equation
+  \[ T_k(t) + (k\pi)^2T_k(t) = 0, \]
+  from which we can solve that $T_k(t) = B_k e^{-(k\pi)^2t}$. Hence
+  we could write $u(x,t)$ as
+  \begin{equation}\label{eq:c4}
+    u(x,t) = \sum_{k=1}^\infty C_k e^{-(k\pi)^2t} \sin k\pi x.
+  \end{equation}
+  Using the initial value condition we find that
+  \[ \sum_{k=1}^\infty C_k \sin k\pi x = f(x) = \begin{cases}
+    x,     & 0 < x \leq\frac12, \\
+    1 - x, & \frac12 < x < 1.
+  \end{cases} \]
+  Hence
+  \begin{equation}\label{eq:c5}
+    C_k = 2 \int_0^1 f(x) \sin k\pi x \d x = \frac{4}{k^2\pi^2} \sin\frac{k\pi}{2}.
+  \end{equation}
+  From \eqref{eq:c4} and \eqref{eq:c5} we get
+  \[ u(x,t) = \sum_{k=1}^\infty \frac{4}{k^2\pi^2} \sin\frac{k\pi}{2}
+  e^{-(k\pi)^2t} \sin k\pi x. \qedhere \]
+\end{solution}
+
+\begin{exercise}
   如果有一根长度为 $l$ 的均匀细棒, 其周围以及两端 $x=0$, $x=l$
   均为绝热, 初始温度分布为 $u(x,0)=f(x)$, 问以后的温度分布如何?
   且证明当 $f(x)$ 等于常数 $u_0$ 时, 恒有 $u(x,t)=u_0$.
@@ -51,12 +96,18 @@
 \begin{solution}
   因为细棒的两端均为绝热,故根据傅里叶定律知$u_x|_{x=0}=u_x|_{x=l}=0$,此初边值问题为
   \[\begin{cases}
-  u_t=a^2u_{xx}\\
-  u_x|_{x=0}=u_x|_{x=l}=0\\
-  u|_{t=0}=f(x)
-  \end{cases}\Rightarrow u(x,t)=\sum_{k=0}^{\infty}D_ke^{-a^2\lambda_kt}\cos\frac{k\pi}{l}x,\lambda_k=\left(\frac{k\pi}{l}\right)^2\]
-  其中\[D_0=\frac{1}{l}\int_0^lf(\xi)\diff\xi,D_k=\frac{2}{l}\int_0^lf(\xi)\diff\xi(k\geq1)\]
-  当$f(x)\equiv u_0$时,$D_0=u_0,D_k=0(k=1,2,\cdots)\Rightarrow u(x,t)=u_0$\\\\
+    u_t = a^2u_{xx}, \\
+    u_x|_{x=0} = u_x|_{x=l} = 0, \\
+    u|_{t=0} = f(x).
+  \end{cases}\]
+  直接解得
+  \[ u(x,t)=\sum_{k=0}^{\infty}D_ke^{-a^2\lambda_kt}\cos\frac{k\pi}{l}x,
+    \quad \lambda_k=\left(\frac{k\pi}{l}\right)^2, \]
+  其中
+  \[ D_0 = \frac{1}{l}\int_0^lf(\xi) \d\xi,
+    \quad D_k=\frac{2}{l}\int_0^lf(\xi)\cos\frac{k\pi}{l}\xi \d\xi
+    \quad (k\geq1).\]
+  当 $f(x)\equiv u_0$ 时, $D_0=u_0$, $D_k=0$ $(k=1,2,\cdots)$, 故 $ u(x,t)=u_0$.
 \end{solution}
 
 
@@ -71,14 +122,149 @@
 \end{exercise}
 
 \begin{solution}
-  作变量代换,令$v(x,t)=(u-u_0)e^{\beta t}$,则$v(x,t)$满足的定解问题为:
+  作变量代换,令 $v(x,t)=(u-u_0)e^{\beta t}$,则$v(x,t)$满足的定解问题为:
   \[\begin{cases}
-  v_t=a^2v_{xx}\\
-  v(0,t)=v(l,t)=0\\
-  v(x,0)=f(x)-u_0
-  \end{cases}\Rightarrow v(x,t)=\sum_{k=1}^{\infty}A_ke^{-a^2\lambda_kt}\sin\frac{k\pi}{l}x,\lambda_k=\left(\frac{k\pi}{l}\right)^2\]
-  其中\[A_k=\frac{2}{l}\int_0^l(f(\xi)-u_0)\sin\frac{k\pi}{l}\xi\diff\xi\]
-  因此\[u(x,t)=u_0+\sum_{k=1}^{\infty}\frac{2}{l}\int_0^l(f(\xi)-u_0)\sin\frac{k\pi}{l}\xi\diff\xi\cdot e^{-\left(\frac{a^2k^2\pi^2}{l^2}+\beta\right)t}\sin\frac{k\pi}{l}x\]
+    v_t=a^2v_{xx}, \\
+    v(0,t)=v(l,t)=0, \\
+    v(x,0)=f(x)-u_0.
+  \end{cases}\]
+  直接解得
+  \[ v(x,t) = \sum_{k=1}^{\infty}A_ke^{-a^2\lambda_kt}\sin\frac{k\pi}{l}x,
+    \quad \lambda_k = \left(\frac{k\pi}{l}\right)^2, \]
+  其中
+  \[ A_k = \frac{2}{l}\int_0^l(f(\xi)-u_0)\sin\frac{k\pi}{l}\xi\diff\xi. \]
+  因此
+  \[u(x,t) = u_0 + \sum_{k=1}^{\infty}\frac{2}{l}
+    \int_0^l(f(\xi)-u_0)\sin\frac{k\pi}{l}\xi\diff\xi
+      \cdot e^{-\left(\frac{a^2k^2\pi^2}{l^2}+\beta\right)t}\sin\frac{k\pi}{l}x. \qedhere \]
+\end{solution}
+
+
+\begin{exercise}
+  长度为 $l$ 的均匀细杆的初始温度为 \qty{0}{\degreeCelsius}, 端点 $x=0$ 保持恒温 $u_0$,
+  而在 $x=l$ 和侧面上, 热量可以发散到周围的介质中去, 介质的温度为 \qty{0}{\degreeCelsius},
+  此时杆上的温度分布函数 $u(x,t)$ 满足下述定解问题:
+  \[\begin{cases}
+    \frac{\partial u}{\partial t} = a^2 \frac{\partial^2 u}{\partial x^2} - b^2 u, \\
+    u(0,t) = u_0, \quad \Bigl(\frac{\partial u}{\partial x} + Hu\Bigr)\Big|_{x=l} = 0, \\
+    u(x,0) = 0,
+  \end{cases}\]
+  其中 $a$, $b$, $H$ 均为常数, 试求出 $u(x,t)$.
+\end{exercise}
+
+\begin{solution}
+    Let $u(x,t) = u_1(x,t) + u_2(x)$ in which $u_1$ satisfies the following 
+    problem with homogeneous boundary condition
+    \begin{equation}\label{eq:c6}
+      \begin{cases}
+        \frac{\partial u_1}{\partial t} = a^2 \frac{\partial^2 u_1}{\partial x^2} - b^2u_1, \\
+        u_1(0,t) = \bigl(\frac{\partial u_1}{\partial x} + Hu_1\bigr)\big|_{x=l} = 0, \\
+        u_1(x,0) = -u_2,
+      \end{cases}
+    \end{equation}
+    and $u_2$ satisfies the following ordinary differential equation
+    \begin{equation}\label{eq:c7}
+      \begin{cases}
+        a^2 \frac{\d^2 u_2}{\d x^2} - b^2 u_2 = 0, \\
+        u_2(0) = u_0, \\
+        \bigl(\frac{\d u_2}{\d x} + Hu_2\bigr)\big|_{x=l} = 0.
+      \end{cases}
+    \end{equation}
+    We first solve equation \eqref{eq:c7}. Since $a^2 \frac{\d^2 u_2}{\d x^2} - b^2 u_2 = 0$,
+    we have that
+    \begin{equation}\label{eq:c8}
+      u_2 = C_1 e^{\frac{b}{a}x} + C_2 e^{-\frac{b}{a}x}.
+    \end{equation}
+    By the boundary condition we get
+    \[\begin{cases}
+      C_1 + C_2 = 0, \\
+      C_1\frac{b}{a}e^{\frac{b}{a}l} - C_2 \frac{b}{a} e^{-\frac{b}{a}l}
+        + H C_1 e^{\frac{b}{a}l} + H C_2 e^{-\frac{b}{a}l} = 0.
+    \end{cases}\]
+    Solving $C_1$, $C_2$ and substituting them into \eqref{eq:c8}, we have
+    \begin{equation}\label{eq:c9}
+      u_2 = u_0 \cosh \frac{b}{a}x - \frac{H\cosh\frac{b}{a}l + \frac{b}{a}\sinh\frac{b}{a}l}
+        {H\sinh\frac{b}{a}l + \frac{b}{a}\cosh\frac{b}{a}l}
+        u_0 \sinh\frac{b}{a}x.
+    \end{equation}
+
+    Now we solve equation \eqref{eq:c6}. Let $v = e^{b^2 t}u_1$, then $v$ satisfies
+    \begin{equation}\label{eq:c10}
+      \begin{cases}
+        \frac{\partial v}{\partial t} = a^2 \frac{\partial^2 v}{\partial x^2}, \\
+        v(0,t) = \bigl(\frac{\partial v}{\partial x} + Hv\bigr)\big|_{x=l} = 0, \\
+        v(x,0) = -u_2.
+      \end{cases}      
+    \end{equation}
+    The procedure of solving this problem is actually the same as that in the textbook
+    from Page 51 to 54.
+    Denote $v(x,t) = X(x)T(t)$, then
+    \[ \frac{X''(x)}{X(x)} = \frac{T'(t)}{a^2 T(t)} = -\lambda \]
+    for some constant $\lambda$. First of all, $X(x)$ satisfies
+    \begin{equation}\label{eq:c11}
+      \begin{cases}
+        X''(x) + \lambda X(x) = 0, \\
+        X(0) = X'(l) + HX(l) = 0.
+      \end{cases}
+    \end{equation}
+    \begin{itemize}
+      \item If $\lambda\leq 0$, there only exists trivial solution $X\equiv 0$;
+      \item If $\lambda>0$,
+        \begin{equation}\label{eq:c12}
+          X(x) = A\cos\sqrt{\lambda}x + B\sin\sqrt{\lambda}x.
+        \end{equation}
+        Combining with the boundary conditions we have
+        \begin{equation}\label{eq:c13}
+          X_k(x) = B_k \sin\sqrt{\lambda_k} x,
+        \end{equation}
+        where $(\lambda_k)_{k\geq 1}$ is the sequence of positive solutions to
+        $\sqrt\lambda + H\tan\sqrt\lambda l = 0$.
+    \end{itemize}
+
+    On the other hand, $T(t)$ satisfies
+    \begin{equation}\label{eq:c14}
+      T'(t) + a^2\lambda_k T(t) = 0,
+    \end{equation}
+    from which we get
+    \begin{equation}\label{eq:c15}
+      T_k(t) = C_k e^{-a^2\lambda_k t}.
+    \end{equation}
+    Therefore according to \eqref{eq:c13} and \eqref{eq:c15} we can write $v(x,t)$ as
+    \begin{equation}\label{eq:c16}
+      v(x,t) = \sum_{k=1}^\infty A_k e^{-a^2\lambda_k t} \sin\sqrt{\lambda_k} x.
+    \end{equation}
+    Finally we need to utilize the initial value condition to get
+    \begin{equation}\label{eq:c17}
+      v(x,0) = \sum_{k=1}^\infty A_k \sin\sqrt{\lambda_k} x = -u_0.
+    \end{equation}
+    Since
+    \begin{equation}\label{eq:c18}
+      \bigl(\sin\sqrt{\lambda_m}x, \sin\sqrt{\lambda_n}x\bigr)_{L^2}
+       = \delta_{mn} \biggl(\frac{l}{2} + \frac{H}{2(H^2+\lambda_m)}\biggr)
+       =: \delta_{mn} \alpha_m,
+    \end{equation}
+    we have
+    \begin{equation}\label{eq:c19}
+      A_k = -\frac{1}{\alpha_k} \int_0^l u_0(x) \sin\sqrt{\lambda_k} x \d x.
+    \end{equation}
+    Hence
+    \begin{equation}\label{eq:c20}
+      v(x,t) = -\sum_{k=1}^\infty \frac{1}{\alpha_k}
+        \int_0^l u_0(x) \sin\sqrt{\lambda_k}x \d x \cdot
+        e^{-a^2\lambda_k t} \sin\sqrt{\lambda_k} x
+    \end{equation}
+    and
+    \begin{equation}\label{eq:c21}
+      u_1(x,t) = -\sum_{k=1}^\infty \frac{1}{\alpha_k}
+        \int_0^l u_0(x) \sin\sqrt{\lambda_k}x \d x \cdot
+        e^{-(a^2\lambda_k + b^2)t} \sin\sqrt{\lambda_k} x
+    \end{equation}
+    Finally we conclude that
+    \begin{equation}\label{eq:c22}
+      u(x,t) = u_1(x,t) + u_2(x),
+    \end{equation}
+    where $u_1$ and $u_2$ are given by \eqref{eq:c21} and \eqref{eq:c9}
+    respectively.
 \end{solution}
 
 
