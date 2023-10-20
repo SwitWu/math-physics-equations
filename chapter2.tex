@@ -322,7 +322,63 @@
 \end{exercise}
 
 \begin{proof}
-  同教材上面验证齐次方程的情形.
+  It suffices to verify that $u(x,t)$ given by (3.28) is the solution to
+  the Cauchy problem (3.23)--(3.24). Denote the heat kernel by
+  \[ \varPhi(x,t) = \frac{1}{2a\sqrt{\pi t}} e^{-\frac{x^2}{4a^2t}}, \]
+  which satisfies $\partial_t\varPhi = a^2\partial_{xx}\varPhi$. Then
+  the $u(x,t)$ in (3.28) can be rewritten as
+  \begin{equation}\label{eq:d1}
+    u(x,t) = \int_0^t\int_{-\infty}^\infty \varPhi(x-\xi, t-\tau) f(\xi,\tau) \d\xi\d\tau.
+  \end{equation}
+  Making a change of variables, we have
+  \begin{equation}\label{eq:d2}
+    u(x,t) = \int_0^t\int_{-\infty}^\infty \varPhi(\xi,\tau) f(x-\xi,t-\tau) \d\xi\d\tau.
+  \end{equation}
+  Hence
+  \begin{align}
+    \frac{\partial u}{\partial t}
+    & = \int_0^t\int_{-\infty}^\infty \varPhi(\xi,\tau) f_t(x-\xi,t-\tau) \d\xi\d\tau \notag \\
+    &   \quad + \int_{-\infty}^\infty \varPhi(\xi,t)f(x-\xi,0) \d\xi, \\
+    \frac{\partial^2u}{\partial x^2}
+    & = \int_0^t \int_{-\infty}^\infty \varPhi(\xi,\tau) f_{xx}(x-\xi,t-\tau) \d\xi\d\tau.
+  \end{align}
+  So
+  \begin{align*}
+    \frac{\partial u}{\partial t} - a^2\frac{\partial^2u}{\partial x^2}
+    & = \int_0^t \int_{-\infty}^\infty \varPhi(\xi,\tau) (\partial_t - a^2\partial_{xx})
+        f(x-\xi,t-\tau) \d\xi\d\tau \\
+    &   \quad + \int_{-\infty}^\infty \varPhi(\xi,t) f(x-\xi,0) \d\xi \\
+    & = \int_0^\epsilon \int_{-\infty}^\infty \varPhi(\xi,\tau) (\partial_t - a^2\partial_{xx})
+        f(x-\xi,t-\tau) \d\xi\d\tau \\
+    &   \quad + \int_\epsilon^t \int_{-\infty}^\infty \varPhi(\xi,\tau) (-\partial_\tau - a^2\partial_{\xi\xi})
+        f(x-\xi,t-\tau) \d\xi\d\tau \\
+    &   \quad + \int_{-\infty}^\infty \varPhi(\xi,t) f(x-\xi,0) \d\xi \\
+    & =: I_\epsilon + J_\epsilon + K.
+  \end{align*}
+  We suppose that $f$ is $C^1$ in $t$ and $C^2$ in $x$ and has compact support.
+  Then
+  \begin{equation}\label{eq:d3}
+    |I_\epsilon| \leq \bigl(\|f_t\|_\infty + a^2 \|f_{xx}\|_\infty\bigr)
+      \int_0^\epsilon \int_{-\infty}^\infty \varPhi(\xi,\tau) \d\xi\d\tau \leq C\epsilon.
+  \end{equation}
+  On the other hand, integrate by parts to get
+  \begin{equation}\label{eq:d4}
+    \begin{aligned}
+      J_\epsilon
+      & = \int_\epsilon^t \int_{-\infty}^\infty (\partial_\tau - a^2\partial_{\xi\xi}) \varPhi(\xi,\tau)
+          f(x-\xi,t-\tau) \d\xi\d\tau \\
+      &   \quad + \int_{-\infty}^\infty \varPhi(\xi,\epsilon) f(x-\xi,t-\epsilon) \d\xi \\
+      &   \quad - \int_{-\infty}^\infty \varPhi(\xi,t) f(x-\xi,0) \d\xi \\
+      & = \int_{-\infty}^\infty \varPhi(\xi,\epsilon) f(x-\xi,t-\epsilon) \d\xi - K.
+    \end{aligned}
+  \end{equation}
+  Therefore
+  \begin{equation}\label{eq:d5}
+    \frac{\partial u}{\partial t} - a^2\frac{\partial^2u}{\partial x^2}
+      = \lim_{\epsilon\to 0} \int_{-\infty}^\infty \varPhi(\xi,\epsilon) f(x-\xi,t-\epsilon) \d\xi
+      = f(x,t).
+  \end{equation}
+  The initial value condition (3.24) is obvious.
 \end{proof}
 
 
@@ -339,7 +395,7 @@
 \end{exercise}
 
 \begin{solution}
-  由泊松公式知
+  (1) 由泊松公式知
   \[\begin{split}
     u(x,t)
     & = \frac{1}{2a\sqrt{\pi t}} \int_{-\infty}^{\infty}
@@ -390,8 +446,8 @@
   \end{cases}\]
   则 $u(x,y,t) = u_1(x,t)u_2(y,t)$ 是定解问题
   \[\begin{cases}
-    \frac{\partial u}{\partial t} = a^2\biggl(
-      \frac{\partial^2u}{\partial x^2} + \frac{\partial^2u}{\partial y^2}\biggr), \\
+    \frac{\partial u}{\partial t} = 
+      a^2\Bigl(\frac{\partial^2u}{\partial x^2} + \frac{\partial^2u}{\partial y^2}\Bigr), \\
     u|_{t=0} = \varphi_1(x) \varphi_2(y)
   \end{cases}\]
   的解.
@@ -406,8 +462,8 @@
   导出下列热传导方程柯西问题解的表达式:
   \[\begin{cases}
     \frac{\partial u}{\partial t} 
-      = a^2\biggl(\frac{\partial^2u}{\partial x^2} +
-                  \frac{\partial^2u}{\partial y^2}\biggr), \\
+      = a^2\Bigl(\frac{\partial^2u}{\partial x^2} +
+                  \frac{\partial^2u}{\partial y^2}\Bigr), \\
     u|_{t=0} = \sum_{i=1}^n \alpha_i(x)\beta_i(y).
   \end{cases}\]
 \end{exercise}
