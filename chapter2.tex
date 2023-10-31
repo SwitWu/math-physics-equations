@@ -583,8 +583,8 @@
   假设在区域内部存在某点 $(x_0,y_0)$ 使得
   \[u(x_0,y_0) = M > m.\]
   作辅助函数
-  \[V(x,y) = u(x,y)+\frac{M-m}{4R^2}\left[(x-x_0)^2+(y-y_0)^2\right].\]
-  其中 $\Omega\subset B(0,R)$,我们有
+  \[V(x,y) = u(x,y)+\frac{M-m}{4R^2}\left[(x-x_0)^2+(y-y_0)^2\right],\]
+  其中 $\Omega\subset B(0,R)$. 我们有
   \[V(x_0,y_0)=u(x_0,y_0)=M.\]
   而在 $\Gamma$ 上
   \[V(x,y) < m+\frac{M-m}{4}=\theta M\quad (0<\theta<1).\]
@@ -600,7 +600,7 @@
   \[\begin{cases}
     u_t - a^2 u_{xx} = f(x,t), \\
     u|_{x=0} = \mu_1(t),\quad
-      \Bigl(\frac{\partial u}{\partial x} + hu\Bigr)\Bigm|_{x=l} = \mu_2(t)\quad (h>0), \\
+      \bigl(\frac{\partial u}{\partial x} + hu\bigr)\big|_{x=l} = \mu_2(t)\quad (h>0), \\
     u|_{t=0} = \varphi(x)
   \end{cases}\]
   的解 $u(x,t)$ 在 $R_T=\{0\leq t\leq T, 0\leq x\leq l\}$ 中满足估计
@@ -614,28 +614,52 @@
 \end{exercise}
 
 \begin{proof}
-  令 $v = \e^{-\lambda t}u$, 则 $v$ 满足的定解问题为
+  Let $v = \e^{-\lambda t}u$, then $v$ satisfies
   \[\begin{cases}
     v_t-a^2v_{xx}+\lambda v = \e^{-\lambda t}f(x,t), \\
     v(x,0) = \varphi(x), \\
     v(0,t) = \e^{-\lambda t}\mu_1(t),\ (v_x+hv)|_{x=l} = \e^{-\lambda t}\mu_2(t).
   \end{cases}\]
-  由极值原理知 $v$ 的极大值只能在边界 $x=0,x=l,t=0$上取到, 记极大值点为$(x_0,t_0)$.
-
-  当 $(x_0,t_0)\in\{x=0\}\cup\{t=0\}$ 时,
-  \[v(x_0,t_0) \leq \max\left(\max_{0\leq x\leq l} \varphi(x),
-    \max_{0\leq t\leq T} \e^{-\lambda t}\mu_1(t)\right).\]
-
-  当 $(x_0,t_0)\in\{x=l\}$ 时,
-  由 $\frac{\partial v}{\partial x}\geq 0$ 知
-  \[v(x_0,t_0)\leq\max_{0\leq t\leq T} \frac{1}{h} \e^{-\lambda t}\mu_2(t).\]
-  故
-  \[u(x,t)\leq \e^{\lambda t}\max\left(0,\max_{0\leq x\leq l}\varphi(x),
-    \max_{0\leq t\leq T} \e^{-\lambda t}\mu_1(t),
-    \max_{0\leq t\leq T} \frac{1}{h} \e^{-\lambda t}\mu_2(t)\right). \qedhere\]
+  It suffices to consider the case when $u$ takes its positive maximum value at some point $(x_0,t_0)$.
+  Suppose that $(x_0,t_0)$ is not on the parabolic boundary, then
+  $v_t(x_0,t_0)\geq 0$, $v_{xx}(x_0,t_0)\leq 0$ and $v(x_0,t_0)>0$. So
+  \begin{equation}\label{eq:e1}
+    (v_t - a^2v_{xx} + \lambda v)\big|_{(x_0,t_0)} > 0.
+  \end{equation}
+  By choosing $\lambda$ large enough, we can let
+  \begin{equation}\label{eq:e2}
+    \e^{-\lambda t_0} f(x_0,t_0) \to 0.
+  \end{equation}
+  Thus $v_t-a^2v_{xx}+\lambda v = \e^{-\lambda t}f(x,t)$ could not hold at $(x_0,t_0)$
+  and so $(x_0,t_0)$ is on the parabolic boundary.
+  \begin{enumerate}[(i)]
+    \item If $(x_0,t_0)\in \{x=0\}$, then
+      \begin{equation}\label{eq:e3}
+        v(x,t) \leq \max_{0\leq t\leq T} e^{-\lambda t} \mu_1(t).
+      \end{equation}
+    \item If $(x_0,t_0)\in \{t=0\}$, then
+      \begin{equation}\label{eq:e4}
+        v(x,t) \leq \max_{0\leq x\leq l} \varphi(x).
+      \end{equation}
+    \item If $(x_0,t_0)\in \{x=l\}$, then
+      \begin{equation}\label{eq:e5}
+        v(x,t) \leq \max_{0\leq t\leq T} \frac{e^{-\lambda t}\mu_2(t)}{h}.
+      \end{equation}
+  \end{enumerate}
+  On the other hand, since $v_t(x_0,t_0)-a^2v_{xx}(x_0,t_0) \geq 0$, we have that
+  \begin{equation}\label{eq:e6}
+    \lambda v(x_0,t_0) \leq e^{-\lambda t_0} f(x_0,t_0) \leq \max_{R_T} (e^{-\lambda t}f).
+  \end{equation}
+  Combining \eqref{eq:e3}, \eqref{eq:e4}, \eqref{eq:e5} and \eqref{eq:e6} we conclude that
+  \begin{equation}\label{eq:e7}
+    v(x,t) \leq \max\biggl(0, \max_{0\leq x\leq l} \varphi(x),
+      \max_{0\leq t\leq T} \biggl(e^{-\lambda t}\mu_1(t), \frac{e^{-\lambda t}\mu_2(t)}{h}\biggr),
+      \frac{1}{\lambda} \max_{R_T} (e^{-\lambda t}f)\biggr).
+  \end{equation}
+  The final estimate for $u(x,t)$ follows directly from \eqref{eq:e7}.
 \end{proof}
 
-
+\newpage
 \section{解的渐近性态}
 
 \begin{exercise}
