@@ -228,7 +228,8 @@
   于是
   \[u(x,y) = X(x)Y(y) = C_4 \sinh\frac{(y-b)\pi}{a} \sin\frac{\pi x}{a}.\]
   结合 $u(x,0) = \sin\frac{\pi x}{a}$, 得
-  \[u(x,y) = \frac{\sinh \frac{(y-b)\pi}{a}}{\sin h \frac{-b\pi}{a}} \sin\frac{\pi x}{a}.\qedhere\]
+  \[u(x,y) = \frac{\sinh \frac{(y-b)\pi}{a}}{\sinh \frac{-b\pi}{a}} \sin\frac{\pi x}{a}
+    = \frac{\sinh (b-y)\pi/a}{\sinh b\pi/a} \sin\frac{\pi x}{a}.\qedhere\]
 \end{solve}
 
 
@@ -269,9 +270,9 @@
 
 \begin{exercise}
   设
-  \[J(u) = \iiint_{\varOmega} \frac12 \biggl[\biggl(\frac{\partial u}{\partial x}^2\biggr)
-    + \biggl(\frac{\partial u}{\partial y}^2\biggr)
-    + \biggl(\frac{\partial u}{\partial z}^2\biggr)\biggr] \diff x\diff y\diff z
+  \[J(u) = \iiint_{\varOmega} \frac12 \biggl[\biggl(\frac{\partial u}{\partial x}\biggr)^2
+    + \biggl(\frac{\partial u}{\partial y}\biggr)^2
+    + \biggl(\frac{\partial u}{\partial z}\biggr)^2\biggr] \diff x\diff y\diff z
     + \iint_{\varGamma} \biggl(\frac12 \sigma u^2 - gu\biggr) \diff s,\]
   变分问题的提法为: 求 $u\in V$, 使
   \[J(u) = \min_{v\in V} J(v),\]
@@ -280,11 +281,61 @@
 \end{exercise}
 
 \begin{proof}
-  等价的边值问题为
+  The equivalent BVP is
   \[\begin{cases}
     \Delta u = 0, \\
-    \Bigl(\frac{\partial u}{\partial \bm{n}} + \sigma u\Bigr)\Bigm|_{\varGamma} = g.
+    \bigl(\frac{\partial u}{\partial \bm{n}} + \sigma u\bigr)\big|_{\varGamma} = g.
   \end{cases}\]
+  For notational simplicity, we use $\int$ instand of $\iint,\iiint$ and use $\d x$
+  instand of $\d x\d y\d z$.
+
+  (Minimizer $\Rightarrow$ Solution) Suppose that $J(u) = \min_{v\in V} J(v)$.
+  Define for any $v\in V$,
+  \begin{equation}\label{eq:e8}
+    I(\epsilon) = J(u+\epsilon v)
+      = \int_\varOmega \frac12 |\nabla(u+\epsilon v)|^2 \d x
+        + \int_\varGamma \biggl(\frac12 \sigma (u+\epsilon v)^2 - g(u+\epsilon v)\biggr) \d s.
+  \end{equation}
+  Then $I(\epsilon)$ attains its minimum at $\epsilon=0$ and so $I'(0)=0$.
+  Direct computation yields that
+  \begin{equation}\label{eq:e9}
+    \begin{aligned}
+      I'(0)
+      & = \int_\varOmega \nabla u\cdot \nabla v \d x + \int_\varGamma (\sigma u-g)v \d s \\
+      & = - \int_\varOmega \Delta u v \d x
+          + \int_\varGamma \biggl(\frac{\partial u}{\partial \bm{n}} + \sigma u - g\biggr)v \d s = 0.
+    \end{aligned}
+  \end{equation}
+  Since $v$ is arbitrary, we choose $v$ such that $v=0$ on $\varGamma$, then
+  \begin{equation}\label{eq:e10}
+    \int_\varOmega \Delta u v \d x = 0,
+  \end{equation}
+  which means $\Delta u = 0$ in $\varOmega$. Substituting $\Delta u = 0$ back into~\eqref{eq:e9},
+  we now get
+  \begin{equation}\label{eq:e11}
+    \int_\varGamma \biggl(\frac{\partial u}{\partial \bm{n}} + \sigma u - g\biggr)v \d s = 0.
+  \end{equation}
+  Choosing $v = \frac{\partial u}{\partial \bm{n}} + \sigma u - g$ on $\varGamma$, we get
+  \[ \frac{\partial u}{\partial \bm{n}} + \sigma u = g \quad \text{on}\ \varGamma. \]
+
+  (Solution $\Rightarrow$ Minimizer) Suppose $u$ is the solution of the following BVP
+  \[\begin{cases}
+    \Delta u = 0, \\
+    \bigl(\frac{\partial u}{\partial \bm{n}} + \sigma u\bigr)\big|_{\varGamma} = g.
+  \end{cases}\]
+  Since
+  \begin{equation}\label{eq:e12}
+    \begin{aligned}
+      J(u+v)
+      & = \int_\varOmega \frac12 |\nabla(u+v)|^2 \d x
+          + \int_\varGamma \biggl(\frac12 \sigma (u+v)^2 - g(u+v)\biggr) \d s \\
+      & = J(u) + \int_\varOmega \frac12 |\nabla v|^2 + \nabla u\cdot\nabla v \d x
+          + \int_\varGamma \biggl(\frac12 \sigma v^2 + \sigma uv - gv\biggr) \d s \\
+      & = J(u) + \int_\varOmega \frac12 |\nabla v|^2 \d x
+          + \int_\varGamma \frac12 \sigma v^2 \d s,
+    \end{aligned}
+  \end{equation}
+  we have that $J(u+v)\geq J(u)$ for any $v\in V$, so $J(u) = \min_{v\in V} J(v)$.
 \end{proof}
 
 
@@ -292,44 +343,49 @@
 \section{格林公式及其应用}
 
 \begin{exercise}
-  证明 (2.7) 式对于 $M_0$ 在 $\varOmega$ 外与 $\Gamma$ 上的情形成立.
+  证明 (2.7) 式对于 $M_0$ 在 $\varOmega$ 外与 $\varGamma$ 上的情形成立.
 \end{exercise}
 
 \begin{proof}
   当 $M_0$ 在 $\varOmega$ 外时, $v=\frac{1}{r_{M_0M}}$ 在区域 $\varOmega$ 内无奇异点, 故由格林第二公式得
   \[\iiint_{\varOmega} \left(u\Delta\frac{1}{r}-\frac{1}{r}\Delta u\right)\diff V
-    = \iint_{\Gamma}\left(u\frac{\partial}{\partial\vec{n}}\left(\frac{1}{r}\right)
+    = \iint_{\varGamma}\left(u\frac{\partial}{\partial\vec{n}}\left(\frac{1}{r}\right)
       - \frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right) \diff S.\]
   在 $\varOmega$ 内 $\Delta u=0$, $\Delta\frac{1}{r}=0$, 故
-  \[-\iint_{\Gamma}\left(u\frac{\partial}{\partial\vec{n}}\left(\frac{1}{r}\right)
+  \[-\iint_{\varGamma}\left(u\frac{\partial}{\partial\vec{n}}\left(\frac{1}{r}\right)
     - \frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right)\diff S = 0.\]
 
-  当 $M_0$ 在 $\Gamma$ 上时, 将以 $M_0$ 为球心, 
+  当 $M_0$ 在 $\varGamma$ 上时, 将以 $M_0$ 为球心, 
   以充分小正数 $\varepsilon$ 为半径的球与 $\varOmega$ 相交的部分记为 $K_{\varepsilon}$,
-  将 $K_{\varepsilon}$ 的包含于 $\varOmega$ 内的边界记为 $\Gamma_{\varepsilon}$,
-  且记 $\partial(\varOmega\backslash K_{\varepsilon})-\Gamma_{\varepsilon}=\Gamma_{\varepsilon}'$,
+  将 $K_{\varepsilon}$ 的包含于 $\varOmega$ 内的边界记为 $\varGamma_{\varepsilon}$,
+  且记 $\partial(\varOmega\setminus K_{\varepsilon})-\varGamma_{\varepsilon}=\varGamma_{\varepsilon}'$,
   则由格林第二公式得
   \[0 = \iiint_{\varOmega\backslash K_{\varepsilon}}
     \left(u\Delta\frac{1}{r} - \frac{1}{r}\Delta u\right)\diff V
-    = \iint_{\Gamma_{\varepsilon}\bigcup\Gamma_{\varepsilon}'} \left(u\frac{\partial}{\partial\vec{n}}
+    = \iint_{\varGamma_{\varepsilon}\bigcup\varGamma_{\varepsilon}'} \left(u\frac{\partial}{\partial\vec{n}}
       \left(\frac{1}{r}\right)-\frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right) \diff S.\]
   故
-  \[-\iint_{\Gamma_{\varepsilon}'} \left(u\frac{\partial}{\partial\vec{n}}\left(\frac{1}{r}\right)
+  \begin{equation}\label{eq:e13}
+    -\iint_{\varGamma_{\varepsilon}'} \left(u\frac{\partial}{\partial\vec{n}}\left(\frac{1}{r}\right)
     -\frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right) \diff S
-    = \iint_{\Gamma_{\varepsilon}}\left(u\frac{\partial}{\partial\vec{n}}
-      \left(\frac{1}{r}\right) - \frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right)\diff S.\]
+    = \iint_{\varGamma_{\varepsilon}}\left(u\frac{\partial}{\partial\vec{n}}
+      \left(\frac{1}{r}\right) - \frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right)\diff S.
+  \end{equation}
   而
-  \[\iint_{\Gamma_{\varepsilon}} \left(u\frac{\partial}{\partial\vec{n}}\left(\frac{1}{r}\right)
+  \[\iint_{\varGamma_{\varepsilon}} \left(u\frac{\partial}{\partial\vec{n}}\left(\frac{1}{r}\right)
     -\frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right) \diff S
-    = \iint_{\Gamma_{\varepsilon}}\left(\frac{u}{\varepsilon^2}
+    = \iint_{\varGamma_{\varepsilon}}\left(\frac{u}{\varepsilon^2}
       - \frac{1}{\varepsilon}\frac{\partial u}{\partial\vec{n}}\right) \diff S.\]
-  令 $\varepsilon\to 0$, 注意到 $\Gamma$ 充分光滑
-  (这意味着面积 $S(\Gamma_{\varepsilon})\to 2\pi\varepsilon^2$), 所以有
-  \[\lim_{\varepsilon\to 0} \iint_{\Gamma_{\varepsilon}}
+  令 $\varepsilon\to 0$, 注意到 $\varGamma$ 充分光滑
+  (这意味着面积 $S(\varGamma_{\varepsilon})\to 2\pi\varepsilon^2$), 所以有
+  \begin{equation}\label{eq:e14}
+    \lim_{\varepsilon\to 0} \iint_{\varGamma_{\varepsilon}}
     \left(\frac{u}{\varepsilon^2}-\frac{1}{\varepsilon}\frac{\partial u}{\partial\vec{n}}\right)\diff S
-    = 2\pi u(M_0).\]
-  同时 $\lim_{\varepsilon\to0}\Gamma_{\varepsilon}'=\Gamma$, 因此最终得到
-  \[-\iint_{\Gamma} \left(u\frac{\partial}{\partial\vec{n}}\left(\frac{1}{r}\right)-\frac{1}{r}
+    = 2\pi u(M_0).
+  \end{equation}
+  同时 $\lim_{\varepsilon\to0}\varGamma_{\varepsilon}'=\varGamma$,
+  因此由 \eqref{eq:e13} 和 \eqref{eq:e14} 得
+  \[-\iint_{\varGamma} \left(u\frac{\partial}{\partial\vec{n}}\left(\frac{1}{r}\right)-\frac{1}{r}
     \frac{\partial u}{\partial\vec{n}}\right)\diff S = 2\pi u(M_0). \qedhere\]
 \end{proof}
 
@@ -341,46 +397,46 @@
 
 \begin{proof}
   由平均值公式知原点之值为
-  \[u(O) = \frac{1}{2\pi}\int_{\Gamma}\sin\theta\diff s
+  \[u(O) = \frac{1}{2\pi}\int_{\varGamma}\sin\theta\diff s
     = \frac{1}{2\pi}\int_0^{2\pi}\sin\theta\diff\theta = 0.\qedhere\]
 \end{proof}
 
 
 \begin{exercise}[4]
-  证明: 当 $u(M)$ 在闭曲面 $\Gamma$ 的外部调和, 并且在无穷远处成立
+  证明: 当 $u(M)$ 在闭曲面 $\varGamma$ 的外部调和, 并且在无穷远处成立
   \[u(M) = O\biggl(\frac{1}{r_{OM}}\biggr),\quad
     \frac{\partial u}{\partial r} = O\biggl(\frac{1}{r_{OM}^2}\biggr)\quad
     (r_{OM}\to\infty),\]
-  而 $M_0$ 是 $\Gamma$ 外任意一点, 则公式 (2.6) 仍成立.
+  而 $M_0$ 是 $\varGamma$ 外任意一点, 则公式 (2.6) 仍成立.
 \end{exercise}
 
 \begin{proof}
-  取以 $M_0$ 为球心, 以 $R$ (充分大)为半径的球 $K_R$ 使其包含曲面 $\Gamma$,
-  并记该球去掉闭曲面 $\Gamma$ 内部区域后得到的部分为 $\varOmega_R$. 将 $K_R$ 的边界记为 $\Gamma_R$,
+  取以 $M_0$ 为球心, 以 $R$ (充分大)为半径的球 $K_R$ 使其包含曲面 $\varGamma$,
+  并记该球去掉闭曲面 $\varGamma$ 内部区域后得到的部分为 $\varOmega_R$. 将 $K_R$ 的边界记为 $\varGamma_R$,
   再取以 $M_0$ 为球心, 以 $\epsilon$ 为半径的球 $K_{\epsilon}$ 使其完全包含在区域 $\varOmega_R$中,
-  将 $K_{\epsilon}$ 的边界记为 $\Gamma_{\epsilon}$.
+  将 $K_{\epsilon}$ 的边界记为 $\varGamma_{\epsilon}$.
   取 $r=r_{MM_0}$, 则由格林第二公式得
   \begin{equation}
     \begin{aligned}
-    0 & = \iiint_{\varOmega_R\backslash K_{\epsilon}}\left(u\Delta\frac{1}{r}
+    0 & = \iiint_{\varOmega_R\setminus K_{\epsilon}}\left(u\Delta\frac{1}{r}
         - \frac{1}{r}\Delta u\right)\diff V \\
-      & = \iint_{\Gamma\bigcup\Gamma_R\bigcup\Gamma_{\epsilon}}\left(u\frac{\partial}{\partial\vec{n}}\left(\frac{1}{r}\right)-\frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right)\diff S.
+      & = \iint_{\varGamma\bigcup\varGamma_R\bigcup\varGamma_{\epsilon}}\left(u\frac{\partial}{\partial\vec{n}}\left(\frac{1}{r}\right)-\frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right)\diff S.
     \end{aligned} \tag{$\star$}
   \end{equation}
   因为 $u(M)=O(\frac{1}{r})$, $\frac{\partial u}{\partial r}=O(\frac{1}{r^2})$ $(r\to\infty)$,
   所以当 $R\to +\infty$ 时,
-  \[\iint_{\Gamma_R}\left(u\frac{\partial}{\partial\vec{n}}\left(\frac{1}{r}\right)
+  \[\iint_{\varGamma_R}\left(u\frac{\partial}{\partial\vec{n}}\left(\frac{1}{r}\right)
     - \frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right)\diff S
-    = \iint_{\Gamma_R}\left(\frac{-u}{R^2}-\frac{1}{R}\frac{\partial u}{\partial r}\right)\diff S = 0.\]
+    = \iint_{\varGamma_R}\left(\frac{-u}{R^2}-\frac{1}{R}\frac{\partial u}{\partial r}\right)\diff S\to 0.\]
   又因为当 $\epsilon\to 0$ 时,
-  \[\iint_{\Gamma_{\epsilon}}\left(u\frac{\partial}{\partial\vec{n}}\left(\frac{1}{r}\right)
+  \[\iint_{\varGamma_{\epsilon}}\left(u\frac{\partial}{\partial\vec{n}}\left(\frac{1}{r}\right)
     - \frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right)\diff S
-    = \iint_{\Gamma_{\epsilon}}\left(\frac{u}{\epsilon^2}
+    = \iint_{\varGamma_{\epsilon}}\left(\frac{u}{\epsilon^2}
     + \frac{1}{\epsilon}\frac{\partial u}{\partial r}\right)\diff S
     \to 4\pi u(M_0).\]
   在 ($\star$) 式中令 $R\to +\infty$, $\epsilon\to 0$, 即得
   \[u(M_0)
-  =-\frac{1}{4\pi}\iint_{\Gamma}\left(u\frac{\partial}{\partial\vec{n}}\left(\frac{1}{r}\right)
+  =-\frac{1}{4\pi}\iint_{\varGamma}\left(u\frac{\partial}{\partial\vec{n}}\left(\frac{1}{r}\right)
   -\frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right)\diff S. \qedhere\]
 \end{proof}
 
@@ -390,12 +446,12 @@
 \end{exercise}
 
 \begin{proof}
-  在闭曲面 $\Gamma$ 上给定两个函数 $f,f^*$, 并且在$\Gamma$上满足$|f-f^*|\leq\epsilon$,
-  设 $u,u^*$ 是相应的狄利克雷外问题的解, 以 $\Gamma_R$ 表示半径为 $R$ 的球面, 令$v=u-u^*$, 因为
+  在闭曲面 $\varGamma$ 上给定两个函数 $f,f^*$, 并且在$\varGamma$上满足$|f-f^*|\leq\epsilon$,
+  设 $u,u^*$ 是相应的狄利克雷外问题的解, 以 $\varGamma_R$ 表示半径为 $R$ 的球面, 令$v=u-u^*$, 因为
   \[\lim_{r\to\infty}v(x,y,z)=0.\]
-  所以存在 $R_0$, 使得在 $\Gamma_{R_0}$ 及其外部满足 $|v|\leq\epsilon$,
-  在 $\Gamma$ 和 $\Gamma_{R_0}$ 围成的有界区域中,
-  利用极值原理知 $|v|\leq\epsilon$, 故在 $\Gamma$ 的外部满足 $|v|\leq\epsilon$,
+  所以存在 $R_0$, 使得在 $\varGamma_{R_0}$ 及其外部满足 $|v|\leq\epsilon$,
+  在 $\varGamma$ 和 $\varGamma_{R_0}$ 围成的有界区域中,
+  利用极值原理知 $|v|\leq\epsilon$, 故在 $\varGamma$ 的外部满足 $|v|\leq\epsilon$,
   由此证明了狄利克雷外问题的解是稳定的.
 \end{proof}
 
@@ -405,28 +461,50 @@
   \[\sum_{i,j=1}^n a_{ij} u_{x_ix_j} + \sum_{i=1}^n b_i u_{x_i} + cu = 0,\]
   其中 $a_{ij}$, $b_i$, $c$ ($i,j=1,\dots,n$) 均为常数. 假设存在常数 $\lambda>0$, 使得
   \[\sum_{i,j=1}^n a_{ij}\xi_i\xi_j \geq \lambda |\xi|^2,\quad \forall\xi\in\mathbb{R}^n.\]
-  又设 $c>0$, 证明极值原理: 若 $u$ 在 $\varOmega$ 中满足方程, 在 $\varOmega\cup\Gamma$ 上连续,
+  又设 $c<0$, 证明极值原理: 若 $u$ 在 $\varOmega$ 中满足方程, 在 $\varOmega\cup\varGamma$ 上连续,
   则 $u$ 不能在 $\varOmega$ 的内部达到正的最大值或负的最小值.
 \end{exercise}
 
 \begin{proof}
-  假设 $u$ 在点 $x_0\in\varOmega$ 处达到正的最大值, 则
-  \[\nabla u(x_0) = 0,\qquad (D_{ij} u(x_0))\leq 0.\]
-  因此
+  Suppose $u$ attains its positive maximum value at some point $x_0\in\varOmega$, then
+  \[\nabla u(x_0) = 0,\qquad D^2 u(x_0)\leq 0.\]
+  Thus
   \[\sum_{i,j=1}^n a_{ij} u_{x_ix_j}(x_0) \leq 0,
     \quad \sum_{i=1}^n b_i u_{x_i}(x_0) = 0,\quad cu(x_0)<0.\]
-  从而
+  It follows that
   \[\sum_{i,j=1}^n a_{ij} u_{x_ix_j}(x_0) + \sum_{i=1}^n b_i u_{x_i}(x_0) + cu(x_0) <0,\]
-  与条件矛盾.
+  which is contradictory to the equation satisfied by $u$.
+
+  The proof for the case when $u$ attains its negative minimum value in the interior of
+  $\varOmega$ is similar.
 \end{proof}
+
+
+\begin{exercise}
+  证明第 6 题中讨论的椭圆型方程的第一边值问题的唯一性与稳定性.
+\end{exercise}
+
+
+\begin{exercise}
+  举例说明对于方程 $\frac{\partial^2u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + cu = 0$
+  ($c>0$), 不成立极值原理.
+\end{exercise}
+
+\begin{solution}
+  Consider the function
+  \[ u(x,y) = \sin\sqrt{\frac{c}{2}}x \sin\sqrt{\frac{c}{2}}y, \]
+  which satisfies $\Delta u + cu = 0$ in the domain
+  $\varOmega = \bigl[-\sqrt{\frac{2}{c}}\pi,\sqrt{\frac{2}{c}}\pi\bigr]^2$.
+  However, it attains its maximum in the interior of $\varOmega$.
+\end{solution}
 
 
 \section{格林函数}
 
-\[u(M_0) = \iint_{\Gamma}\left[\frac{1}{4\pi r_{M_0M}}\frac{\partial u}{\partial\vec{n}}-u\frac{\partial}{\partial\vec{n}}\frac{1}{4\pi r_{M_0M}}\right]\diff S_M\]
-\[\iint_{\Gamma}\left(g\frac{\partial u}{\partial\vec{n}}-u\frac{\partial g}{\partial\vec{n}}\right)\diff S_M=0\]
+\[u(M_0) = \iint_{\varGamma}\left[\frac{1}{4\pi r_{M_0M}}\frac{\partial u}{\partial\vec{n}}-u\frac{\partial}{\partial\vec{n}}\frac{1}{4\pi r_{M_0M}}\right]\diff S_M\]
+\[\iint_{\varGamma}\left(g\frac{\partial u}{\partial\vec{n}}-u\frac{\partial g}{\partial\vec{n}}\right)\diff S_M=0\]
 相减得
-\[u(M_0)=\iint_{\Gamma}\left(G\frac{\partial u}{\partial\vec{n}}-u\frac{\partial G}{\partial\vec{n}}\right)\diff S_M,\mbox{其中}G(M,M_0)=\frac{1}{4\pi r_{M_0M}}-g(M,M_0)\]
+\[u(M_0)=\iint_{\varGamma}\left(G\frac{\partial u}{\partial\vec{n}}-u\frac{\partial G}{\partial\vec{n}}\right)\diff S_M,\mbox{其中}G(M,M_0)=\frac{1}{4\pi r_{M_0M}}-g(M,M_0)\]
 
 \begin{note}
   格林函数的五点性质的证明.
@@ -446,7 +524,7 @@
   \end{property}
 
   \begin{proof}
-    由$g(M,M_0)$的定义知$G(M,M_0)|_{\Gamma}=0$.
+    由$g(M,M_0)$的定义知$G(M,M_0)|_{\varGamma}=0$.
   \end{proof}
 
   \begin{property}
@@ -485,25 +563,25 @@
   \end{property}
   
   \begin{proof}
-    设 $\Gamma_{\epsilon}$ 是以 $M_0$为球心,
+    设 $\varGamma_{\epsilon}$ 是以 $M_0$为球心,
     以 $\epsilon$ 为半径的球面, 并且其包含在 $\varOmega$ 当中, 则
     \[\begin{split}
-      \iint_{\Gamma}\frac{\partial G(M,M_0)}{\partial\vec{n}}\diff S_M
-      & = \iint_{\Gamma}\frac{\partial}{\partial\vec{n}}\left(\frac{1}{4\pi r_{M_0M}}\right)\diff S_M-\iint_{\Gamma}\frac{\partial g(M,M_0)}{\partial\vec{n}}\diff S_M \\
-      & = \iint_{\Gamma}\frac{\partial}{\partial\vec{n}}
+      \iint_{\varGamma}\frac{\partial G(M,M_0)}{\partial\vec{n}}\diff S_M
+      & = \iint_{\varGamma}\frac{\partial}{\partial\vec{n}}\left(\frac{1}{4\pi r_{M_0M}}\right)\diff S_M-\iint_{\varGamma}\frac{\partial g(M,M_0)}{\partial\vec{n}}\diff S_M \\
+      & = \iint_{\varGamma}\frac{\partial}{\partial\vec{n}}
           \left(\frac{1}{4\pi r_{M_0M}}\right)\diff S_M\quad (\text{Theorem 2.1}) \\
-      & = \iint_{\Gamma_{\epsilon}}\frac{\partial}{\partial\vec{n}}
+      & = \iint_{\varGamma_{\epsilon}}\frac{\partial}{\partial\vec{n}}
           \left(\frac{1}{4\pi r_{M_0M}}\right)\diff S_M\quad (\text{Theorem 2.1}) \\
-      & = \iint_{\Gamma_{\epsilon}}\frac{-1}{4\pi\epsilon^2}\diff S_M = -1.
+      & = \iint_{\varGamma_{\epsilon}}\frac{-1}{4\pi\epsilon^2}\diff S_M = -1.
     \end{split}\]
     另法:考虑定解问题(老师上课时解法)
     \[\begin{cases}
-    \Delta u=0(in\;\varOmega)\\u|_{\Gamma=1}
+    \Delta u=0(in\;\varOmega)\\u|_{\varGamma=1}
     \end{cases}\]
     由极值原理知解为$u\equiv1$,代入(3.4)式即得结论
   \end{proof}
 
-  二维情形圆的格林函数取为$G(M,M_0)=\frac{1}{2\pi}\left(\ln\frac{1}{r_{M_0M}}-\ln\frac{R}{\rho_0}\frac{1}{r_{M_1M}}\right)$也是为了使得$\int_{\Gamma}\frac{\partial G(M,M_0)}{\partial\vec{n}}\diff s=-1$成立,证明思路同上.
+  二维情形圆的格林函数取为$G(M,M_0)=\frac{1}{2\pi}\left(\ln\frac{1}{r_{M_0M}}-\ln\frac{R}{\rho_0}\frac{1}{r_{M_1M}}\right)$也是为了使得$\int_{\varGamma}\frac{\partial G(M,M_0)}{\partial\vec{n}}\diff s=-1$成立,证明思路同上.
 \end{note}
 
 
@@ -607,7 +685,7 @@ u(\rho_0,\varphi_0)&=\frac{1}{2\pi}\int_0^{2\pi}\frac{(R^2-\rho_0^2)A\cos(\varph
   \[G(M,M_0)=\frac{1}{2\pi}\left[\ln\frac{1}{\sqrt{(x-x_0)^2+(y-y_0)^2}}-\ln\frac{1}{\sqrt{(x-x_0)^2+(y+y_0)^2}}\right]\]
   注意到$\frac{\partial}{\partial\vec{n}}=-\frac{\partial}{\partial y}$,故
   \[\begin{split}
-  u(x_0,y_0)&=-\int_{\Gamma}f(x)\frac{\partial G(M,M_0)}{\partial\vec{n}}\diff x\\
+  u(x_0,y_0)&=-\int_{\varGamma}f(x)\frac{\partial G(M,M_0)}{\partial\vec{n}}\diff x\\
   &=\frac{1}{2\pi}\int_{-\infty}^{\infty}f(x)\frac{\partial}{\partial y}\left[\ln\frac{1}{\sqrt{(x-x_0)^2+(y-y_0)^2}}-\ln\frac{1}{\sqrt{(x-x_0)^2+(y+y_0)^2}}\right]\Bigg|_{y=0}\diff x\\
   &=\frac{1}{2\pi}\int_{-\infty}^{\infty}f(x)\left(-\frac{1}{2}\frac{2(y-y_0)}{(x-x_0)^2+(y-y_0)^2}+\frac{1}{2}\frac{2(y+y_0)}{(x-x_0)^2+(y+y_0)^2}\right)\bigg|_{y=0}\diff x\\
   &=\frac{1}{\pi}\int_{-\infty}^{\infty}f(x)\frac{y_0}{(x-x_0)^2+y_0^2}\diff x
