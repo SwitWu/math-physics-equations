@@ -506,8 +506,13 @@
 相减得
 \[u(M_0)=\iint_{\varGamma}\left(G\frac{\partial u}{\partial\vec{n}}-u\frac{\partial G}{\partial\vec{n}}\right)\diff S_M,\mbox{其中}G(M,M_0)=\frac{1}{4\pi r_{M_0M}}-g(M,M_0)\]
 
-\begin{note}
-  格林函数的五点性质的证明.
+
+\begin{exercise}
+  证明格林函数的性质 3 及性质 5.
+\end{exercise}
+
+\begin{proof}
+  为了完整性，下面给出格林函数五点性质的全部证明.
 
   \begin{property}
     格林函数 $G(M, M_0)$ 除 $M=M_0$ 一点外处处满足方程 (1.1), 而当 $M\to M_0$ 时,
@@ -515,8 +520,11 @@
   \end{property}
 
   \begin{proof}
-    除了点$M=M_0$外,$\frac{1}{4\pi r_{M_0M}}$调和,又因为$g(M,M_0)$在$\varOmega$内调和,故$G(M,M_0)$除了$M=M_0$外处处调和,由极值原理知$g(M,M_0)$在$\varOmega$上有界,故
-    \[\lim_{M\to M_0}G(M,M_0)=\lim_{M\to M_0}\left(\frac{1}{4\pi r_{M_0M}}-g(M,M_0)\right)=\infty\mbox{且和}\frac{1}{4\pi r_{M_0M}}\mbox{同阶}\]
+    除了点 $M=M_0$ 外, $\frac{1}{4\pi r_{M_0M}}$调和,
+    又因为 $g(M,M_0)$ 在 $\varOmega$ 内调和, 故$G(M,M_0)$除了$M=M_0$外处处调和,
+    由极值原理知 $g(M,M_0)$在$\varOmega$上有界,故
+    \[\lim_{M\to M_0}G(M,M_0)=\lim_{M\to M_0}\left(\frac{1}{4\pi r_{M_0M}}-g(M,M_0)\right)=\infty,\]
+    且和 $\frac{1}{4\pi r_{M_0M}}$ 同阶.
   \end{proof}
 
   \begin{property}
@@ -524,7 +532,7 @@
   \end{property}
 
   \begin{proof}
-    由$g(M,M_0)$的定义知$G(M,M_0)|_{\varGamma}=0$.
+    由 $g(M,M_0)$ 的定义知 $G(M,M_0)|_{\varGamma}=0$.
   \end{proof}
 
   \begin{property}
@@ -533,33 +541,60 @@
   \end{property}
   
   \begin{proof}
-    \[0<G(M,M_0)<\frac{1}{4\pi r_{M_0M}}\Leftrightarrow 0<g(M,M_0)<\frac{1}{4\pi r_{M_0M}}\]
+    注意到
+    \[0<G(M,M_0)<\frac{1}{4\pi r_{M_0M}}\Leftrightarrow 0<g(M,M_0)<\frac{1}{4\pi r_{M_0M}}.\]
     由极值原理知$g(M,M_0)>0$是显然的,下面证明$g(M,M_0)<\frac{1}{4\pi r_{M_0M}}$:
 
-    取$\delta$足够小使得$\frac{1}{4\pi r_{M_0M}}>g(M,M_0)$在$B(M_0,\delta)$上成立(这样的$\delta$显然是可以取到的),记$D=\varOmega\backslash\overline{B(M_0,\delta)}$,则$\frac{1}{4\pi r_{M_0M}}-g(M,M_0)$在$D$上调和,且
-    \[\min_{\partial D}\left(\frac{1}{4\pi r_{M_0M}}-g(M,M_0)\right)=0\]
-    故由极值原理知在$D$上成立$\frac{1}{4\pi r_{M_0M}}>g(M,M_0)$,从而在$\varOmega$上成立$\frac{1}{4\pi r_{M_0M}}>g(M,M_0)$.
+    取 $\delta$ 足够小使得在 $B(M_0,\delta)$ 上成立 $\frac{1}{4\pi r_{M_0M}}>g(M,M_0)$,
+    记 $D=\varOmega\setminus\overline{B(M_0,\delta)}$,
+    则 $\frac{1}{4\pi r_{M_0M}}-g(M,M_0)$ 在 $D$ 上调和, 且
+    \[\min_{\partial D}\left(\frac{1}{4\pi r_{M_0M}}-g(M,M_0)\right)=0.\]
+    故由极值原理知在 $D$ 上成立 $\frac{1}{4\pi r_{M_0M}}>g(M,M_0)$,
+    从而在 $\varOmega$ 上成立 $\frac{1}{4\pi r_{M_0M}}>g(M,M_0)$.
   \end{proof}
 
   \begin{property}
     格林函数 $G(M, M_0)$ 在自变量 $M$ 及参变量 $M_0$ 之间具有对称性, 即设
-    $M_1$, $M_2$ 为区域中的亮两点, 则
+    $M_1$, $M_2$ 为区域中的两点, 则
     \[G(M_1, M_2) = G(M_2, M_1).\]
   \end{property}
   
   \begin{proof}
-    记$D_{\epsilon}=\varOmega\backslash(B(M_1,\epsilon)\bigcup B(M_2,\epsilon))$,
-    再记$w(M)=G(M,M_2),v(M)=G(M,M_1)$,则我们要证明$w(M_1)=v(M_2)$,
-    由定义知$w(M)$和$v(M)$都是$D_{\epsilon}$上的调和函数,故由格林公式得
-    \[\iint_{\partial D_{\epsilon}}\left(w\frac{\partial v}{\partial\vec{n}}-v\frac{\partial w}{\partial\vec{n}}\right)\diff S=0\]
-    故
-    \[\iint_{\partial B(M_1,\epsilon)}\left(w\frac{\partial v}{\partial\vec{n}}-v\frac{\partial w}{\partial\vec{n}}\right)\diff S=\iint_{\partial B(M_2,\epsilon)}\left(v\frac{\partial w}{\partial\vec{n}}-w\frac{\partial v}{\partial\vec{n}}\right)\diff S\]
-    当$\epsilon\to0+$时,在$\partial B(M_1,\epsilon)$上,$v=O(\frac{1}{\epsilon}),\frac{\partial v}{\partial\vec{n}}=O(\frac{1}{\epsilon^2}),\frac{\partial v}{\partial\vec{n}}=-\frac{1}{4\pi\epsilon^2}+\mbox{有界量}$,故
-    \[\iint_{\partial B(M_1,\epsilon)}w\frac{\partial v}{\partial\vec{n}}\diff S=\iint_{\partial B(M_1,\epsilon)}-\frac{1}{4\pi\epsilon^2}w\diff S+\iint_{\partial B(M_1,\epsilon)}\mbox{有界量}\cdot w\diff S\to-w(M_1)\]取极限$\epsilon\to0+$,即得$w(M_1)=v(M_2)$.
+    Let $D_{\epsilon}:=\varOmega\setminus(B(M_1,\epsilon)\bigcup B(M_2,\epsilon))$.
+    Let
+    \[ w(M):=G(M,M_2), \qquad v(M):=G(M,M_1). \]
+    We need to prove that $w(M_1)=v(M_2)$.
+    By definition, $w(M)$ and $v(M)$ are harmonic functions in $D_{\epsilon}$.
+    So by Green's formula we have
+    \[ \iint_{\partial D_{\epsilon}}\left(w\frac{\partial v}{\partial\vec{n}}
+      -v\frac{\partial w}{\partial\vec{n}}\right)\d S = 0, \]
+    i.e.,
+    \begin{equation}\label{eq:3.1}
+      \iint_{\partial B(M_1,\epsilon)}
+      \left(w\frac{\partial v}{\partial\vec{n}}-v\frac{\partial w}{\partial\vec{n}}\right)\diff S
+      = \iint_{\partial B(M_2,\epsilon)}
+        \left(v\frac{\partial w}{\partial\vec{n}}-w\frac{\partial v}{\partial\vec{n}}\right)\diff S.
+    \end{equation}
+    We only consider the left-hand side term in \eqref{eq:3.1}.
+    On $\partial B(M_1,\epsilon)$,
+    \begin{align*}
+      v(M) & = G(M,M_1) = \frac{1}{4\pi r_{MM_1}} -g(M,M_1) = O\Bigl(\frac{1}{\epsilon}\Bigr), \\
+      \frac{\partial v}{\partial\bm{n}} & = \frac{1}{4\pi\epsilon^2} + O(1), \qquad
+      w = \frac{\partial w}{\partial\bm{n}} = O(1).
+    \end{align*}
+    Thus
+    \[ \iint_{\partial B(M_1,\epsilon)}
+      \left(w\frac{\partial v}{\partial\vec{n}}-v\frac{\partial w}{\partial\vec{n}}\right)\diff S
+      = \iint_{\partial B(M_1,\epsilon)} \biggl(w\Bigl(\frac{1}{4\pi\epsilon^2} + O(1)\Bigr)
+          - O\Bigl(\frac{1}{\epsilon}\Bigr)O(1)\biggr)
+      \to w(M_1)\]
+    as $\epsilon\to 0$. Similarly, the right-hand side term in \eqref{eq:3.1}
+    tends to $v(M_2)$ as $\epsilon\to 0$. So we conclude that $w(M_1)=v(M_2)$.
   \end{proof}
 
   \begin{property}
     $\iint_{\varGamma} \frac{\partial G(M, M_0)}{\partial n} \diff S_M = -1$.
+
   \end{property}
   
   \begin{proof}
@@ -574,33 +609,182 @@
           \left(\frac{1}{4\pi r_{M_0M}}\right)\diff S_M\quad (\text{Theorem 2.1}) \\
       & = \iint_{\varGamma_{\epsilon}}\frac{-1}{4\pi\epsilon^2}\diff S_M = -1.
     \end{split}\]
-    另法:考虑定解问题(老师上课时解法)
+    另法: 考虑定解问题
     \[\begin{cases}
     \Delta u=0(in\;\varOmega)\\u|_{\varGamma=1}
     \end{cases}\]
-    由极值原理知解为$u\equiv1$,代入(3.4)式即得结论
+    由极值原理知解为 $u\equiv1$, 代入教材 (3.4) 式即得结论.
   \end{proof}
 
   二维情形圆的格林函数取为$G(M,M_0)=\frac{1}{2\pi}\left(\ln\frac{1}{r_{M_0M}}-\ln\frac{R}{\rho_0}\frac{1}{r_{M_1M}}\right)$也是为了使得$\int_{\varGamma}\frac{\partial G(M,M_0)}{\partial\vec{n}}\diff s=-1$成立,证明思路同上.
-\end{note}
+\end{proof}
 
 
+\begin{exercise}
+  证明格林函数的对称性: $G(M_1,M_2) = G(M_2,M_1)$.
+\end{exercise}
 
-\begin{exercise}[5]
+\begin{proof}
+  见第一题.
+\end{proof}
+
+
+\begin{exercise}
+  写出球的外部区域的格林函数, 并由此导出对调和方程求解球的 Dirichlet 外问题的泊松公式.
+\end{exercise}
+
+
+\begin{exercise}
+  试用格林函数法导出调和方程第二边值问题解的表达式.
+\end{exercise}
+
+\begin{solution}
+  We need to solve 
+  \[\begin{cases}
+    \Delta u = 0, & \text{in}\ \varOmega, \\
+    \frac{\partial u}{\partial\bm{n}} = f, & \text{on}\ \varGamma.
+  \end{cases}\]
+  To this end, introduce the function $g(M,M_0)$
+  such that it is harmonic with respect to $M$ in $\varOmega$ and satisfies
+  \[ \frac{\partial g}{\partial\bm{n}}
+    = \frac{\partial}{\partial\bm{n}} \biggl(\frac{1}{4\pi r_{M_0M}}\biggr)
+    \quad\text{on}\ \varGamma. \]
+  Hence
+  \[ u(M_0) = \iint_\varGamma \biggl(G\frac{\partial u}{\partial\bm{n}}
+      - u \frac{\partial G}{\partial\bm{n}}\biggr) \d S_M \]
+  is reduced to
+  \[ u(M_0) = \iint_\varGamma fG \d S_M, \]
+  where $G(M,M_0) = \frac{1}{4\pi r_{M_0M}} - g(M,M_0)$ is the Green function.
+\end{solution}
+
+
+\begin{exercise}
   求半圆区域上狄利克雷问题的格林函数.
 \end{exercise}
 
 \begin{solve}
-  设上半圆区域为 $D$, 半径为$R$, $A(x_0,y_0)\in D,M(x,y)\in D$,
-  点 $A$ 关于边界圆的反演点为 $A_1(R^2\frac{x_0}{\sqrt{x_0^2+y_0^2}}$,
-  $R^2\frac{y_0}{\sqrt{x_0^2+y_0^2}})$,
-  记 $A$ 与 $A_1$ 关于 $x$ 轴的对称点分别为 $A_2$, $A_3$,
-  再记 $MA=r$, $MA_1=r_1$, $MA_2=r_2$, $MA_3=r_3$, 则格林函数为
-  \[G(M,M_0)=\frac{1}{2\pi}\ln\frac{r_1r_2}{rr_3}.\qedhere\]
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/fig3.5.pdf}
+    \caption{Green's function for the semicircle $D$}
+    \label{fig:3.1}
+  \end{figure}
+  See figure~\ref{fig:3.1} for the geometric interpretation.
+  Let $D$ be the semicircle centered at $O$ with radius $R$ above the $x$-axis.
+  Fix any $M_0\in D$ and let $M_1$ be the dual point of $M_0$, i.e.,
+  $|OM_0|\cdot|OM_1|=R^2$.
+  And let $M_2$, $M_3$ be the symmetric points of $M_0$, $M_1$
+  with respect to the $x$-axis, respectively.
+  For simplicity, denote
+  \[ r = |MM_0|,\quad r_i = |MM_i|\ \text{for}\ 1\leq i\leq 3. \]
+
+  Now we verify that
+  \[ G(M,M_0) := \frac{1}{2\pi} \ln\frac{r_1r_2}{rr_3} \]
+  is the Green's function on $D$.
+  Firstly, $G(M,M_0)$ is harmonic in $D$ except the single point $M_0$.
+  On the other hand, $G(M,M_0)$ vanishes on $\partial D$,
+  which is obvious on $\partial D\cap \{y=0\}$
+  since on this line segment $r=r_2$ and $r_1=r_3$.
+  For the curved part of $\partial D$, we should notice that
+  \begin{equation}\label{eq:3.9}
+    \triangle OM_0M \sim \triangle OMM_1
+  \end{equation}
+  and
+  \begin{equation}\label{eq:3.10}
+    \triangle OM_2M \sim \triangle OMM_3.
+  \end{equation}
+  Therefore by \eqref{eq:3.9} and \eqref{eq:3.10},
+  \begin{equation}\label{eq:3.11}
+    \mathcolor{red}{\frac{|MM_1|}{|MM_0|}}
+    = \frac{|OM_1|}{|OM|}
+    = \frac{|OM_3|}{|OM|} 
+    = \mathcolor{red}{\frac{|MM_3|}{|MM_2|}},
+  \end{equation}
+  i.e., $\frac{r_1}{r} = \frac{r_3}{r_2}$, from which we see that $G(M,M_0) = 0$.
 \end{solve}
 
 
-\begin{exercise}[7]
+\begin{exercise}
+  利用泊松公式求边值问题
+  \[\begin{cases}
+    u_{xx} + u_{yy} + u_{zz} = 0, \quad x^2 + y^2 + z^2 < 1, \\
+    u(r,\theta,\varphi)|_{r=1} = 3\cos2\theta +1
+  \end{cases}\]
+  的解.
+\end{exercise}
+
+\begin{solution}
+  Let $G(x,t)$ be the generating function of the Legendre polynomials $(P_n(x))$, i.e.,
+  \begin{equation}\label{eq:3.2}
+    G(x,t) = \frac{1}{\sqrt{1-2xt+t^2}} = \sum_{n=0}^\infty P_n(x) t^n.
+  \end{equation}
+  Differentiate with respect to $t$ in \eqref{eq:3.2} to get
+  \begin{equation}\label{eq:3.3}
+    \frac{x-t}{(1-2xt+t^2)^{3/2}} = \sum_{n=1}^\infty n P_n(x) t^{n-1}.
+  \end{equation}
+  So
+  \begin{equation}\label{eq:3.4}
+    \begin{aligned}
+      \frac{1-t^2}{(1-2xt+t^2)^{3/2}}
+      & = \frac{1-2xt+t^2+2xt-2t^2}{(1-2xt+t^2)^{3/2}} \\
+      & = \frac{1}{\sqrt{1-2xt+t^2}} + 2t \frac{x-t}{(1-2xt+t^2)^{3/2}} \\
+      & = \sum_{n=0}^\infty (2n+1) P_n(x) t^n.
+    \end{aligned}
+  \end{equation}
+  Since
+  \[ \cos\gamma = \cos\theta\cos\theta_0 + \sin\theta\sin\theta_0\cos(\varphi-\varphi_0),\]
+  by addition formula of Legendre polynomials we have
+  \begin{equation}\label{eq:3.5}
+    P_n(\cos\gamma) = \sum_{m=-n}^n \frac{(n-m)!}{(n+m)!} P_n^m(\cos\theta)
+      P_n^m(\cos\theta_0) e^{im(\varphi-\varphi_0)},
+  \end{equation}
+  where $P_n^m$ is the associated Legendre polynomials. Since $P_2(x)=\frac12(3x^2-1)$, we have
+  \begin{equation}\label{eq:3.6}
+    4P_2(\cos\theta) = 3\cos2\theta+1.
+  \end{equation}
+  Using \eqref{eq:3.4}, \eqref{eq:3.5}, \eqref{eq:3.6} and Poisson's formula in $\mathbb{R}^3$,
+  we get
+  \begin{equation}\label{eq:3.7}
+    \begin{aligned}
+      u(\rho_0,\theta_0,\varphi_0)
+      & = \frac{1}{4\pi} \int_0^{2\pi} \int_0^\pi
+          \frac{(1-\rho_0^2)(3\cos2\theta+1)\sin\theta}{(1+\rho_0^2-2\rho_0\cos\gamma)^{3/2}}
+          \d\theta\d\varphi \\
+      & = \frac{1}{4\pi} \int_0^{2\pi} \int_0^\pi
+          \sum_{n=0}^\infty (2n+1) P_n(\cos\gamma)\rho_0^n (3\cos2\theta+1) \sin\theta
+          \d\theta\d\varphi \\
+      & = \frac{1}{\pi} \int_0^{2\pi} \int_0^\pi
+          \sum_{n=0}^\infty (2n+1) \biggl(\sum_{m=-n}^n \frac{(n-m)!}{(n+m)!} P_n^m(\cos\theta)
+          P_n^m(\cos\theta_0) e^{im(\varphi-\varphi_0)}\biggr) \\
+      & \qquad\qquad \cdot\rho_0^n P_2(\cos\theta) \sin\theta \d\theta\d\varphi
+    \end{aligned}
+  \end{equation}
+  Using
+  \[ \int_0^{2\pi} e^{im(\varphi-\varphi_0)} \d\varphi
+      = \begin{cases}
+        0,    & m\neq 0, \\
+        2\pi, & m=0.
+      \end{cases}\]
+  and $P_n^0=P_n$ together with the orthgonality property of Legendre polynomials
+  \[ \int_{-1}^1 P_m(x)P_n(x) \d x = \frac{2}{2n+1}\delta_{mn}, \]
+  we find that
+  \begin{equation}\label{eq:3.8}
+    \begin{aligned}
+      u(\rho_0,\theta_0,\varphi_0)
+      & = 2 \int_0^\pi \sum_{n=0}^\infty (2n+1) P_n(\cos\theta) P_n(\cos\theta_0)
+          \rho_0^n P_2(\cos\theta) \sin\theta \d\theta \\
+      & = 2 \sum_{n=0}^\infty (2n+1) P_n(\cos\theta_0) \rho_0^n
+          \int_0^\pi P_n(\cos\theta) P_2(\cos\theta) \sin\theta \d\theta \\
+      & = 2 \sum_{n=0}^\infty (2n+1) P_n(\cos\theta_0) \rho_0^n
+          \int_{-1}^1 P_n(x) P_2(x) \d x \\
+      & = 4 P_2(\cos\theta_0) \rho_0^2 \\
+      & = \rho_0^2 (\cos2\theta_0+1). \qedhere
+    \end{aligned}
+  \end{equation}
+\end{solution}
+
+
+\begin{exercise}
   证明二维调和函数的可去奇点定理:
   若 $A$ 是调和函数 $u(M)$ 的孤立奇点, 在 $A$ 点邻域中成立着
   \[u(M) = o\biggl(\ln\frac{1}{r_{AM}}\biggr),\]
@@ -608,28 +792,42 @@
 \end{exercise}
 
 \begin{proof}
-  设 $K$ 是以 $A$ 为圆心, 以$R$为半径的圆,并且其完全包含在$A$的那个所考察的邻域中,
-  以 $u$ 在 $K$ 上的值为边界条件, 在 $K$ 内求拉普拉斯方程的解,记为 $v$,
-  下面证明在整个 $K$ 内除了点 $A$ 外 $u=v$, 令 $w=u-v$, 则
-  \[\lim_{M\to A}\frac{w(M)}{\ln\frac{1}{r_{AM}}}=0.\]
-  此外在圆 $K$ 的边界上 $w=0$. 作函数
-  \[w_{\epsilon}(M) = \epsilon\left(\ln\frac{1}{r_{AM}}-\ln\frac{1}{R}\right).\]
-  具有如下的性质: (1)在$K$的边界上$w_{\epsilon}(M)=0$;在$K$内$w_{\epsilon}(M)>0$.
-  (2) 在$r=\delta$和$r=R$所包围的同心圆环上是调和函数,这里$\delta$是任意小的正数.
-  因为
-  \[\lim_{M\to A}\frac{w_{\epsilon}(M)}{\ln\frac{1}{r_{AM}}}=\epsilon,\]
-  所以存在 $\delta'$, 使得当 $r_{AM}<\delta'$时
-  \[\frac{w_{\epsilon}(M)}{\ln\frac{1}{r_{AM}}}>\frac{\epsilon}{2}.\]
-  又因为
-  \[\lim_{M\to A}\frac{w(M)}{\ln\frac{1}{r_{AM}}}=0,\]
-  所以存在 $\delta''$,使得当$r_{AM}<\delta''$时
-  \[\left|\frac{w(M)}{\ln\frac{1}{r_{AM}}}\right|<\frac{\epsilon}{2}\]
-  令$\delta=\min(\delta',\delta'')$,则在圆$r_{AM}=\delta$上有
-  \[\left|\frac{w(M)}{\ln\frac{1}{r_{AM}}}\right|
-    \leq\frac{w_{\epsilon}(M)}{\ln\frac{1}{r_{AM}}}\Rightarrow|w(M)|\leq w_{\epsilon}(M).\]
-  故由极值原理推论2知对于 $r=\delta$ 和 $r=R$ 所包围的同心圆环中的任意一点 $M$, 成立
-  \[|w(M)|\leq w_{\epsilon}(M).\]
-  令 $\epsilon\to0$, 即得 $w(M)=0,\forall M\in K\backslash A$.
+  Without loss of generality, we may assume that $A$ is the origin point.
+  Let $v$ be the solution of the Dirichlet problem
+  \[\begin{cases}
+    \Delta v = 0, & |x|<1, \\
+    v(x) = u(x), &  |x|=1.
+  \end{cases}\]
+  The existence of $v$ is guaranteed by the Poisson integral formula.
+  Set $M = \max_{\partial B_1} |u|$. By maximum principle, $|v|\leq M$ in $B_1$.
+  To complete the proof, it suffices to show that $v = u$ in $B_1\setminus \{0\}$.
+  Let $w = v-u$ in $B_1\setminus \{0\}$ and $M_r:=\max_{\partial B_r} |w|$ for
+  $\forall r<1$. First, we have
+  \begin{equation}\label{eq:7}
+    - M_r \frac{\log |x|}{\log r} \leq w(x) \leq M_r \frac{\log |x|}{\log r}
+  \end{equation}
+  for any $x\in \partial B_r\cup\partial B_1$.
+  Note that $w(x)$ and $\log |x|$ are harmonic in $B_1\setminus B_r$,
+  so the maximum principle implies that
+  \[ - M_r \frac{\log |x|}{\log r} \leq w(x) \leq M_r \frac{\log |x|}{\log r}, \]
+  and hence
+  \begin{equation}\label{eq:8}
+    |w(x)| \leq M_r \frac{\log |x|}{\log r},
+  \end{equation}
+  for all $x\in B_1\setminus B_r$. With
+  \begin{equation}\label{eq:9}
+    M_r = \max_{\partial B_r} |v-w| \leq \max_{\partial B_r} |v|
+      + \max_{\partial B_r} |w|
+      \leq M + \max_{\partial B_r} |u|,
+  \end{equation}
+  we then have
+  \begin{equation}\label{eq:10}
+    |w(x)| \leq M \frac{\log |x|}{\log r}
+      + \log |x| \cdot \frac{\max_{\partial B_r} |u|}{\log r},
+  \end{equation}
+  for all $x\in B_1\setminus B_r$. For each fixed $x\in B_1\setminus \{0\}$,
+  we take $r<|x|$ and let $r\to 0$ in \eqref{eq:10}
+  to obtain $w(x) = 0$ since $u(x) = o(\log |x|)$ as $|x|\to 0$.
 \end{proof}
 
 
@@ -647,38 +845,44 @@
 
 
 \begin{exercise}
-  Try to find a function $u$ such that it is harmonic in a circle of radius $\alpha$
-  and takes the following values on the boundary $C$:
+  试求一函数 $u$, 使其在半径为 $\alpha$ 的圆的内部是调和的,
+  而且在圆周 $C$ 上取下列的值:
   \begin{enumerate}[(1)]
     \item $u|_C = A\cos\varphi$;
     \item $u|_C = A + B\sin\varphi$.
   \end{enumerate}
+  其中 $A$, $B$ 都是常数.
 \end{exercise}
 
-9.解:利用泊松公式(3.13)式
-\[u(\rho_0,\varphi_0)=\frac{1}{2\pi}\int_0^{2\pi}\frac{(R^2-\rho_0^2)f(\varphi)}{R^2+\rho_0^2-2R\rho_0\cos(\varphi-\varphi_0)}\diff\varphi\]
-(1)\[\begin{split}
-u(\rho_0,\varphi_0)&=\frac{1}{2\pi}\int_0^{2\pi}\frac{(R^2-\rho_0^2)A\cos(\varphi)}{R^2+\rho_0^2-2R\rho_0\cos(\varphi-\varphi_0)}\diff\varphi\\
-&=\frac{A(R^2-\rho_0^2)}{2\pi}\int_0^{2\pi}\frac{\cos(\varphi)}{R^2+\rho_0^2-2R\rho_0\cos(\varphi-\varphi_0)}\diff\varphi\\
-&=\frac{A(R^2-\rho_0^2)}{2\pi}\int_{0}^{2\pi}\frac{\cos(\theta+\varphi_0)}{R^2+\rho_0^2-2R\rho_0\cos\theta}\diff\theta(\mbox{换元}\theta=\varphi-\varphi_0)\\
-&=\frac{A(R^2-\rho_0^2)}{2\pi}\int_{-\pi}^{\pi}\frac{\cos\theta\cos\varphi_0-\sin\theta\sin\varphi_0}{R^2+\rho_0^2-2R\rho_0\cos\theta}\diff\theta\\
-&=\frac{A(R^2-\rho_0^2)}{2\pi}\int_{-\pi}^{\pi}\frac{\cos\theta\cos\varphi_0}{R^2+\rho_0^2-2R\rho_0\cos\theta}\diff\theta\\
-&=\frac{2A(R^2-\rho_0^2)\cos\varphi_0}{2\pi}\int_0^{\pi}\frac{\cos\theta}{R^2+\rho_0^2-2R\rho_0\cos\theta}\diff\theta\\
-&=\frac{2A(R^2-\rho_0^2)\cos\varphi_0}{2\pi}\frac{\pi\rho_0}{R(R^2-\rho_0^2)}\\
-&=\frac{A}{R}\rho_0\cos\varphi_0=\frac{A}{\alpha}\rho_0\cos\varphi_0
-\end{split}\]
-故\[u(\rho,\varphi)=\frac{A}{\alpha}\rho\cos\varphi\]
-(2)因为$u|_C=A+B\sin\varphi=A+B\cos(\varphi-\frac{\pi}{2})$,故由叠加原理及(1)中结果知
-\[u(\rho,\varphi)=A+\frac{B}{\alpha}\rho\cos\left(\varphi-\frac{\pi}{2}\right)=A+\frac{B}{\alpha}\rho\sin\varphi\]
 
+\begin{solution}
+  利用泊松公式(3.13)式
+  \[u(\rho_0,\varphi_0)=\frac{1}{2\pi}\int_0^{2\pi}\frac{(R^2-\rho_0^2)f(\varphi)}{R^2+\rho_0^2-2R\rho_0\cos(\varphi-\varphi_0)}\diff\varphi\]
+  (1)\[\begin{split}
+  u(\rho_0,\varphi_0)&=\frac{1}{2\pi}\int_0^{2\pi}\frac{(R^2-\rho_0^2)A\cos(\varphi)}{R^2+\rho_0^2-2R\rho_0\cos(\varphi-\varphi_0)}\diff\varphi\\
+  &=\frac{A(R^2-\rho_0^2)}{2\pi}\int_0^{2\pi}\frac{\cos(\varphi)}{R^2+\rho_0^2-2R\rho_0\cos(\varphi-\varphi_0)}\diff\varphi\\
+  &=\frac{A(R^2-\rho_0^2)}{2\pi}\int_{0}^{2\pi}\frac{\cos(\theta+\varphi_0)}{R^2+\rho_0^2-2R\rho_0\cos\theta}\diff\theta(\mbox{换元}\theta=\varphi-\varphi_0)\\
+  &=\frac{A(R^2-\rho_0^2)}{2\pi}\int_{-\pi}^{\pi}\frac{\cos\theta\cos\varphi_0-\sin\theta\sin\varphi_0}{R^2+\rho_0^2-2R\rho_0\cos\theta}\diff\theta\\
+  &=\frac{A(R^2-\rho_0^2)}{2\pi}\int_{-\pi}^{\pi}\frac{\cos\theta\cos\varphi_0}{R^2+\rho_0^2-2R\rho_0\cos\theta}\diff\theta\\
+  &=\frac{2A(R^2-\rho_0^2)\cos\varphi_0}{2\pi}\int_0^{\pi}\frac{\cos\theta}{R^2+\rho_0^2-2R\rho_0\cos\theta}\diff\theta\\
+  &=\frac{2A(R^2-\rho_0^2)\cos\varphi_0}{2\pi}\frac{\pi\rho_0}{R(R^2-\rho_0^2)}\\
+  &=\frac{A}{R}\rho_0\cos\varphi_0=\frac{A}{\alpha}\rho_0\cos\varphi_0
+  \end{split}\]
+  故
+  \[u(\rho,\varphi)=\frac{A}{\alpha}\rho\cos\varphi\]
+
+  (2)因为$u|_C=A+B\sin\varphi=A+B\cos(\varphi-\frac{\pi}{2})$,故由叠加原理及(1)中结果知
+  \[u(\rho,\varphi)=A+\frac{B}{\alpha}\rho\cos\left(\varphi-\frac{\pi}{2}\right)=A+\frac{B}{\alpha}\rho\sin\varphi\]
+  
+\end{solution}
 
 \begin{exercise}
-  Derive the solution of the Dirichlet problem of 2-dimensional Laplace
-  equation in the half plane:
+  试用静电源像法导出二维调和方程在半平面上的 Dirichlet 问题:
   \[\begin{cases}
     \Delta u = u_{xx} + u_{yy} = 0, \quad y>0, \\
     u|_{y=0} = f(x).
   \end{cases}\]
+  的解.
 \end{exercise}
 
 \begin{solve}
@@ -693,6 +897,32 @@ u(\rho_0,\varphi_0)&=\frac{1}{2\pi}\int_0^{2\pi}\frac{(R^2-\rho_0^2)A\cos(\varph
   因此二维调和方程在半平面上的狄利克雷问题的解为:
   \[u(x,y)=\frac{1}{\pi}\int_{-\infty}^{\infty}\frac{f(\xi)y}{(\xi-x)^2+y^2}\diff\xi. \qedhere\]
 \end{solve}
+
+
+\begin{exercise}
+  设区域 $\varOmega$ 整个地包含在以原点 $O$ 为球心、$R$ 为半径的球 $K$ 中,
+  $u(r,\theta,\varphi)$ 是此区域中的调和函数, 其中 $(r,\theta,\varphi)$
+  表示 $\varOmega$ 中动点 $M$ 的球坐标. 设 $r_1=\frac{R^2}{r}$, 则点
+  $M_1=(r_1,\theta,\varphi)$ 就是点 $M$ 关于球 $K$ 的反演点, 从 $M(r,\theta,\varphi)$
+  到 $M_1(r_1,\theta,\varphi)$ 的变换称为逆矢径变换或反演变换. 以 $\varOmega_1$
+  表示 $\varOmega$ 的反演区域, 证明函数
+  \[ v(r_1,\theta,\varphi) = \frac{R}{r_1} u\biggl(\frac{R^2}{r_1},\theta,\varphi\biggr)\]
+  是区域 $\varOmega_1$ 中的调和函数 (无穷远处除外).
+\end{exercise}
+
+
+\begin{exercise}
+  利用开尔文变换及奇点可去性定理把 Dirichlet 外问题化为 Dirichlet 内问题.
+\end{exercise}
+
+\begin{exercise}
+  证明在空间一有界区域外定义的调和函数如在无穷远处趋于零, 那么它趋于零的阶数
+  至少为 $O(\frac{1}{r})$.
+\end{exercise}
+
+\begin{exercise}
+  证明处处满足平均值公式 (2.13) 的连续函数一定是调和函数.
+\end{exercise}
 
 
 \section{强极值原理,第二边值问题解的唯一性}
