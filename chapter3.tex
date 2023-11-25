@@ -569,7 +569,7 @@
     \[ \iint_{\partial D_{\epsilon}}\left(w\frac{\partial v}{\partial\vec{n}}
       -v\frac{\partial w}{\partial\vec{n}}\right)\d S = 0, \]
     i.e.,
-    \begin{equation}\label{eq:3.1}
+    \begin{equation}\label{eq:3.}
       \iint_{\partial B(M_1,\epsilon)}
       \left(w\frac{\partial v}{\partial\vec{n}}-v\frac{\partial w}{\partial\vec{n}}\right)\diff S
       = \iint_{\partial B(M_2,\epsilon)}
@@ -787,12 +787,15 @@
 \begin{exercise}
   证明二维调和函数的可去奇点定理:
   若 $A$ 是调和函数 $u(M)$ 的孤立奇点, 在 $A$ 点邻域中成立着
-  \[u(M) = o\biggl(\ln\frac{1}{r_{AM}}\biggr),\]
+  \begin{equation}
+    u(M) = o\biggl(\ln\frac{1}{r_{AM}}\biggr), \tag{$\star$}
+  \end{equation}
   则此时可以重新定义 $u(M)$ 在 $M=A$ 的值, 使它在 $A$ 点也是调和的.
 \end{exercise}
 
 \begin{proof}
-  Without loss of generality, we may assume that $A$ is the origin point.
+  Without loss of generality, we may assume that $A$ is the origin point
+  and that $(\star)$ holds in $B(0,1)$.
   Let $v$ be the solution of the Dirichlet problem
   \[\begin{cases}
     \Delta v = 0, & |x|<1, \\
@@ -838,9 +841,10 @@
 \end{exercise}
 
 \begin{proof}
-  假设$\alpha<1$,则
+  Suppose that $\alpha<1$, then
   \[\lim_{M\to A}r_{AM}u(M) = \lim_{M\to A}Nr_{AM}^{1-\alpha} = 0.\]
-  由可去奇点定理知 $A$ 是可去奇点, 矛盾, 故 $\alpha=1$.
+  By removable singularity theorem we know that $A$ is a removable singularity,
+  which leads to a contradiction.
 \end{proof}
 
 
@@ -858,23 +862,25 @@
 \begin{solution}
   利用泊松公式(3.13)式
   \[u(\rho_0,\varphi_0)=\frac{1}{2\pi}\int_0^{2\pi}\frac{(R^2-\rho_0^2)f(\varphi)}{R^2+\rho_0^2-2R\rho_0\cos(\varphi-\varphi_0)}\diff\varphi\]
-  (1)\[\begin{split}
-  u(\rho_0,\varphi_0)&=\frac{1}{2\pi}\int_0^{2\pi}\frac{(R^2-\rho_0^2)A\cos(\varphi)}{R^2+\rho_0^2-2R\rho_0\cos(\varphi-\varphi_0)}\diff\varphi\\
-  &=\frac{A(R^2-\rho_0^2)}{2\pi}\int_0^{2\pi}\frac{\cos(\varphi)}{R^2+\rho_0^2-2R\rho_0\cos(\varphi-\varphi_0)}\diff\varphi\\
-  &=\frac{A(R^2-\rho_0^2)}{2\pi}\int_{0}^{2\pi}\frac{\cos(\theta+\varphi_0)}{R^2+\rho_0^2-2R\rho_0\cos\theta}\diff\theta(\mbox{换元}\theta=\varphi-\varphi_0)\\
-  &=\frac{A(R^2-\rho_0^2)}{2\pi}\int_{-\pi}^{\pi}\frac{\cos\theta\cos\varphi_0-\sin\theta\sin\varphi_0}{R^2+\rho_0^2-2R\rho_0\cos\theta}\diff\theta\\
-  &=\frac{A(R^2-\rho_0^2)}{2\pi}\int_{-\pi}^{\pi}\frac{\cos\theta\cos\varphi_0}{R^2+\rho_0^2-2R\rho_0\cos\theta}\diff\theta\\
-  &=\frac{2A(R^2-\rho_0^2)\cos\varphi_0}{2\pi}\int_0^{\pi}\frac{\cos\theta}{R^2+\rho_0^2-2R\rho_0\cos\theta}\diff\theta\\
-  &=\frac{2A(R^2-\rho_0^2)\cos\varphi_0}{2\pi}\frac{\pi\rho_0}{R(R^2-\rho_0^2)}\\
-  &=\frac{A}{R}\rho_0\cos\varphi_0=\frac{A}{\alpha}\rho_0\cos\varphi_0
-  \end{split}\]
+  (1)
+  \begin{align*}
+    u(\rho_0,\varphi_0)
+    & = \frac{1}{2\pi}\int_0^{2\pi}\frac{(R^2-\rho_0^2)A\cos(\varphi)}{R^2+\rho_0^2-2R\rho_0\cos(\varphi-\varphi_0)}\diff\varphi \\
+    & = \frac{A(R^2-\rho_0^2)}{2\pi}\int_0^{2\pi}\frac{\cos(\varphi)}{R^2+\rho_0^2-2R\rho_0\cos(\varphi-\varphi_0)}\diff\varphi \\
+    & = \frac{A(R^2-\rho_0^2)}{2\pi}\int_{0}^{2\pi}\frac{\cos(\theta+\varphi_0)}{R^2+\rho_0^2-2R\rho_0\cos\theta}\diff\theta \qquad (\text{Let}\ \theta=\varphi-\varphi_0) \\
+    & = \frac{A(R^2-\rho_0^2)}{2\pi}\int_{-\pi}^{\pi}\frac{\cos\theta\cos\varphi_0-\sin\theta\sin\varphi_0}{R^2+\rho_0^2-2R\rho_0\cos\theta}\diff\theta \\
+    & = \frac{A(R^2-\rho_0^2)}{2\pi}\int_{-\pi}^{\pi}\frac{\cos\theta\cos\varphi_0}{R^2+\rho_0^2-2R\rho_0\cos\theta}\diff\theta \\
+    & = \frac{2A(R^2-\rho_0^2)\cos\varphi_0}{2\pi}\int_0^{\pi}\frac{\cos\theta}{R^2+\rho_0^2-2R\rho_0\cos\theta}\diff\theta \\
+    & = \frac{2A(R^2-\rho_0^2)\cos\varphi_0}{2\pi}\frac{\pi\rho_0}{R(R^2-\rho_0^2)} \\
+    & = \frac{A}{R}\rho_0\cos\varphi_0=\frac{A}{\alpha}\rho_0\cos\varphi_0.
+  \end{align*}
   故
-  \[u(\rho,\varphi)=\frac{A}{\alpha}\rho\cos\varphi\]
+  \[u(\rho,\varphi)=\frac{A}{\alpha}\rho\cos\varphi.\]
 
   (2)因为$u|_C=A+B\sin\varphi=A+B\cos(\varphi-\frac{\pi}{2})$,故由叠加原理及(1)中结果知
   \[u(\rho,\varphi)=A+\frac{B}{\alpha}\rho\cos\left(\varphi-\frac{\pi}{2}\right)=A+\frac{B}{\alpha}\rho\sin\varphi\]
-  
 \end{solution}
+
 
 \begin{exercise}
   试用静电源像法导出二维调和方程在半平面上的 Dirichlet 问题:
@@ -910,19 +916,109 @@
   是区域 $\varOmega_1$ 中的调和函数 (无穷远处除外).
 \end{exercise}
 
+\begin{proof}
+  Recall that in spherical coordinate system, the Laplacian can be expressed as
+  \[ \Delta u = \frac{\partial^2 u}{\partial r^2} + \frac{2}{r}\frac{\partial u}{\partial r}
+      + \frac{1}{r^2\sin\theta} \frac{\partial}{\partial\theta}\biggl(\sin\theta \frac{\partial u}{\partial \theta}\biggr)
+      + \frac{1}{r^2\sin^2\theta} \frac{\partial^2 u}{\partial\varphi^2}. \]
+  Let
+  \[ v(r,\theta,\varphi) := \frac{R}{r} u\biggl(\frac{R^2}{r},\theta,\varphi\biggr), \]
+  and denote $x = (R^2/r,\theta,\varphi)$, then we can compute directly to get
+  \begin{align*}
+    \Delta v(r,\theta,\varphi)
+    & = \frac{R^5}{r^5} u_{rr}(x) + \frac{2R^3}{r^4} u_r(x)
+        + \frac{1}{r^2\sin\theta} \frac{\partial}{\partial\theta}\biggl(\sin\theta \frac{R}{r} \frac{\partial u}{\partial \theta}\biggr)
+        + \frac{1}{r^2\sin^2\theta} \frac{R}{r} \frac{\partial^2 u}{\partial\varphi^2} \\
+    & = \frac{R^5}{r^5} \biggl(u_{rr}(x) + \frac{2r}{R^2} u_r(x)
+          + \frac{r^2}{R^4\sin\theta} \frac{\partial}{\partial\theta}\biggl(\sin\theta\frac{\partial u}{\partial\theta}\biggr)
+          + \frac{r^2}{R^4\sin^2\theta} \frac{\partial^2 u}{\partial \varphi^2}\biggr) \\
+    & = \Bigl(\frac{R}{r}\Bigr)^5 \Delta u(x) = 0. \qedhere
+  \end{align*}
+\end{proof}
+
 
 \begin{exercise}
   利用开尔文变换及奇点可去性定理把 Dirichlet 外问题化为 Dirichlet 内问题.
 \end{exercise}
 
+\begin{proof}
+  Let $\varOmega\subset\mathbb{R}^3$ be a bounded domain and
+  $\varOmega\supset B(0,R)$ for some $R>0$.
+  Consider the following Dirichlet outer problem
+  \begin{equation}\label{eq:3.12}
+    \begin{cases}
+      \Delta u = 0, & \text{in}\ \varOmega^c, \\
+      u = f, & \text{on}\ \partial\varOmega.
+    \end{cases}
+\end{equation}
+
+  Let $v$ be the Kelvin transform of $u$.
+  Suppose $\lim_{r\to\infty} u(r,\theta,\varphi)=0$, then
+  \[ \lim_{r\to 0} r\cdot v(r,\theta,\varphi)
+      = \lim_{r\to 0} R u\biggl(\frac{R^2}{r},\theta,\varphi\biggr) = 0. \]
+  By removable singularity theorem we know $v$ is harmonic in $\widetilde{\varOmega^c}$,
+  which is the reflection area of $\varOmega^c$. Hence problem~\eqref{eq:3.12}
+  can be converted into
+  \begin{equation}\label{eq:3.13}
+    \begin{cases}
+      \Delta v = 0, & \text{in}\ \widetilde{\varOmega^c}, \\
+      v = \mathcal{K}[f], & \text{on}\ \partial\widetilde{\varOmega^c}.
+    \end{cases}
+  \end{equation}
+\end{proof}
+
+
 \begin{exercise}
-  证明在空间一有界区域外定义的调和函数如在无穷远处趋于零, 那么它趋于零的阶数
+  证明在空间一有界区域外定义的调和函数 $u$ 在无穷远处趋于零, 那么它趋于零的阶数
   至少为 $O(\frac{1}{r})$.
 \end{exercise}
+
+\begin{proof}
+  Let $v$ be the Kelvin transform of $u$.
+  Since $u$ tends to zero at infinity, we know that the origin point is
+  a removable singularity of $v$, so
+  \[ \lim_{r\to 0} v = \lim_{r\to 0} \frac{R}{r} u\biggl(\frac{R^2}{r},\theta,\varphi\biggr) <\infty, \]
+  which means
+  \[ u\biggl(\frac{R^2}{r},\theta,\varphi\biggr) = O(r) \qquad \text{as}\ r\to 0. \]
+  In other words,
+  \[ u(r,\theta,\varphi) = O(1/r) \qquad \text{as}\ r\to\infty. \qedhere \]
+\end{proof}
 
 \begin{exercise}
   证明处处满足平均值公式 (2.13) 的连续函数一定是调和函数.
 \end{exercise}
+
+\begin{proof}
+  See \cite[Theorem~1.8]{han_elliptic_2011}.
+  Choose a test function $\varphi(x)=\varphi(|x|)\in C_0^\infty(B_1(0))$ and such that
+  $\int_{B_1(0)} \varphi =1$. Define
+  \[ \varphi_\varepsilon(x) = \frac{1}{\varepsilon^n} \varphi\biggl(\frac{x}{\varepsilon}\biggr)
+      \in C_0^\infty(B_{\varepsilon}(0)). \]
+  For any $x\in\Omega$, take $\varepsilon<\dist(x,\partial\Omega)$. Then we have
+  \begin{align*}
+    \int_\Omega u(y) \varphi_\varepsilon(y-x) \d y
+    & = \int_{\Omega-\{x\}} u(x+y) \varphi_\varepsilon(y) \d y \\
+    & = \int_{|y|<\varepsilon} u(x+y) \varphi_\varepsilon(y) \d y \\
+    & = \int_{|y|<\varepsilon} \frac{1}{\varepsilon^n} u(x+y)
+        \varphi\biggl(\frac{y}{\varepsilon}\biggr) \d y \\
+    & = \int_{|z|<1} u(x+\varepsilon z) \varphi(z) \d z \\
+    & = \int_0^1 \int_{\partial B_r} u(x+\varepsilon z) \varphi(z) \d S_z \d r \qquad (\text{let }z=rw)\\
+    & = \int_0^1 r^{n-1} \int_{\partial B_1} u(x+\varepsilon rw) \varphi(rw) \d S_w \d r
+        \qquad (\varphi\ \text{is radial}) \\
+    & = \int_0^1 r^{n-1} \varphi(r) \int_{\partial B_1} u(x+\varepsilon rw) \d S_w \d r
+        \qquad (u\ \text{satisfies MVP}) \\
+    & = \int_0^1 r^{n-1} \varphi(r) \omega_n u(x) \d r \\
+    & = u(x),
+  \end{align*}
+  i.e., $u(x) = (u*\varphi)(x)$ which means that $u$ is in fact a smooth function.
+  Now using the MVP and divergence theorem we have
+  \begin{align*}
+    \int_{B_r(x)} \Delta u
+    & = r^{n-1} \frac{\partial}{\partial r}\int_{|w|=1} u(x+rw) \d S_w \\
+    & = r^{n-1} \frac{\partial}{\partial r}\bigl(\omega_n u(x)\bigr) = 0
+  \end{align*}
+  for any $B_r(x)\subset\Omega$. Hence $\Delta u = 0$.
+\end{proof}
 
 
 \section{强极值原理,第二边值问题解的唯一性}
@@ -996,10 +1092,50 @@
   设 $\varOmega$ 为 $\mathbb{R}^3$ 中有界区域, 边界为 $\varGamma$, $u$ 为定解问题
   \[\begin{cases}
     - \Delta u + cu = f, \\
-    \biggl(\frac{\partial u}{\partial \bm{n}} + \sigma u\biggr)\biggm|_{\partial\varOmega} = g
+    \displaystyle\biggl(\frac{\partial u}{\partial \bm{n}} + \sigma u\biggr)\biggm|_{\partial\varOmega} = g
   \end{cases}\]
   的解, 其中 $c,f,g,\sigma>0$, 证明在 $\closure{\varOmega}$ 上 $u>0$.
 \end{exercise}
+
+\begin{proof}
+  Let $x_0$ be the minimum point of $u$ in $\overline{\varOmega}$.
+  \begin{enumerate}[(1)]
+    \item If $x_0\in\varOmega$ and $u(x_0)\leq 0$, then $-\Delta u(x_0)\leq 0$, $cu(x_0)\leq 0$,
+      which is contradictory to $f>0$;
+    \item If $x_0\in\partial\varOmega$ and $u(x_0)\leq 0$,
+      then $\frac{\partial u(x_0)}{\partial\bm{n}}\leq 0$ and $\sigma u(x_0)\leq 0$,
+      which is contradictory to $g>0$.
+  \end{enumerate}
+  Therefore $u>0$ in $\overline{\varOmega}$.
+\end{proof}
+
+
+\begin{exercise}
+  举例说明: 当 $\sigma>0$ 不成立时 (但 $\sigma$ 不恒等于零), 调和方程满足边界条件
+  $\bigl(\frac{\partial u}{\partial\bm{n}}+\sigma u\bigr)\big|_{\partial\varOmega}=g$
+  的解可以不唯一.
+\end{exercise}
+
+\begin{proof}
+  It suffices to show that there exists non-trivial solution to the following problem
+  \[\begin{cases}
+    \Delta u = 0, & \text{in}\ \varOmega, \\
+    \frac{\partial u}{\partial \bm{n}}+\sigma u = 0, & \text{on}\ \partial\varOmega,
+  \end{cases}\]
+  where $\varOmega = B(0,R')\setminus\overline{B(0,R)}$ and $R'>R>0$ are constants.
+  Let $u = 1/r$. Obviously $u$ is harmonic in $\varOmega$ and
+  \[\frac{\partial u}{\partial \bm{n}} =
+  \begin{cases}
+     -\frac{1}{R'^2}, & \text{on}\ \partial B(0,R'), \\
+     \frac{1}{R^2}, & \text{on}\ \partial B(0,R).
+  \end{cases}\]
+  Define
+  \[ \sigma = \begin{cases}
+    \frac{1}{R'}, & \text{on}\ \partial B(0,R'), \\
+    -\frac{1}{R}, & \text{on}\ \partial B(0,R),
+  \end{cases}\]
+  then $\bigl(\frac{\partial u}{\partial \bm{n}}+\sigma u\bigr)\big|_{\partial\varOmega} = 0$.
+\end{proof}
 
 
 \begin{exercise}[6]
@@ -1017,52 +1153,59 @@
 \end{exercise}
 
 \begin{proof}
+  See \cite[Hopf's Lemma in \S6.4.2]{evans_partial_2010} and \cite[Theorem~2.5 \& Corollary~2.9]{han_elliptic_2011}.
   若 $u$ 在球面上一点 $M_0$ 取非正的最小值, 即 $u(M_0)\leq 0$,
   且对球内任一点 $M$ 有 $u(M)>u(M_0)$, 因此在 $M_0$ 点有
   \[\frac{\partial u}{\partial\bm{\nu}}\geq 0.\]
   现在需要证明上式中的等号不能成立, 构造函数
-  \[v(x) = \e^{-a\sum_{i=1}^nx_i^2} - \e^{-aR^2} = \e^{-a|x|^2} - \e^{-aR^2},\]
-  其中 $a$ 为待定的正常数, 则 $v$ 满足如下性质:
+  \[v(x) = e^{-\lambda|x|^2} - e^{-\lambda R^2},\]
+  其中 $\lambda$ 为待定的正常数, 则 $v$ 满足如下性质:
   \begin{enumerate}[(1)]
     \item 在球面 $|x|=R$ 上 $v=0$;
-    \item 通过适当选取 $a$, 在区域 $D=\{ R/2 \leq |x| \leq R\}$ 内
+    \item 通过适当选取 $\lambda$, 可以使得在区域 $D=\{ R/2 \leq |x| \leq R\}$ 内
       \[Lv = \sum_{i,j=1}^na_{ij}\frac{\partial^2v}{\partial x_i\partial x_j}
         + \sum_{i=1}^nb_i\frac{\partial v}{\partial x_i}+cv > 0.\]
       事实上,因为
-      \[\frac{\partial v}{\partial x_i} = -2a x_i \e^{-a|x|^2},\]
-      \[\frac{\partial^2v}{\partial x_i\partial x_j} = 4a^2 x_i x_j 
-        \e^{-a|x|^2},\quad i\neq j,\]
-      \[\frac{\partial^2v}{\partial x_i^2} = 4a^2 x_i^2 \e^{-a|x|^2}
-        -2a \e^{-a|x|^2}.\]
+      \begin{align*}
+        \frac{\partial v}{\partial x_i} & = -2\lambda x_i e^{-\lambda |x|^2}, \\
+        \frac{\partial^2v}{\partial x_i\partial x_j} & = 4\lambda^2 x_i x_j 
+          e^{-\lambda |x|^2},\quad i\neq j, \\
+        \frac{\partial^2v}{\partial x_i^2} & = 4\lambda^2 x_i^2 e^{-\lambda |x|^2}
+          -2\lambda e^{-\lambda |x|^2},
+      \end{align*}
       所以
       \begin{align*}
       Lv
-      & = 4a^2\left(\sum_{i,j=1}^na_{ij}x_ix_j\right) \e^{-a|x|^2}
-        - 2a \sum_{i=1}^n (b_ix_i + a_{ii}) \e^{-a|x|^2} \\
-      & \quad + c \left(\e^{-a|x|^2} - \e^{-aR^2}\right) \\
-      & = \e^{-a|x|^2} \biggl\{ 4a^2\sum_{i,j=1}^n a_{ij} x_i x_j
-        - 2a\sum_{i=1}^n (b_i x_i + a_{ii}) + c \left(1 - \e^{-a(R^2-|x|^2)}\right)\biggr\}
+      & = 4\lambda^2\biggl(\sum_{i,j=1}^na_{ij}x_ix_j\biggr) e^{-\lambda |x|^2}
+          - 2\lambda \sum_{i=1}^n (b_ix_i + a_{ii}) e^{-\lambda |x|^2} \\
+      & \quad + c \Bigl(e^{-\lambda |x|^2} - e^{-\lambda R^2}\Bigr) \\
+      & = e^{-\lambda |x|^2} \biggl( 4\lambda^2\sum_{i,j=1}^n a_{ij} x_i x_j
+          - 2\lambda\sum_{i=1}^n (b_i x_i + a_{ii}) + c \left(1 - e^{-\lambda(R^2-|x|^2)}\right)\biggr).
       \end{align*}
       因为 $\sum_{i,j=1}^n a_{ij} x_i x_j \geq \alpha |x|^2 \geq \frac{\alpha R^2}{4} > 0$,
-      故当 $a$ 充分大时在区域 $D$ 内 $Lv > 0$.
+      故当 $\lambda$ 充分大时在区域 $D$ 内 $Lv > 0$.
     \item $v$ 沿球的半径方向$\frac{\partial v}{\partial r}<0$.
         于是 $\frac{\partial v}{\partial\bm{\nu}} > 0$.
   \end{enumerate}
-
+  \medskip
   作函数
   \[\tilde{u}(M)=\varepsilon v(M)+u(M_0).\]
   在 $M_0$ 点有 $\frac{\partial\tilde{u}}{\partial\bm{\nu}}
   = \varepsilon\frac{\partial v}{\partial\bm{\nu}}>0$,
   令函数
-  \[w(M) := u(M)-\tilde{u}(M) = u(M)-\varepsilon v(M)-u(M_0).\]
+  \begin{equation}\label{eq:3.14}
+    w(M) := u(M)-\tilde{u}(M) = u(M)-\varepsilon v(M)-u(M_0).
+  \end{equation}
   
   在区域 $D$ 上考察 $w(M)$:
+  \medskip
   \begin{enumerate}[(1)]
     \item $Lw=Lu-\varepsilon Lv-Lu(M_0)=-\varepsilon Lv-cu(M_0)<0$;
     \item 在 $|x| = R/2$ 上由于 $u(M)>u(M_0)$,
       取 $\varepsilon$ 足够小可使得 $w(M)>0$;
     \item 在 $|x| = R$ 上 $v=0$, $u(M)>u(M_0)$, 故 $w(M)\geq 0$.
   \end{enumerate}
+  \medskip
   现在证明在整个区域 $D$ 上 $w\geq 0$, 假设存在 $M_1\in D$, 使得 $w(M_1) < 0$, 于是
   \[cw(M_1)\geq 0,\quad \frac{\partial w}{\partial x_i}\bigg|_{M_1} = 0,
     \quad\left(\frac{\partial^2w}{\partial x_i\partial x_j}\right)\bigg|_{M_1}\text{ 非负定}.\]
@@ -1072,6 +1215,6 @@
     \bigg|_{M_1}g_{ri}g_{rj}\geq 0,\]
   因此 $Lw|_{M_1}\geq 0$, 与(1)矛盾, 因此在 $D$ 内 $w(M)\geq w(M_0)$, 故
   \[\frac{\partial w}{\partial\bm{\nu}}\bigg|_{M_0} \geq 0.\]
-  从而
-  \[\frac{\partial u}{\partial\bm{\nu}} > 0. \qedhere\]
+  从而与 \eqref{eq:3.14} 结合得
+  \[\frac{\partial u}{\partial\bm{\nu}}\bigg|_{M_0} > 0. \qedhere\]
 \end{proof}
