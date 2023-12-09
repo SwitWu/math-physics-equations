@@ -77,7 +77,7 @@
 \begin{solve}
   (1) $u_{xx}+4u_{xy}+5u_{yy}+u_x+2u_y=0$.
   $\Delta=4-5=-1<0$, 故方程为椭圆型.
-  特征方程为 $\diff y^2-4\diff x\diff y+5\diff x^2=0\Rightarrow\frac{\diff y}{\diff x}=2\pm i\Rightarrow y=(2\pm i)x+C$, 取$y=(2+i)x+C$, 即$y-2x-ix=C$. 令
+  特征方程为 $\d y^2-4\d x\d y+5\d x^2=0\Rightarrow\frac{\d y}{\d x}=2\pm i\Rightarrow y=(2\pm i)x+C$, 取$y=(2+i)x+C$, 即$y-2x-ix=C$. 令
   \[\begin{cases}
   \xi=2x-y, \\
   \eta=x.
@@ -95,7 +95,7 @@
 
   (2) $x^2u_{xx}+2xyu_{xy}+y^2u_{yy}=0$.
   $\Delta=x^2y^2-x^2y^2=0$, 故方程为抛物型.
-  特征方程为 $x^2\diff y^2-2xy\diff x\diff y+y^2\diff x^2=0\Rightarrow y=Cx$. 令
+  特征方程为 $x^2\d y^2-2xy\d x\d y+y^2\d x^2=0\Rightarrow y=Cx$. 令
   \[\begin{cases}
   \xi = \frac{y}{x}, \\
   \eta = x.
@@ -116,10 +116,10 @@
 
   (3) $u_{xx}+yu_{yy}=0$.
   $\Delta=-y$, 故 $y>0$时为椭圆型, $y=0$时为抛物型, $y<0$ 时为双曲型.
-  特征方程为 $\diff y^2+y\diff x^2=0$.
+  特征方程为 $\d y^2+y\d x^2=0$.
 
-  (i) $y>0$ 时, $\frac{\diff y}{\diff x}=\pm\sqrt{y}i$,
-  取 $\frac{\diff y}{\diff x}=\sqrt{y}i\Rightarrow 2\sqrt{y}-ix=C$,令
+  (i) $y>0$ 时, $\frac{\d y}{\d x}=\pm\sqrt{y}i$,
+  取 $\frac{\d y}{\d x}=\sqrt{y}i\Rightarrow 2\sqrt{y}-ix=C$,令
   \[\begin{cases}
   \xi = 2\sqrt{y}, \\
   \eta=-x.
@@ -136,7 +136,7 @@
 
   (ii) $y=0$ 时, $u_{xx}=0$即为标准形式.
 
-  (iii) $y<0$ 时, $\frac{\diff y}{\diff x}=\pm\sqrt{-y}\Rightarrow 2\sqrt{-y}\pm x=C$,令
+  (iii) $y<0$ 时, $\frac{\d y}{\d x}=\pm\sqrt{-y}\Rightarrow 2\sqrt{-y}\pm x=C$,令
   \[\begin{cases}
   \xi = 2\sqrt{-y}+x, \\
   \eta = 2\sqrt{-y}-x.
@@ -153,7 +153,7 @@
 
   (4) $u_{xx}-2\cos xu_{xy}-(3+\sin^2x)u_{yy}-yu_y=0$.
   $\Delta=\cos^2x+3+\sin^2x=4>0$, 故方程为双曲型.
-  特征方程为 $\diff y^2+2\cos x\diff x\diff y-(3+\sin^2x)\diff x^2\Rightarrow\frac{\diff y}{\diff x}=-\cos x\pm2\Rightarrow y+\sin x\pm2x=C\Rightarrow y+\sin x\pm 2x=C$.
+  特征方程为 $\d y^2+2\cos x\d x\d y-(3+\sin^2x)\d x^2\Rightarrow\frac{\d y}{\d x}=-\cos x\pm2\Rightarrow y+\sin x\pm2x=C\Rightarrow y+\sin x\pm 2x=C$.
   令
   \[\begin{cases}
   \xi = y+\sin x+2x, \\
@@ -173,7 +173,7 @@
 
   (5) $(1+x^2)u_{xx}+(1+y^2)u_{yy}+xu_x+yu_y=0$.
   $\Delta=-(1+x^2)(1+y^2)<0$,故方程为椭圆型.
-  特征方程为$(1+x^2)\diff y^2+(1+y^2)\diff x^2=0\Rightarrow\frac{\diff y}{\diff x}=\pm\sqrt{\frac{1+y^2}{1+x^2}}i\Rightarrow\frac{\diff y}{\sqrt{1+y^2}}=\pm i\frac{\diff x}{\sqrt{1+x^2}}\Rightarrow\ln(y+\sqrt{1+y^2})\pm i\ln(x+\sqrt{1+x^2})=C$\\
+  特征方程为$(1+x^2)\d y^2+(1+y^2)\d x^2=0\Rightarrow\frac{\d y}{\d x}=\pm\sqrt{\frac{1+y^2}{1+x^2}}i\Rightarrow\frac{\d y}{\sqrt{1+y^2}}=\pm i\frac{\d x}{\sqrt{1+x^2}}\Rightarrow\ln(y+\sqrt{1+y^2})\pm i\ln(x+\sqrt{1+x^2})=C$\\
   令
   \[\begin{cases}
   \xi = \ln(y+\sqrt{1+y^2}), \\
@@ -393,7 +393,7 @@
 \begin{proof}
   利用分离变量法得该初边值问题的解为
   \[u(x,t) = \sum_{n=1}^{\infty}C_ne^{-\frac{n^2\pi^2a^2}{l^2}t}\sin\frac{n\pi}{l}x,\]
-  其中 $C_n=\frac{2}{l}\int_0^l\varphi(x)\sin\frac{n\pi}{l}x\diff x$,
+  其中 $C_n=\frac{2}{l}\int_0^l\varphi(x)\sin\frac{n\pi}{l}x\d x$,
   $|C_n|\leq M$, 只需要证明级数逐项微分任意次后仍然是绝对且一致收敛即可,
   对 $t$ 微分 $\alpha$ 次, 对 $x$ 微分 $\beta$ 次需要级数
   \[\sum_{n=1}^{\infty}C_n\left(-\frac{n^2\pi^2a^2}{l^2}\right)^{\alpha}\left(\frac{n\pi}{l}\right)^{\beta}\left(\sin\frac{n\pi}{l}x\right)^{(\beta)}e^{-\frac{n^2\pi^2a^2}{l^2}t}\]
@@ -406,31 +406,67 @@
 \section{先验估计}
 
 \begin{exercise}
-  设 $u(x_1,\cdots,x_n)$ 在区域 $\Omega$ 上非负, 且满足不等式
-  \[\sum_{i,j=1}^n a_{ij}(x) u_{x_ix_j} + \sum_{i=1}^n b_i(x) u_{x_i} + c(x)u\geq 0,\]
+  设 $u(x_1,\ldots,x_n)$ 在区域 $\Omega$ 上非负, 且满足不等式
+  \[Lu = \sum_{i,j=1}^n a_{ij}(x) u_{x_ix_j} + \sum_{i=1}^n b_i(x) u_{x_i} + c(x)u\geq 0,\]
   其中 $a_{ij}$, $b_i$, $c$ 在 $\overline{\Omega}$ 上具有一阶连续偏导数,
   满足 (4.38) 式, 且 $c(x)\leq 0$,
   证明极值原理 $\max_{\overline{\Omega}}u=\max_{\Gamma}u$ 成立.
 \end{exercise}
 
 \begin{proof}
-  See \emph{Elliptic Partial Differential Equations} (Han Qing \& Lin Fanghua) 
-  Lemma 2.1 and Theorem 2.3.
+  See \cite[Lemma~2.1 \& Theorem~2.3]{han_elliptic_2011}.
+
+  Firstly, we suppose that $Lu >0$ in $\Omega$ and $u$ attains its nonnegative
+  maximum at $x_0\in\Omega$. Then $Du(x_0) = 0$ and $B = D^2u(x_0)$
+  is seminegative definite. By the ellipticity condition
+  the matrix $A = (a_{ij}(x_0))$ is positive definite.
+  Hence the matrix $AB$ is seminegative definite with a nonpositive trace,
+  that is, $\sum a_{ij}(x_0) D_{ij}u(x_0)\leq 0$. This implies $Lu(x_0)\leq 0$,
+  which is a contradiction.
+
+  Then we consider the general case $Lu\geq 0$.
+  For any $\varepsilon>0$, let $w(x) = u(x) + \varepsilon e^{\lambda x_1}$ with $\lambda$
+  to be determined. Then
+  \[ Lw = Lu + \varepsilon e^{\lambda x_1} \bigl(a_{11}\lambda^2
+      + b_1\lambda +c\bigr). \]
+  Since $b_1$ and $c$ are bounded and $a_{11}(x)\geq\alpha>0$
+  for any $x\in\Omega$, by choosing $\lambda>0$ large enough
+  we get
+  \[ a_{11}(x)\lambda^2 + b_1(x)\lambda + c(x) >0 \quad \text{for any}\ x\in\Omega.\]
+  This implies $Lw>0$ in $\Omega$. By the first case we know that
+  $w$ attains its nonnegative maximum only at $\partial\Omega$, i.e.,
+  \[ \sup_{\Omega} w \leq \sup_{\partial\Omega} w. \]
+  Thus
+  \[ \sup_{\Omega} u \leq \sup_{\Omega} w
+      \leq \sup_{\partial\Omega} u
+        + \varepsilon \sup_{x\in\partial\Omega} e^{\alpha x_1}. \]
+  We finish the proof by letting $\varepsilon\to 0$.
 \end{proof}
 
 
 \begin{exercise}[3]
   在 $Q_T = (0,l)\times (0,T)$ 中考察下列初边值问题
-  \begin{align*}
-    & u_{tt} - a^2 u_{xx} + b(x,t)u_x + b_0(x,t)u_x + c(x,t)u = f(x,t), \\
-    & u|_{x=0} = 0,\qquad (u_x + ku)|_{x=l} = 0, \\
-    & u|_{t=0} = \varphi(x), \qquad u_t|_{t=0} = \psi(x),
-  \end{align*}
+  \begin{align}
+    & u_{tt} - a^2 u_{xx} + b(x,t)u_x + b_0(x,t)u_t + c(x,t)u = f(x,t), \tag{$\star$} \\
+    & u|_{x=0} = 0,\qquad (u_x + ku)|_{x=l} = 0, \notag \\
+    & u|_{t=0} = \varphi(x), \qquad u_t|_{t=0} = \psi(x), \notag
+  \end{align}
   证明其解的唯一性及稳定性.
 \end{exercise}
 
 \begin{proof}
-  令
+  We suppose $k>0$. Define the energy functional
+  \[ E(t) = \frac12 \int_0^l (u_t^2 + a^2 u_x^2) \d x + \frac12 ka^2 u^2(l,t). \]
+  Multiplying both sides of the equation $(\star)$ by $u_t$ and integrating
+  from $0$ to $l$ with respect to $x$, we get
+  \begin{align*}
+    \frac{\d E(t)}{\d t}
+    & = - \int_0^l (bu_xu_t + b_0 u_t^2 + cuu_t) \d x
+        + \int_0^l fu_t \d x \\
+    & \leq C\int_0^l (u_t^2 + u_x^2 + f^2) \d x \\
+    & \leq C\biggl(E(t) + \int_0^l f^2 \d x\biggr),
+  \end{align*}
+  from which we can obtain the uniqueness and stability of the solution immediately.
 \end{proof}
 
 
@@ -442,32 +478,34 @@
 \end{exercise}
 
 \begin{proof}
-  任取 $T>0$,下面在$[0,T]$上建立能量估计式, 记$E(t)=\int_{\Omega}u^2(x,t)\diff x$,
-  则$E'(t)=2\int_{\Omega}uu_t\diff x$,代入原方程得
-  \[E'(t)=2\int_{\Omega}u\Delta u\diff x-2\sum_{i=1}^n\int_{\Omega}b_iuu_{x_i}\diff x-2\int_{\Omega}cu^2\diff x+2\int_{\Omega}uf\diff x\]
-  由格林公式及边界条件得
-  \[\begin{split}
-  \int_{\Omega}u\Delta u\diff x&=\int_{\Omega}\sum_{k=1}(uu_{x_k})_{x_k}\diff x-\int_{\Omega}|\nabla u|^2\diff x\\
-  &=\int_{\partial\Omega}\sum_{k=1}^nuu_{x_k}\cos(\vec{n},x_k)\diff x-\int_{\Omega}|\nabla u|^2\diff x\\
-  &=\int_{\partial\Omega}u\frac{\partial u}{\partial\vec{n}}\diff x-\int_{\Omega}|\nabla u|^2\diff x=-\int_{\Omega}|\nabla u|^2\diff x
-  \end{split}\]
-  再设$|b(x,t)|,|c(x,t)|$在$\overline{R}_T=\overline{\Omega}\times[0,T]$上的最大值为$M$,记$C_0=\frac{M}{2}\max(1,\frac{1}{a^2})$,利用加权平均值不等式$2ab\leq\epsilon a^2+\frac{1}{\epsilon}b^2(\epsilon>0)$得
-  \[\begin{split}
-  E'(t)&=-2\int_{\Omega}|\nabla u|^2\diff x+2M\sum_{i=1}^n\int_{\Omega}|uu_{x_i}|\diff x+2M\int_{\Omega}u^2\diff x+2\int_{\Omega}|uf|\diff x\\
-  &\leq-2\int_{\Omega}|\nabla u|^2\diff x+M\left(\epsilon\int_{\Omega}|\nabla u|^2\diff x+\frac{n}{\epsilon}\int_{\Omega}u^2\diff x\right)+(2M+1)\int_{\Omega}u^2\diff x+\int_{\Omega}f^2\diff x
-  \end{split}\]
-  取$\epsilon=\frac{1}{M}$,并记$\widehat{C}=nM^2+2M+1$,则
-  \[\begin{split}
-  E'(t)&\leq-\int_{\Omega}|\nabla u|^2\diff x+(nM^2+2M+1)\int_{\Omega}u^2\diff x+\int_{\Omega}f^2\diff x\\
-  &\leq-\int_{\Omega}|\nabla u|^2\diff x+\widehat{C}\int_{\Omega}u^2\diff x+\int_{\Omega}f^2\diff x
-  \end{split}\]
-  由Gronwall不等式得
-  \[\begin{split}
-  E(t)&\leq e^{\widehat{C}t}E(0)-\int_0^te^{\widehat{C}(t-s)}\diff s\int_{\Omega}|\nabla u|^2\diff x+\int_0^te^{\widehat{C}(t-s)}\diff s\int_{\Omega}f^2\diff x\\
-  &\leq e^{\widehat{C}t}E(0)-\int_0^t\diff s\int_{\Omega}|\nabla u|^2\diff x+\int_0^te^{\widehat{C}(t-s)}\diff s\int_{\Omega}f^2\diff x
-  \end{split}\]
-  故
-  \[\int_{\Omega}u^2(x,t)\diff x+\int_0^t\diff s\int_{\Omega}|\nabla u|^2\diff x\leq e^{\widehat{C}t}\left(\int_{\Omega}\varphi^2(x)\diff x+\int_0^t\diff s\int_{\Omega}f^2\diff x\right)\]
+  Choose any $T>0$ and we establish the energy estimates in $[0,T]$.
+  Let $E(t) = \int_{\Omega} u^2(x,t) \d x$. Then
+  \begin{align*}
+    E'(t)
+    & = 2\int_{\Omega} uu_t \d x \\
+    & = 2\int_{\Omega}u\Delta u\d x
+        - 2\sum_{i=1}^n\int_{\Omega}b_iuu_{x_i}\d x
+        - 2\int_{\Omega}cu^2\d x+2\int_{\Omega}uf\d x.
+  \end{align*}
+  By Green's formula we have
+  \[ \int_{\Omega} u\Delta u \d x = -\int_{\Omega}|\nabla u|^2\d x. \]
+  Let $M$ be an upper bound of $|b(x,t)|$ and $|c(x,t)|$
+  in $\overline{\Omega}\times [0,T]$. Then we have
+  \begin{align*}
+    E'(t)
+    & \leq -2\int_{\Omega}|\nabla u|^2\d x
+      + 2M \sum_{i=1}^n\int_{\Omega}|uu_{x_i}|\d x
+      + 2M \int_{\Omega}u^2\d x+2\int_{\Omega}|uf|\d x \\
+    & \leq -2\int_{\Omega}|\nabla u|^2\d x
+        + M \left(\epsilon\int_{\Omega}|\nabla u|^2\d x
+        + \frac{n}{\epsilon}\int_{\Omega}u^2\d x\right) \\
+    & \qquad\qquad + (2M+1)\int_{\Omega}u^2\d x+\int_{\Omega}f^2\d x.
+  \end{align*}
+  Take $\epsilon = \frac{2}{M}$ and let $C = nM^2/2 + 2M + 1$ to have
+  \[ E'(t) \leq CE(t) + \int_{\Omega} f^2 \d x. \]
+  By Gronwall's inequality, it follows that
+  \[ E(t) \leq e^{Ct}E(0) + \int_0^t e^{C(t-s)} \int_{\Omega} f^2 \d x\d s\]
+  for all $0\leq t\leq T$.
 \end{proof}
 
 
@@ -482,30 +520,23 @@
 
 \begin{proof}
   在方程两边同时乘以 $u$ 并在 $\Omega$ 上积分得
-  \[\int_{\Omega}fu\diff x 
-    = \int_{\Omega}\left(cu^2+\sum_{i=1}^nb_iu_{x_i}u+u\Delta u\right)\diff x.\]
-  利用格林公式及边界条件得
-  \[\begin{split}
-  \int_{\Omega}u\Delta u\diff x
-  &=\int_{\Omega}\sum_{k=1}^n(uu_{x_k})_{x_k}\diff x-\int_{\Omega}|\nabla u|^2\diff x\\
-  &=\int_{\partial\Omega}\sum_{k=1}^nuu_{x_k}\cos(\vec{n},x_k)\diff x-\int_{\Omega}|\nabla u|^2\diff x\\
-  &=\int_{\partial\Omega}u\frac{\partial u}{\partial\vec{n}}\diff x-\int_{\Omega}|\nabla u|^2\diff x=-\int_{\Omega}|\nabla u|^2\diff x
-  \end{split}\]
+  \[\int_{\Omega}fu\d x 
+    = \int_{\Omega}\left(cu^2+\sum_{i=1}^nb_iu_{x_i}u+u\Delta u\right)\d x.\]
   故
-  \[\int_{\Omega}fu\diff x\leq-\int_{\Omega}|\nabla u|^2\diff x+\int_{\Omega}\sum b_iu_{x_i}u\diff x+\int_{\Omega}cu^2\diff x\]
+  \[\int_{\Omega}fu\d x\leq-\int_{\Omega}|\nabla u|^2\d x+\int_{\Omega}\sum b_iu_{x_i}u\d x+\int_{\Omega}cu^2\d x\]
   记$M=\max_{1\leq i\leq n}\max_{x\in\Omega}|b_i(x)|$,则
   \[\begin{split}
-  \int_{\Omega}|\nabla u|^2\diff x-\int_{\Omega}cu^2\diff x
-  &\leq\sum_{i=1}^n\int_{\Omega}b_iu_{x_i}u\diff x-\int_{\Omega}fu\diff x\\
-  &\leq2M\int_{\Omega}\sum_{i=1}^n|u_{x_i}u|\diff x+\int_{\Omega}|fu|\diff x\\
-  &\leq2M\left(\frac{\epsilon}{2}\int_{\Omega}|\nabla u|^2\diff x+\frac{n}{2\epsilon}\int_{\Omega}u^2\diff x\right)+\int_{\Omega}\left(\frac{1}{2}u^2+\frac{1}{2}f^2\right)\diff x
+  \int_{\Omega}|\nabla u|^2\d x-\int_{\Omega}cu^2\d x
+  &\leq\sum_{i=1}^n\int_{\Omega}b_iu_{x_i}u\d x-\int_{\Omega}fu\d x\\
+  &\leq2M\int_{\Omega}\sum_{i=1}^n|u_{x_i}u|\d x+\int_{\Omega}|fu|\d x\\
+  &\leq2M\left(\frac{\epsilon}{2}\int_{\Omega}|\nabla u|^2\d x+\frac{n}{2\epsilon}\int_{\Omega}u^2\d x\right)+\int_{\Omega}\left(\frac{1}{2}u^2+\frac{1}{2}f^2\right)\d x
   \end{split}\]
   取$\epsilon=\frac{1}{2M}$,则
-  \[\int_{\Omega}|\nabla u|^2\diff x-\int_{\Omega}cu^2\diff x\leq\frac{1}{2}\int_{\Omega}|\nabla u|^2\diff x+\left(2nM+\frac{1}{2}\right)\int_{\Omega}u^2\diff x+\frac{1}{2}\int_{\Omega}f^2\diff x\]
+  \[\int_{\Omega}|\nabla u|^2\d x-\int_{\Omega}cu^2\d x\leq\frac{1}{2}\int_{\Omega}|\nabla u|^2\d x+\left(2nM+\frac{1}{2}\right)\int_{\Omega}u^2\d x+\frac{1}{2}\int_{\Omega}f^2\d x\]
   令$\gamma_0=2nM^2+1$,则当$c(x)\leq-\gamma_0$时,有
-  \[\int_{\Omega}|\nabla u|^2\diff x+\left(2nM^2+1\right)\int_{\Omega}u^2\diff x\leq\int_{\Omega}|\nabla u|^2\diff x-\int_{\Omega}cu^2\diff x\]
+  \[\int_{\Omega}|\nabla u|^2\d x+\left(2nM^2+1\right)\int_{\Omega}u^2\d x\leq\int_{\Omega}|\nabla u|^2\d x-\int_{\Omega}cu^2\d x\]
   将上面两式结合,得
-  \[\int_{\Omega}|\nabla u|^2\diff x+(2nM^2+1)\int_{\Omega}u^2\diff x\leq\frac{1}{2}\int_{\Omega}|\nabla u|^2\diff x+\left(2nM^2+\frac{1}{2}\right)\int_{\Omega}u^2\diff x+\frac{1}{2}\int_{\Omega}f^2\diff x\]
+  \[\int_{\Omega}|\nabla u|^2\d x+(2nM^2+1)\int_{\Omega}u^2\d x\leq\frac{1}{2}\int_{\Omega}|\nabla u|^2\d x+\left(2nM^2+\frac{1}{2}\right)\int_{\Omega}u^2\d x+\frac{1}{2}\int_{\Omega}f^2\d x\]
   所以
-  \[\frac{1}{2}\int_{\Omega}|\nabla u|^2\diff x+\frac{1}{2}\int_{\Omega}u^2\diff x\leq\frac{1}{2}\int_{\Omega}f^2\diff x\Rightarrow\int_{\Omega}(|\nabla u|^2+u^2)\diff x\leq C\int_{\Omega}f^2\diff x\]
+  \[\frac{1}{2}\int_{\Omega}|\nabla u|^2\d x+\frac{1}{2}\int_{\Omega}u^2\d x\leq\frac{1}{2}\int_{\Omega}f^2\d x\Rightarrow\int_{\Omega}(|\nabla u|^2+u^2)\d x\leq C\int_{\Omega}f^2\d x\]
 \end{proof}
