@@ -35,6 +35,95 @@
 \end{proof}
 
 
+\begin{exercise}
+  把方程
+  \[ u_{tt} = u_{x}^2 + u_{y}^2 \]
+  带初始条件
+  \[\begin{cases}
+    u|_{t=0} = 0, \\
+    u_t|_{t=0} = e^x \sin y
+  \end{cases}\]
+  的柯西问题化为一个一阶偏微分方程组的柯西问题.
+\end{exercise}
+
+\begin{solution}
+  Let $p=u_t$, then
+  \[\begin{cases}
+    p = u_t, \\
+    p_t = u_x^2 + u_y^2.
+  \end{cases}\]
+  And the initial value condition is
+  \[\begin{cases}
+    u|_{t=0} = 0, \\
+    p|_{t=0} = e^x \sin y.
+  \end{cases}\qedhere\]
+\end{solution}
+
+
+\begin{exercise}
+  证明柯瓦列夫斯卡娅型方程 (1.9) 满足初始条件
+  \begin{equation}
+    t=0: u=\varphi_0(x),\ldots, \frac{\partial^{m-1}u}{\partial t^{m-1}} = \varphi_{m-1}(x) \tag{$\star$}
+  \end{equation}
+  的柯西问题可以化为一阶方程组的柯西问题, 并证明其解的等价性.
+\end{exercise}
+
+\begin{proof}
+  Let $\alpha = (\alpha_0,\alpha_1,\ldots,\alpha_n)$ be the general multi-index
+  and let 
+  \begin{align*}
+    \alpha^0 & := (\alpha_0+1,\alpha_1,\ldots,\alpha_n), \\
+    \alpha^i & := (\alpha_0,\alpha_1,\ldots,\alpha_i+1,\ldots,\alpha_n).
+  \end{align*}
+  Decompose $\alpha$ as follows:
+  \[ \alpha = \beta + \gamma, \]
+  where $\beta=(\alpha_0,0,\ldots,0)$ and $\gamma=(0,\alpha_1,\ldots,\alpha_n)$.
+  We denote the special multi-index $\alpha^* = (m-1,0,\ldots,0)$
+  and introduce new functions by $u_\alpha = D^\alpha u$.
+  Then the Kowalevskaya type equation can be transformed into
+  the following first-order system
+  \begin{equation}\label{eq:5.1}
+    \begin{cases}
+      \frac{\partial u_\alpha}{\partial t} = u_{\alpha^0}, \quad |\alpha|\leq m-1, \alpha_0\leq m-2, \\
+      \frac{\partial u_\alpha}{\partial x_i} = u_{\alpha^i}, \quad |\alpha|\leq m-1, \\
+      \frac{\partial u_{\alpha^*}}{\partial t} = F(t,x,u,u_\alpha,|\alpha|\leq m),
+    \end{cases}
+  \end{equation}
+  together with the following initial value conditions
+  \begin{equation}\label{eq:5.2}
+    \begin{cases}
+      u|_{t=0} = \varphi_0(x), \\
+      u_\alpha|_{t=0} = D^\gamma \varphi_{\alpha_0}(x),\quad 1\leq |\alpha|\leq m, \alpha_0\leq m-1. 
+    \end{cases}
+  \end{equation}
+
+  Now we prove that equivalence of solutions. First of all,
+  if $u$ is a solution to (1.9) in the textbook with initial value condition $(\star)$,
+  it is straightforward to verify that $(u_\alpha)$ is the solution to~\eqref{eq:5.1} 
+  and~\eqref{eq:5.2}.
+
+  Conversely, let $(u_\alpha)$ be the solution to~\eqref{eq:5.1} and \eqref{eq:5.2}.
+  Then for all $|\alpha|\leq m-1$ with $\alpha_0\leq m-2$ we have
+  \begin{equation}\label{eq:5.3}
+    \begin{cases}
+      \frac{\partial u_\alpha}{\partial t} = u_{\alpha^0}, \\
+      \frac{\partial u_{\alpha^0}}{\partial x_i} = \frac{\partial u_{\alpha^i}}{\partial t}.
+    \end{cases}
+  \end{equation}
+  It follows that
+  \begin{equation}\label{eq:5.4}
+    \frac{\partial}{\partial t}\biggl(u_{\alpha^i} - \frac{\partial u_\alpha}{\partial x_i}\biggr)
+      = 0.
+  \end{equation}
+  So $u_{\alpha^i} - \frac{\partial u_\alpha}{\partial x_i}$ is independent of $t$.
+  From \eqref{eq:5.2} we know that it is equal to zero at $t=0$, thus
+  \begin{equation}\label{eq:5.5}
+    u_{\alpha^i} \equiv \frac{\partial u_\alpha}{\partial x_i} \quad \text{for all}\ t\geq 0.
+  \end{equation}
+  Plugging \eqref{eq:5.5} into \eqref{eq:5.1} we find that $u$ is a solution to (1.9)
+  in the textbook with the given initial value condition.
+\end{proof}
+
 \section{两个自变量的一阶线性偏微分方程组的特征理论}
 
 \begin{exercise}
