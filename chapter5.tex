@@ -30,7 +30,7 @@
   \end{cases}\]
   原方程的解显然满足新方程,而如果新方程的解为 $(p,q_1,q_2,q_3)$,则
   \[u(x,y,z,t) = \varphi(x,y,z)
-    + \int_{(0,0,0,0)}^{(x,y,x,t)}p\diff t+q_1\diff x+q_2\diff y+q_3\diff z\]
+    + \int_{(0,0,0,0)}^{(x,y,x,t)}p\d t+q_1\d x+q_2\d y+q_3\d z\]
   是原方程的解, 其中条件 (2) 确保了积分与路径无关, 故积分定义是合理的.
 \end{proof}
 
@@ -86,7 +86,7 @@
     \begin{cases}
       \frac{\partial u_\alpha}{\partial t} = u_{\alpha^0}, \quad |\alpha|\leq m-1, \alpha_0\leq m-2, \\
       \frac{\partial u_\alpha}{\partial x_i} = u_{\alpha^i}, \quad |\alpha|\leq m-1, \\
-      \frac{\partial u_{\alpha^*}}{\partial t} = F(t,x,u,u_\alpha,|\alpha|\leq m),
+      \frac{\partial u_{\alpha^*}}{\partial t} = F(t,x,u,u_\alpha,|\alpha|\leq m, \alpha_0\leq m-1),
     \end{cases}
   \end{equation}
   together with the following initial value conditions
@@ -130,7 +130,7 @@
   求一阶方程
   \begin{enumerate}[(1)]
     \item $\frac{\partial u}{\partial t} + a(x,t) \frac{\partial u}{\partial x} 
-      b(x,t)u + c(x,t) = 0$,
+      + b(x,t)u + c(x,t) = 0$,
     \item $\frac{\partial u}{\partial t} + a(x,t) \frac{\partial u}{\partial x}
       + b(x,t,u) = 0$
   \end{enumerate}
@@ -138,15 +138,15 @@
 \end{exercise}
 
 \begin{solve}
-  (1) 特征线满足的方程为 $\frac{\diff x}{\diff t} = a(x,t)$,
-  解得特征线为 $x = \int_0^t a(x,\tau) \diff\tau$.
-  在特征线上, $u(x,t) = u\Bigl(\int_0^t a(x, \tau) \diff\tau, t\Bigr)$, 故
-  \[\frac{\diff u}{\diff t} = \frac{\partial u}{\partial x} a(x,t)
+  (1) 特征线满足的方程为 $\frac{\d x}{\d t} = a(x,t)$,
+  解得特征线为 $x = \int_0^t a(x,\tau) \d\tau$.
+  在特征线上, $u(x,t) = u\Bigl(\int_0^t a(x, \tau) \d\tau, t\Bigr)$, 故
+  \[\frac{\d u}{\d t} = \frac{\partial u}{\partial x} a(x,t)
     + \frac{\partial u}{\partial t}.\]
   故 $u$ 在特征线上满足关系式
-  \[\frac{\diff u}{\diff t} + b(x,t)u + c(x,t) = 0.\]
+  \[\frac{\d u}{\d t} + b(x,t)u + c(x,t) = 0.\]
 
-  (2) 同理 $\frac{\diff u}{\diff t} + b(x,t,u) = 0$.
+  (2) 同理 $\frac{\d u}{\d t} + b(x,t,u) = 0$.
 \end{solve}
 
 
@@ -159,13 +159,13 @@
 \end{exercise}
 
 \begin{solve}
-  (1) 特征线为 $x = t+C$, 在特征线上, $\frac{\diff u}{\diff t} = 
+  (1) 特征线为 $x = t+C$, 在特征线上, $\frac{\d u}{\d t} = 
     \frac{\partial u}{\partial x} + \frac{\partial u}{\partial t} = 0$,
   故 $u$ 在特征线上为常数. 故
   \[u(x_0, t_0) = u(x_0-t_0, 0) = \varphi(x_0-t_0).\]
   因此 $u(x,t) = \varphi(x-t)$.
 
-  (2) 特征线为 $x = t+C$, 在特征线上, $\frac{\diff u}{\diff t} = u$,
+  (2) 特征线为 $x = t+C$, 在特征线上, $\frac{\d u}{\d t} = u$,
   故 $u = C\e^t$, 令 $t=0$, 得 $u|_{t=0} = C$. 故
   \[u(x_0, t_0) = u(x_0-t_0, 0) \e^{t_0} = \varphi(x_0-t_0)\e^{t_0}.\]
   因此
@@ -303,11 +303,57 @@
     + \left(\frac{\partial R}{\partial t}+A\frac{\partial R}{\partial x}
     + BR\right)V + C = 0.\]
   两端左乘 $R^{-1}$ 得
-  \[\frac{\partial V}{\partial t} + A' \frac{\partial V}{\partial x}
-    + R^{-1}\biggl(\frac{\partial R}{\partial t} + A \frac{\partial R}{\partial x}
-                    + BR\biggr)V + R^{-1}C = 0.\]
+  \[ \frac{\partial V}{\partial t} + A' \frac{\partial V}{\partial x}
+      + R^{-1}\biggl(\frac{\partial R}{\partial t}
+      + A \frac{\partial R}{\partial x} + BR\biggr)V + R^{-1}C = 0, \]
   其中 $A' = R^{-1}AR$. 由于
   \[\det(A'-\lambda I) = \det(R^{-1}AR - \lambda I)
     = \det(A - \lambda I),\]
   故方程的根保持不变, 特征方向不变, 特征线也不变.
+\end{proof}
+
+
+\begin{exercise}
+  证明: 方程组 (2.1) 在每一点的特征线方向 (或特征曲线) 经过自变量的任何可逆变换后
+  就变成变换后方程组在对应点的特征线方向 (或特征曲线), 即特征线方向 (或特征曲线)
+  对可逆坐标变换具有不变性.
+\end{exercise}
+  
+\begin{proof}
+  Suppose the original characteristic curve satisfies
+  \[ \frac{\d x}{\d t} = \lambda(x,t), \]
+  where $\lambda(x,t)$ is the solution to
+  \begin{equation}\label{eq:5.6}
+    \det(A-\lambda I) = 0.
+  \end{equation}
+  Now make a change of variables
+  \[ y = \xi(x,t),\qquad s = \eta(x,t). \]
+  Then for the new variables $(y,s)$, the characteristic curve satisfies
+  \begin{equation}\label{eq:5.9}
+    \frac{\d y}{\d s} = \frac{\xi_x \d x + \xi_t \d t}{\eta_x \d x + \eta_t \d t}
+        = \frac{\xi_x \lambda + \xi_t}{\eta_x \lambda + \eta_t}.
+  \end{equation}
+  Under the transform of variables, the original system
+  \[ \frac{\partial U}{\partial t} + A\frac{\partial U}{\partial x} + BU + C = 0 \]
+  can be turned into
+  \[ \biggl(A \frac{\partial\eta}{\partial x} + \frac{\partial\eta}{\partial t}I\biggr)
+      \frac{\partial U}{\partial s}
+      + \biggl(A \frac{\partial\xi}{\partial x} + \frac{\partial\xi}{\partial t}I\biggr)
+        \frac{\partial U}{\partial y} + BU + C = 0. \]
+  Suppose its characteristic curve is
+  \[ \frac{\d y}{\d s} = \tilde\lambda. \] 
+  Then $\tilde\lambda$ must satisfy
+  \[\det\biggl(A \frac{\partial\xi}{\partial x} + \frac{\partial\xi}{\partial t}I
+      - \biggl(A \frac{\partial\eta}{\partial x} + \frac{\partial\eta}{\partial t}I\biggr)\tilde\lambda\biggr) = 0,\]
+  i.e.,
+  \begin{equation}\label{eq:5.7}
+    \det\biggl(A - \frac{\tilde\lambda \eta_t - \xi_t}{\xi_x - \eta_x \tilde\lambda}I\biggr) = 0.
+  \end{equation}
+  By \eqref{eq:5.6} and \eqref{eq:5.7} we have that
+  \[ \frac{\tilde\lambda \eta_t - \xi_t}{\xi_x - \eta_x \tilde\lambda} = \lambda, \]
+  from which we get
+  \begin{equation}\label{eq:5.8}
+    \tilde\lambda = \frac{\xi_x\lambda + \xi_t}{\eta_x\lambda + \eta_t}.
+  \end{equation}
+  Combining with \eqref{eq:5.9}, the proof is finished.
 \end{proof}
