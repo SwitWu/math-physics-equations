@@ -342,7 +342,8 @@
 \end{exercise}
 
 \begin{proof}
-  Omit. Similar to the proof in the textbook.
+  Similar to the proof in the textbook. For its proof,
+  see \cite[\S2.1.2]{chen_2018}.
 \end{proof}
 
 
@@ -351,6 +352,7 @@
 \end{exercise}
 
 \begin{solution}
+  See \cite[\S2.1.2]{chen_2018}.
   For $n$-th order linear partial differential equation
   \begin{equation}\label{eq:4.2}
     \sum_{|\alpha|\leq n} a_\alpha(x) D^\alpha u(x) = 0,
@@ -444,6 +446,46 @@
 \end{proof}
 
 
+\begin{exercise}
+  设 $u\in C^2(\Omega)\cap C(\overline{\Omega})$ 是椭圆型方程 Dirichlet 问题
+  \[\begin{cases}
+    Lu = \sum_{i,j=1}^n a_{ij}(x) u_{x_ix_j} + \sum_{i=1}^n b_i(x) u_{x_i} + c(x)u = f(x), \\
+    u|_{\varGamma} = \varphi(x)
+  \end{cases}\]
+  的解, 系数 $a_{ij}$, $b_i$, $c$ 满足第一题中的条件, 则成立最大模估计式 (4.4).
+\end{exercise}
+
+\begin{proof}
+  See \cite[Proposition 2.15]{han_elliptic_2011}.
+  We will construct a function $w$ in $\Omega$ such that
+  \begin{alignat}{2}
+    L(w\pm u) & = Lw \pm f \leq 0 &\quad& \text{in } \Omega, \label{eq:4.8} \\
+    w\pm u    & = w \pm \varphi \geq 0 && \text{on } \partial\Omega. \label{eq:4.9}
+  \end{alignat}
+  Denote $F = \max_\Omega |f|$ and $\Phi = \max_{\partial\Omega} |\varphi|$.
+  To make~\eqref{eq:4.8} and \eqref{eq:4.9} hold, it suffices to require that
+  \[\begin{cases}
+    Lw \leq -F, & \text{in}\ \Omega, \\
+    w\geq \Phi, & \text{on}\ \partial\Omega.
+  \end{cases}\]
+  Suppose the domain $\Omega$ lies in the set $\{0<x_1<d\}$ for some $d>0$.
+  Set $w = \Phi + (e^{\lambda d} - e^{\lambda x_1})F$ with $\lambda>0$
+  to be determined later. Then we have
+  \begin{align*}
+    Lw
+    & = -a_{11}\lambda^2 e^{\lambda x_1} F - b_1 \lambda e^{\lambda x_1} F
+        + c\Phi + c(e^{\lambda d} - e^{\lambda x_1}) F \\
+    & \leq -(a_{11}\lambda^2 + b_1 \lambda) e^{\lambda x_1} F \\
+    & \leq -(\alpha\lambda^2 + b_1 \lambda) e^{\lambda x_1} F \leq -F
+  \end{align*}
+  by choosing $\lambda$ large enough such that $\alpha\lambda^2 + b_1\lambda\geq 1$
+  for any $x\in\Omega$. Hence $w$ satisfies~\eqref{eq:4.8}
+  and~\eqref{eq:4.9}. By maximum principle obtained in the last exercise,
+  we conclude that $-w\leq u\leq w$ in $\Omega$. In particular,
+  \[ \sup_\Omega |u| \leq \Phi + (e^{\lambda d}-1)F. \qedhere\]
+\end{proof}
+
+
 \begin{exercise}[3]
   在 $Q_T = (0,l)\times (0,T)$ 中考察下列初边值问题
   \begin{align}
@@ -455,8 +497,8 @@
 \end{exercise}
 
 \begin{proof}
-  We suppose $k>0$. Define the energy functional
-  \[ E(t) = \frac12 \int_0^l (u_t^2 + a^2 u_x^2) \d x + \frac12 ka^2 u^2(l,t). \]
+  We suppose $k\geq 0$. Define the energy functional
+  \[ E(t) := \frac12 \int_0^l (u_t^2 + a^2 u_x^2) \d x + \frac12 ka^2 u^2(l,t). \]
   Multiplying both sides of the equation $(\star)$ by $u_t$ and integrating
   from $0$ to $l$ with respect to $x$, we get
   \begin{align*}
@@ -466,7 +508,8 @@
     & \leq C\int_0^l (u_t^2 + u_x^2 + f^2) \d x \\
     & \leq C\biggl(E(t) + \int_0^l f^2 \d x\biggr),
   \end{align*}
-  from which we can obtain the uniqueness and stability of the solution immediately.
+  from which it follows that
+  \[ E(t) \leq E(0)e^{Ct} + C\int_0^t e^{C(t-s)} \int_0^l f^2 \d x\d s. \]
 \end{proof}
 
 
@@ -519,24 +562,5 @@
 \end{exercise}
 
 \begin{proof}
-  在方程两边同时乘以 $u$ 并在 $\Omega$ 上积分得
-  \[\int_{\Omega}fu\d x 
-    = \int_{\Omega}\left(cu^2+\sum_{i=1}^nb_iu_{x_i}u+u\Delta u\right)\d x.\]
-  故
-  \[\int_{\Omega}fu\d x\leq-\int_{\Omega}|\nabla u|^2\d x+\int_{\Omega}\sum b_iu_{x_i}u\d x+\int_{\Omega}cu^2\d x\]
-  记$M=\max_{1\leq i\leq n}\max_{x\in\Omega}|b_i(x)|$,则
-  \[\begin{split}
-  \int_{\Omega}|\nabla u|^2\d x-\int_{\Omega}cu^2\d x
-  &\leq\sum_{i=1}^n\int_{\Omega}b_iu_{x_i}u\d x-\int_{\Omega}fu\d x\\
-  &\leq2M\int_{\Omega}\sum_{i=1}^n|u_{x_i}u|\d x+\int_{\Omega}|fu|\d x\\
-  &\leq2M\left(\frac{\epsilon}{2}\int_{\Omega}|\nabla u|^2\d x+\frac{n}{2\epsilon}\int_{\Omega}u^2\d x\right)+\int_{\Omega}\left(\frac{1}{2}u^2+\frac{1}{2}f^2\right)\d x
-  \end{split}\]
-  取$\epsilon=\frac{1}{2M}$,则
-  \[\int_{\Omega}|\nabla u|^2\d x-\int_{\Omega}cu^2\d x\leq\frac{1}{2}\int_{\Omega}|\nabla u|^2\d x+\left(2nM+\frac{1}{2}\right)\int_{\Omega}u^2\d x+\frac{1}{2}\int_{\Omega}f^2\d x\]
-  令$\gamma_0=2nM^2+1$,则当$c(x)\leq-\gamma_0$时,有
-  \[\int_{\Omega}|\nabla u|^2\d x+\left(2nM^2+1\right)\int_{\Omega}u^2\d x\leq\int_{\Omega}|\nabla u|^2\d x-\int_{\Omega}cu^2\d x\]
-  将上面两式结合,得
-  \[\int_{\Omega}|\nabla u|^2\d x+(2nM^2+1)\int_{\Omega}u^2\d x\leq\frac{1}{2}\int_{\Omega}|\nabla u|^2\d x+\left(2nM^2+\frac{1}{2}\right)\int_{\Omega}u^2\d x+\frac{1}{2}\int_{\Omega}f^2\d x\]
-  所以
-  \[\frac{1}{2}\int_{\Omega}|\nabla u|^2\d x+\frac{1}{2}\int_{\Omega}u^2\d x\leq\frac{1}{2}\int_{\Omega}f^2\d x\Rightarrow\int_{\Omega}(|\nabla u|^2+u^2)\d x\leq C\int_{\Omega}f^2\d x\]
+  The proof is actually the same as that of Theorem~4.6 in the textbook.
 \end{proof}
