@@ -2,6 +2,61 @@
 
 \section{引言}
 
+% Consider the following first-order system
+% \begin{equation}\label{1}
+%   \frac{\partial V_i}{\partial t} + \lambda_i(x,t) \frac{\partial V_i}{\partial x}
+%     = \sum_{j=1}^n \alpha_{ij}(x,t)V_j + \beta_i(x,t)
+% \end{equation}
+% with the initial value condition
+% \begin{equation}\label{2}
+%   V_i(x,0) = \varphi_i(x) \quad i=1,\ldots,N.
+% \end{equation}
+% Suppose that the eigenvalues are mutually distinct, i.e.,
+% \[ \lambda_1(x,t) < \lambda_2(x,t) < \cdots < \lambda_N(x,t). \]
+% Then through every point there are $N$ characteristic curves $L_i$ ($i=1,\ldots,N$) pass and
+% they are given by
+% \[ \frac{\d x}{\d t} = \lambda_i(x,t). \]
+% Suppose the IVC \eqref{2} is given on the interval $[a,b]$.
+% Draw two characteristic curves $L_N$ and $L_1$ passing through $(a,0)$
+% and $(b,0)$ respectively. And let $G$ be the domain enclosed by $L_N$,
+% $L_1$, $x$-axis and $t=T$. 
+% We suppose that in the closed domain $\overline{G}$, functions
+% $\alpha_{ij}$, $\beta_i$ and $\varphi_i$ are all $C^1$.
+% Fix any point $(x,t)\in\overline{G}$, draw a characteristic curve $L_i$
+% which intersects $x$-axis at $(x_i,0)$. See the following figure.
+% Note that the left-hand side of \eqref{eq:1} is the derivative of $V_i$
+% with respect to $t$ along the curve $L_i$. Integrate \eqref{1} from $(x_i,0)$
+% to $(x,t)$ with respect to $t$ along $l_i$, we have
+% \begin{equation}\label{3}
+%   V_i(x,t) - V_i(x_i,0) = \int_{l_i} \biggl(\sum_{j=1}^N \alpha_{ij} V_j + \beta_i\biggr) \d\tau,
+% \end{equation}
+% that is
+% \begin{equation}\label{4}
+%   V_i(x,t) = \varphi_i(x_i) + \int_{l_i} \biggl(\sum_{j=1}^N \alpha_{ij} V_j + \beta_i\biggr) \d\tau.
+% \end{equation}
+% Now we use \eqref{4} to construct the iteration sequence. Define for $n\geq 0$
+% \begin{equation}\label{5}\tag{5}
+%   V_i^{(n+1)}(x,t) = \varphi_i(x_i) + \int_{l_i} \biggl[\sum_{j=1}^N \alpha_{ij} V_j^{(n)}+\beta_i\biggr] \d\tau \quad (i=1,\ldots,N),
+% \end{equation}
+% or more precisely,
+% \begin{equation}\label{6}\tag{6}
+%   \begin{aligned}
+%     V_i^{(n+1)}(x,t) & = \varphi_i(x_i(0;x,t)) + \int_0^t \biggl[\sum_{j=1}^N
+%       \alpha_{ij}(x_i(\tau;x,t),\tau) V_j^{(n)}(x_i(\tau;x,t),\tau) \\
+%                      & \quad + \beta_i(x_i(\tau;x,t),\tau)\biggr] \d\tau,
+%   \end{aligned}
+% \end{equation}
+% where $x_i(\tau;x,t)$ is the $i$th characteristic curve passing through $(x,t)$.
+% Let
+% $$M := \max_{(x,t)\in\overline{G},\,i=1,\ldots,N} \bigl\{|V_i^{(0)}|, |V_i^{(1)}|\bigr\},$$
+% $$A := \max_{(x,t)\in\overline{G},\,i,j=1,\ldots,N} |\alpha_{ij}|.$$
+% By a simple induction argument, we can prove that
+% \begin{equation}\label{7}\tag{7}
+%   |V_i^{(n+1)}(x,t) - V_i^{(n)}(x,t)| \leq 2M \frac{(ANt)^n}{n!} \quad i=1,\ldots,N,
+% \end{equation}
+% which means that $(V_i^{(n)})$ converges uniformly to some function $V_i$ and it is the solution
+% to \eqref{1}.
+
 \begin{exercise}
   把波动方程
   \[\frac{\partial^2u}{\partial t^2} = a^2 
