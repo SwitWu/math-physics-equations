@@ -15,6 +15,7 @@
 \usepackage[unicode=true,colorlinks=true,linkcolor=red]{hyperref}
 \usepackage{fixdif}
 \usepackage{graphicx}
+\usepackage{indentfirst}
 
 \setCJKmainfont{FandolSong}
 \setlist{nosep}
@@ -25,6 +26,7 @@
 \newcommand{\closure}[1]{\overline{#1}}
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\sgn}{sgn}
 
 \setlist[enumerate,1]{left=\parindent}
 
@@ -69,6 +71,7 @@
 \newcounter{exercise}[section]
 \NewDocumentEnvironment{exercise}{o d<> +b}
   {%
+    \medskip
     \IfNoValueTF{#1}
       {\stepcounter{exercise}}
       {\setcounter{exercise}{#1}}
@@ -92,8 +95,8 @@
 \input{chapter1.tex}
 \input{chapter2.tex}
 \input{chapter3.tex}
-% \input{chapter4.tex}
-% \input{chapter5.tex}
+\input{chapter4.tex}
+\input{chapter5.tex}
 % \input{chapter6.tex}
 
 \bibliographystyle{plain}
