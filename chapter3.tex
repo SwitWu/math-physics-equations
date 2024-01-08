@@ -4,8 +4,8 @@
 
 \begin{exercise}
   设 $u(x_1,\cdots,x_n)=f(r)$ (其中 $r=\sqrt{x_1^2+\cdots+x_n^2}$)
-  是 $n$ 维调和函数 $\Bigl( \text{即满足方程\ }
-  \frac{\partial^2u}{\partial x_1^2}+\cdots+\frac{\partial^2u}{\partial x_n^2}=0\Bigr)$,
+  是 $n$ 维调和函数 (即满足方程
+  $\frac{\partial^2u}{\partial x_1^2}+\cdots+\frac{\partial^2u}{\partial x_n^2}=0$),
   试证明
   \[f(r) = c_1+\frac{c_2}{r^{n-2}}\quad (n\geq 2),\]
   \[f(r) = c_1+c_2\ln\frac{1}{r}\quad (n=2),\]
@@ -13,13 +13,13 @@
 \end{exercise}
 
 \begin{proof}
-  因为 $\frac{\partial u}{\partial x_i}=\frac{\diff f}{\diff r}\frac{x_i}{r}$,所以
+  因为 $\frac{\partial u}{\partial x_i}=\frac{\d f}{\d r}\frac{x_i}{r}$,所以
   \[\frac{\partial^2u}{\partial x_i^2} =
-    \frac{\diff^2f}{\diff r^2}\frac{x_i^2}{r^2}
-    + \frac{\diff f}{\diff r}\frac{r^2-x_i^2}{r^3},\]
+    \frac{\d^2f}{\d r^2}\frac{x_i^2}{r^2}
+    + \frac{\d f}{\d r}\frac{r^2-x_i^2}{r^3},\]
   故
   \[\sum_{i=1}^n\frac{\partial^2u}{\partial x_i^2}
-    = \frac{\diff^2f}{\diff r^2}+\frac{\diff f}{\diff r}\frac{n-1}{r}
+    = \frac{\d^2f}{\d r^2}+\frac{\d f}{\d r}\frac{n-1}{r}
     = f''(r)+\frac{n-1}{r}f'(r)=0.\]
   由上式得
   \[f'=cr^{1-n}.\]
@@ -272,8 +272,8 @@
   设
   \[J(u) = \iiint_{\varOmega} \frac12 \biggl[\biggl(\frac{\partial u}{\partial x}\biggr)^2
     + \biggl(\frac{\partial u}{\partial y}\biggr)^2
-    + \biggl(\frac{\partial u}{\partial z}\biggr)^2\biggr] \diff x\diff y\diff z
-    + \iint_{\varGamma} \biggl(\frac12 \sigma u^2 - gu\biggr) \diff s,\]
+    + \biggl(\frac{\partial u}{\partial z}\biggr)^2\biggr] \d x\d y\d z
+    + \iint_{\varGamma} \biggl(\frac12 \sigma u^2 - gu\biggr) \d s,\]
   变分问题的提法为: 求 $u\in V$, 使
   \[J(u) = \min_{v\in V} J(v),\]
   其中 $V = C^2(\varOmega)\cap C^1(\closure{\varOmega})$.
@@ -286,56 +286,58 @@
     \Delta u = 0, \\
     \bigl(\frac{\partial u}{\partial \bm{n}} + \sigma u\bigr)\big|_{\varGamma} = g.
   \end{cases}\]
-  For notational simplicity, we use $\int$ instand of $\iint,\iiint$ and use $\d x$
+  For notational simplicity, we use $\int$ instand of $\iint$, $\iiint$ and use $\d x$
   instand of $\d x\d y\d z$.
-
-  (Minimizer $\Rightarrow$ Solution) Suppose that $J(u) = \min_{v\in V} J(v)$.
-  Define for any $v\in V$,
-  \begin{equation}\label{eq:e8}
-    I(\epsilon) = J(u+\epsilon v)
-      = \int_\varOmega \frac12 |\nabla(u+\epsilon v)|^2 \d x
-        + \int_\varGamma \biggl(\frac12 \sigma (u+\epsilon v)^2 - g(u+\epsilon v)\biggr) \d s.
-  \end{equation}
-  Then $I(\epsilon)$ attains its minimum at $\epsilon=0$ and so $I'(0)=0$.
-  Direct computation yields that
-  \begin{equation}\label{eq:e9}
-    \begin{aligned}
-      I'(0)
-      & = \int_\varOmega \nabla u\cdot \nabla v \d x + \int_\varGamma (\sigma u-g)v \d s \\
-      & = - \int_\varOmega \Delta u v \d x
-          + \int_\varGamma \biggl(\frac{\partial u}{\partial \bm{n}} + \sigma u - g\biggr)v \d s = 0.
-    \end{aligned}
-  \end{equation}
-  Since $v$ is arbitrary, we choose $v$ such that $v=0$ on $\varGamma$, then
-  \begin{equation}\label{eq:e10}
-    \int_\varOmega \Delta u v \d x = 0,
-  \end{equation}
-  which means $\Delta u = 0$ in $\varOmega$. Substituting $\Delta u = 0$ back into~\eqref{eq:e9},
-  we now get
-  \begin{equation}\label{eq:e11}
-    \int_\varGamma \biggl(\frac{\partial u}{\partial \bm{n}} + \sigma u - g\biggr)v \d s = 0.
-  \end{equation}
-  Choosing $v = \frac{\partial u}{\partial \bm{n}} + \sigma u - g$ on $\varGamma$, we get
-  \[ \frac{\partial u}{\partial \bm{n}} + \sigma u = g \quad \text{on}\ \varGamma. \]
-
-  (Solution $\Rightarrow$ Minimizer) Suppose $u$ is the solution of the following BVP
-  \[\begin{cases}
-    \Delta u = 0, \\
-    \bigl(\frac{\partial u}{\partial \bm{n}} + \sigma u\bigr)\big|_{\varGamma} = g.
-  \end{cases}\]
-  Since
-  \begin{equation}\label{eq:e12}
-    \begin{aligned}
-      J(u+v)
-      & = \int_\varOmega \frac12 |\nabla(u+v)|^2 \d x
-          + \int_\varGamma \biggl(\frac12 \sigma (u+v)^2 - g(u+v)\biggr) \d s \\
-      & = J(u) + \int_\varOmega \frac12 |\nabla v|^2 + \nabla u\cdot\nabla v \d x
-          + \int_\varGamma \biggl(\frac12 \sigma v^2 + \sigma uv - gv\biggr) \d s \\
-      & = J(u) + \int_\varOmega \frac12 |\nabla v|^2 \d x
-          + \int_\varGamma \frac12 \sigma v^2 \d s,
-    \end{aligned}
-  \end{equation}
-  we have that $J(u+v)\geq J(u)$ for any $v\in V$, so $J(u) = \min_{v\in V} J(v)$.
+  \begin{description}
+    \item[(Minimizer $\Rightarrow$ Solution)]
+      Suppose that $J(u) = \min_{v\in V} J(v)$.
+      Define for any $v\in V$,
+      \begin{equation}\label{eq:e8}
+        I(\epsilon) = J(u+\epsilon v)
+          = \int_\varOmega \frac12 |\nabla(u+\epsilon v)|^2 \d x
+            + \int_\varGamma \biggl(\frac12 \sigma (u+\epsilon v)^2 - g(u+\epsilon v)\biggr) \d s.
+      \end{equation}
+      Then $I(\epsilon)$ attains its minimum at $\epsilon=0$ and so $I'(0)=0$.
+      Direct computation yields that
+      \begin{equation}\label{eq:e9}
+        \begin{aligned}
+          I'(0)
+          & = \int_\varOmega \nabla u\cdot \nabla v \d x + \int_\varGamma (\sigma u-g)v \d s \\
+          & = - \int_\varOmega \Delta u v \d x
+              + \int_\varGamma \biggl(\frac{\partial u}{\partial \bm{n}} + \sigma u - g\biggr)v \d s = 0.
+        \end{aligned}
+      \end{equation}
+      Since $v$ is arbitrary, we choose $v$ such that $v=0$ on $\varGamma$, then
+      \begin{equation}\label{eq:e10}
+        \int_\varOmega \Delta u v \d x = 0,
+      \end{equation}
+      which means $\Delta u = 0$ in $\varOmega$. Substituting $\Delta u = 0$ back into~\eqref{eq:e9},
+      we now get
+      \begin{equation}\label{eq:e11}
+        \int_\varGamma \biggl(\frac{\partial u}{\partial \bm{n}} + \sigma u - g\biggr)v \d s = 0.
+      \end{equation}
+      Choosing $v = \frac{\partial u}{\partial \bm{n}} + \sigma u - g$ on $\varGamma$, we get
+      \[ \frac{\partial u}{\partial \bm{n}} + \sigma u = g \quad \text{on}\ \varGamma. \]
+    \item[(Solution $\Rightarrow$ Minimizer)]
+      Suppose $u$ is the solution of the following BVP
+      \[\begin{cases}
+        \Delta u = 0, \\
+        \bigl(\frac{\partial u}{\partial \bm{n}} + \sigma u\bigr)\big|_{\varGamma} = g.
+      \end{cases}\]
+      Since
+      \begin{equation}\label{eq:e12}
+        \begin{aligned}
+          J(u+v)
+          & = \int_\varOmega \frac12 |\nabla(u+v)|^2 \d x
+              + \int_\varGamma \biggl(\frac12 \sigma (u+v)^2 - g(u+v)\biggr) \d s \\
+          & = J(u) + \int_\varOmega \frac12 |\nabla v|^2 + \nabla u\cdot\nabla v \d x
+              + \int_\varGamma \biggl(\frac12 \sigma v^2 + \sigma uv - gv\biggr) \d s \\
+          & = J(u) + \int_\varOmega \frac12 |\nabla v|^2 \d x
+              + \int_\varGamma \frac12 \sigma v^2 \d s,
+        \end{aligned}
+      \end{equation}
+      we have that $J(u+v)\geq J(u)$ for any $v\in V$, so $J(u) = \min_{v\in V} J(v)$. \qedhere
+  \end{description}
 \end{proof}
 
 
@@ -348,12 +350,12 @@
 
 \begin{proof}
   当 $M_0$ 在 $\varOmega$ 外时, $v=\frac{1}{r_{M_0M}}$ 在区域 $\varOmega$ 内无奇异点, 故由格林第二公式得
-  \[\iiint_{\varOmega} \left(u\Delta\frac{1}{r}-\frac{1}{r}\Delta u\right)\diff V
+  \[\iiint_{\varOmega} \left(u\Delta\frac{1}{r}-\frac{1}{r}\Delta u\right)\d V
     = \iint_{\varGamma}\left(u\frac{\partial}{\partial\vec{n}}\left(\frac{1}{r}\right)
-      - \frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right) \diff S.\]
+      - \frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right) \d S.\]
   在 $\varOmega$ 内 $\Delta u=0$, $\Delta\frac{1}{r}=0$, 故
   \[-\iint_{\varGamma}\left(u\frac{\partial}{\partial\vec{n}}\left(\frac{1}{r}\right)
-    - \frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right)\diff S = 0.\]
+    - \frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right)\d S = 0.\]
 
   当 $M_0$ 在 $\varGamma$ 上时, 将以 $M_0$ 为球心, 
   以充分小正数 $\varepsilon$ 为半径的球与 $\varOmega$ 相交的部分记为 $K_{\varepsilon}$,
@@ -361,32 +363,32 @@
   且记 $\partial(\varOmega\setminus K_{\varepsilon})-\varGamma_{\varepsilon}=\varGamma_{\varepsilon}'$,
   则由格林第二公式得
   \[0 = \iiint_{\varOmega\backslash K_{\varepsilon}}
-    \left(u\Delta\frac{1}{r} - \frac{1}{r}\Delta u\right)\diff V
+    \left(u\Delta\frac{1}{r} - \frac{1}{r}\Delta u\right)\d V
     = \iint_{\varGamma_{\varepsilon}\bigcup\varGamma_{\varepsilon}'} \left(u\frac{\partial}{\partial\vec{n}}
-      \left(\frac{1}{r}\right)-\frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right) \diff S.\]
+      \left(\frac{1}{r}\right)-\frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right) \d S.\]
   故
   \begin{equation}\label{eq:e13}
     -\iint_{\varGamma_{\varepsilon}'} \left(u\frac{\partial}{\partial\vec{n}}\left(\frac{1}{r}\right)
-    -\frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right) \diff S
+    -\frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right) \d S
     = \iint_{\varGamma_{\varepsilon}}\left(u\frac{\partial}{\partial\vec{n}}
-      \left(\frac{1}{r}\right) - \frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right)\diff S.
+      \left(\frac{1}{r}\right) - \frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right)\d S.
   \end{equation}
   而
   \[\iint_{\varGamma_{\varepsilon}} \left(u\frac{\partial}{\partial\vec{n}}\left(\frac{1}{r}\right)
-    -\frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right) \diff S
+    -\frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right) \d S
     = \iint_{\varGamma_{\varepsilon}}\left(\frac{u}{\varepsilon^2}
-      - \frac{1}{\varepsilon}\frac{\partial u}{\partial\vec{n}}\right) \diff S.\]
+      - \frac{1}{\varepsilon}\frac{\partial u}{\partial\vec{n}}\right) \d S.\]
   令 $\varepsilon\to 0$, 注意到 $\varGamma$ 充分光滑
   (这意味着面积 $S(\varGamma_{\varepsilon})\to 2\pi\varepsilon^2$), 所以有
   \begin{equation}\label{eq:e14}
     \lim_{\varepsilon\to 0} \iint_{\varGamma_{\varepsilon}}
-    \left(\frac{u}{\varepsilon^2}-\frac{1}{\varepsilon}\frac{\partial u}{\partial\vec{n}}\right)\diff S
+    \left(\frac{u}{\varepsilon^2}-\frac{1}{\varepsilon}\frac{\partial u}{\partial\vec{n}}\right)\d S
     = 2\pi u(M_0).
   \end{equation}
   同时 $\lim_{\varepsilon\to0}\varGamma_{\varepsilon}'=\varGamma$,
   因此由 \eqref{eq:e13} 和 \eqref{eq:e14} 得
   \[-\iint_{\varGamma} \left(u\frac{\partial}{\partial\vec{n}}\left(\frac{1}{r}\right)-\frac{1}{r}
-    \frac{\partial u}{\partial\vec{n}}\right)\diff S = 2\pi u(M_0). \qedhere\]
+    \frac{\partial u}{\partial\vec{n}}\right)\d S = 2\pi u(M_0). \qedhere\]
 \end{proof}
 
 
@@ -397,8 +399,8 @@
 
 \begin{proof}
   由平均值公式知原点之值为
-  \[u(O) = \frac{1}{2\pi}\int_{\varGamma}\sin\theta\diff s
-    = \frac{1}{2\pi}\int_0^{2\pi}\sin\theta\diff\theta = 0.\qedhere\]
+  \[u(O) = \frac{1}{2\pi}\int_{\varGamma}\sin\theta\d s
+    = \frac{1}{2\pi}\int_0^{2\pi}\sin\theta\d\theta = 0.\qedhere\]
 \end{proof}
 
 
@@ -419,25 +421,25 @@
   \begin{equation}
     \begin{aligned}
     0 & = \iiint_{\varOmega_R\setminus K_{\epsilon}}\left(u\Delta\frac{1}{r}
-        - \frac{1}{r}\Delta u\right)\diff V \\
-      & = \iint_{\varGamma\bigcup\varGamma_R\bigcup\varGamma_{\epsilon}}\left(u\frac{\partial}{\partial\vec{n}}\left(\frac{1}{r}\right)-\frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right)\diff S.
+        - \frac{1}{r}\Delta u\right)\d V \\
+      & = \iint_{\varGamma\bigcup\varGamma_R\bigcup\varGamma_{\epsilon}}\left(u\frac{\partial}{\partial\vec{n}}\left(\frac{1}{r}\right)-\frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right)\d S.
     \end{aligned} \tag{$\star$}
   \end{equation}
   因为 $u(M)=O(\frac{1}{r})$, $\frac{\partial u}{\partial r}=O(\frac{1}{r^2})$ $(r\to\infty)$,
   所以当 $R\to +\infty$ 时,
   \[\iint_{\varGamma_R}\left(u\frac{\partial}{\partial\vec{n}}\left(\frac{1}{r}\right)
-    - \frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right)\diff S
-    = \iint_{\varGamma_R}\left(\frac{-u}{R^2}-\frac{1}{R}\frac{\partial u}{\partial r}\right)\diff S\to 0.\]
+    - \frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right)\d S
+    = \iint_{\varGamma_R}\left(\frac{-u}{R^2}-\frac{1}{R}\frac{\partial u}{\partial r}\right)\d S\to 0.\]
   又因为当 $\epsilon\to 0$ 时,
   \[\iint_{\varGamma_{\epsilon}}\left(u\frac{\partial}{\partial\vec{n}}\left(\frac{1}{r}\right)
-    - \frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right)\diff S
+    - \frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right)\d S
     = \iint_{\varGamma_{\epsilon}}\left(\frac{u}{\epsilon^2}
-    + \frac{1}{\epsilon}\frac{\partial u}{\partial r}\right)\diff S
+    + \frac{1}{\epsilon}\frac{\partial u}{\partial r}\right)\d S
     \to 4\pi u(M_0).\]
   在 ($\star$) 式中令 $R\to +\infty$, $\epsilon\to 0$, 即得
   \[u(M_0)
   =-\frac{1}{4\pi}\iint_{\varGamma}\left(u\frac{\partial}{\partial\vec{n}}\left(\frac{1}{r}\right)
-  -\frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right)\diff S. \qedhere\]
+  -\frac{1}{r}\frac{\partial u}{\partial\vec{n}}\right)\d S. \qedhere\]
 \end{proof}
 
 
@@ -501,10 +503,10 @@
 
 \section{格林函数}
 
-\[u(M_0) = \iint_{\varGamma}\left[\frac{1}{4\pi r_{M_0M}}\frac{\partial u}{\partial\vec{n}}-u\frac{\partial}{\partial\vec{n}}\frac{1}{4\pi r_{M_0M}}\right]\diff S_M\]
-\[\iint_{\varGamma}\left(g\frac{\partial u}{\partial\vec{n}}-u\frac{\partial g}{\partial\vec{n}}\right)\diff S_M=0\]
+\[u(M_0) = \iint_{\varGamma}\left[\frac{1}{4\pi r_{M_0M}}\frac{\partial u}{\partial\vec{n}}-u\frac{\partial}{\partial\vec{n}}\frac{1}{4\pi r_{M_0M}}\right]\d S_M\]
+\[\iint_{\varGamma}\left(g\frac{\partial u}{\partial\vec{n}}-u\frac{\partial g}{\partial\vec{n}}\right)\d S_M=0\]
 相减得
-\[u(M_0)=\iint_{\varGamma}\left(G\frac{\partial u}{\partial\vec{n}}-u\frac{\partial G}{\partial\vec{n}}\right)\diff S_M,\mbox{其中}G(M,M_0)=\frac{1}{4\pi r_{M_0M}}-g(M,M_0)\]
+\[u(M_0)=\iint_{\varGamma}\left(G\frac{\partial u}{\partial\vec{n}}-u\frac{\partial G}{\partial\vec{n}}\right)\d S_M,\mbox{其中}G(M,M_0)=\frac{1}{4\pi r_{M_0M}}-g(M,M_0)\]
 
 
 \begin{exercise}
@@ -569,11 +571,11 @@
     \[ \iint_{\partial D_{\epsilon}}\left(w\frac{\partial v}{\partial\vec{n}}
       -v\frac{\partial w}{\partial\vec{n}}\right)\d S = 0, \]
     i.e.,
-    \begin{equation}\label{eq:3.}
+    \begin{equation}\label{eq:3.1}
       \iint_{\partial B(M_1,\epsilon)}
-      \left(w\frac{\partial v}{\partial\vec{n}}-v\frac{\partial w}{\partial\vec{n}}\right)\diff S
+      \left(w\frac{\partial v}{\partial\vec{n}}-v\frac{\partial w}{\partial\vec{n}}\right)\d S
       = \iint_{\partial B(M_2,\epsilon)}
-        \left(v\frac{\partial w}{\partial\vec{n}}-w\frac{\partial v}{\partial\vec{n}}\right)\diff S.
+        \left(v\frac{\partial w}{\partial\vec{n}}-w\frac{\partial v}{\partial\vec{n}}\right)\d S.
     \end{equation}
     We only consider the left-hand side term in \eqref{eq:3.1}.
     On $\partial B(M_1,\epsilon)$,
@@ -584,7 +586,7 @@
     \end{align*}
     Thus
     \[ \iint_{\partial B(M_1,\epsilon)}
-      \left(w\frac{\partial v}{\partial\vec{n}}-v\frac{\partial w}{\partial\vec{n}}\right)\diff S
+      \left(w\frac{\partial v}{\partial\vec{n}}-v\frac{\partial w}{\partial\vec{n}}\right)\d S
       = \iint_{\partial B(M_1,\epsilon)} \biggl(w\Bigl(\frac{1}{4\pi\epsilon^2} + O(1)\Bigr)
           - O\Bigl(\frac{1}{\epsilon}\Bigr)O(1)\biggr)
       \to w(M_1)\]
@@ -593,7 +595,7 @@
   \end{proof}
 
   \begin{property}
-    $\iint_{\varGamma} \frac{\partial G(M, M_0)}{\partial n} \diff S_M = -1$.
+    $\iint_{\varGamma} \frac{\partial G(M, M_0)}{\partial n} \d S_M = -1$.
 
   \end{property}
   
@@ -601,22 +603,26 @@
     设 $\varGamma_{\epsilon}$ 是以 $M_0$为球心,
     以 $\epsilon$ 为半径的球面, 并且其包含在 $\varOmega$ 当中, 则
     \[\begin{split}
-      \iint_{\varGamma}\frac{\partial G(M,M_0)}{\partial\vec{n}}\diff S_M
-      & = \iint_{\varGamma}\frac{\partial}{\partial\vec{n}}\left(\frac{1}{4\pi r_{M_0M}}\right)\diff S_M-\iint_{\varGamma}\frac{\partial g(M,M_0)}{\partial\vec{n}}\diff S_M \\
+      \iint_{\varGamma}\frac{\partial G(M,M_0)}{\partial\vec{n}}\d S_M
+      & = \iint_{\varGamma}\frac{\partial}{\partial\vec{n}}\left(\frac{1}{4\pi r_{M_0M}}\right)\d S_M-\iint_{\varGamma}\frac{\partial g(M,M_0)}{\partial\vec{n}}\d S_M \\
       & = \iint_{\varGamma}\frac{\partial}{\partial\vec{n}}
-          \left(\frac{1}{4\pi r_{M_0M}}\right)\diff S_M\quad (\text{Theorem 2.1}) \\
+          \left(\frac{1}{4\pi r_{M_0M}}\right)\d S_M\quad (\text{Theorem 2.1}) \\
       & = \iint_{\varGamma_{\epsilon}}\frac{\partial}{\partial\vec{n}}
-          \left(\frac{1}{4\pi r_{M_0M}}\right)\diff S_M\quad (\text{Theorem 2.1}) \\
-      & = \iint_{\varGamma_{\epsilon}}\frac{-1}{4\pi\epsilon^2}\diff S_M = -1.
+          \left(\frac{1}{4\pi r_{M_0M}}\right)\d S_M\quad (\text{Theorem 2.1}) \\
+      & = \iint_{\varGamma_{\epsilon}}\frac{-1}{4\pi\epsilon^2}\d S_M = -1.
     \end{split}\]
     另法: 考虑定解问题
     \[\begin{cases}
-    \Delta u=0(in\;\varOmega)\\u|_{\varGamma=1}
+      \Delta u=0(in\;\varOmega) \\
+      u|_{\varGamma=1}
     \end{cases}\]
     由极值原理知解为 $u\equiv1$, 代入教材 (3.4) 式即得结论.
   \end{proof}
 
-  二维情形圆的格林函数取为$G(M,M_0)=\frac{1}{2\pi}\left(\ln\frac{1}{r_{M_0M}}-\ln\frac{R}{\rho_0}\frac{1}{r_{M_1M}}\right)$也是为了使得$\int_{\varGamma}\frac{\partial G(M,M_0)}{\partial\vec{n}}\diff s=-1$成立,证明思路同上.
+  二维情形圆的格林函数取为 $G(M,M_0)=\frac{1}{2\pi}\left(\ln\frac{1}{r_{M_0M}}-\ln\frac{R}{\rho_0}\frac{1}{r_{M_1M}}\right)$
+  也是为了使得
+  \[ \int_{\varGamma}\frac{\partial G(M,M_0)}{\partial\vec{n}}\d s = -1 \]
+  成立, 证明思路同上.
 \end{proof}
 
 
@@ -861,16 +867,16 @@
 
 \begin{solution}
   利用泊松公式(3.13)式
-  \[u(\rho_0,\varphi_0)=\frac{1}{2\pi}\int_0^{2\pi}\frac{(R^2-\rho_0^2)f(\varphi)}{R^2+\rho_0^2-2R\rho_0\cos(\varphi-\varphi_0)}\diff\varphi\]
+  \[u(\rho_0,\varphi_0)=\frac{1}{2\pi}\int_0^{2\pi}\frac{(R^2-\rho_0^2)f(\varphi)}{R^2+\rho_0^2-2R\rho_0\cos(\varphi-\varphi_0)}\d\varphi\]
   (1)
   \begin{align*}
     u(\rho_0,\varphi_0)
-    & = \frac{1}{2\pi}\int_0^{2\pi}\frac{(R^2-\rho_0^2)A\cos(\varphi)}{R^2+\rho_0^2-2R\rho_0\cos(\varphi-\varphi_0)}\diff\varphi \\
-    & = \frac{A(R^2-\rho_0^2)}{2\pi}\int_0^{2\pi}\frac{\cos(\varphi)}{R^2+\rho_0^2-2R\rho_0\cos(\varphi-\varphi_0)}\diff\varphi \\
-    & = \frac{A(R^2-\rho_0^2)}{2\pi}\int_{0}^{2\pi}\frac{\cos(\theta+\varphi_0)}{R^2+\rho_0^2-2R\rho_0\cos\theta}\diff\theta \qquad (\text{Let}\ \theta=\varphi-\varphi_0) \\
-    & = \frac{A(R^2-\rho_0^2)}{2\pi}\int_{-\pi}^{\pi}\frac{\cos\theta\cos\varphi_0-\sin\theta\sin\varphi_0}{R^2+\rho_0^2-2R\rho_0\cos\theta}\diff\theta \\
-    & = \frac{A(R^2-\rho_0^2)}{2\pi}\int_{-\pi}^{\pi}\frac{\cos\theta\cos\varphi_0}{R^2+\rho_0^2-2R\rho_0\cos\theta}\diff\theta \\
-    & = \frac{2A(R^2-\rho_0^2)\cos\varphi_0}{2\pi}\int_0^{\pi}\frac{\cos\theta}{R^2+\rho_0^2-2R\rho_0\cos\theta}\diff\theta \\
+    & = \frac{1}{2\pi}\int_0^{2\pi}\frac{(R^2-\rho_0^2)A\cos(\varphi)}{R^2+\rho_0^2-2R\rho_0\cos(\varphi-\varphi_0)}\d\varphi \\
+    & = \frac{A(R^2-\rho_0^2)}{2\pi}\int_0^{2\pi}\frac{\cos(\varphi)}{R^2+\rho_0^2-2R\rho_0\cos(\varphi-\varphi_0)}\d\varphi \\
+    & = \frac{A(R^2-\rho_0^2)}{2\pi}\int_{0}^{2\pi}\frac{\cos(\theta+\varphi_0)}{R^2+\rho_0^2-2R\rho_0\cos\theta}\d\theta \qquad (\text{Let}\ \theta=\varphi-\varphi_0) \\
+    & = \frac{A(R^2-\rho_0^2)}{2\pi}\int_{-\pi}^{\pi}\frac{\cos\theta\cos\varphi_0-\sin\theta\sin\varphi_0}{R^2+\rho_0^2-2R\rho_0\cos\theta}\d\theta \\
+    & = \frac{A(R^2-\rho_0^2)}{2\pi}\int_{-\pi}^{\pi}\frac{\cos\theta\cos\varphi_0}{R^2+\rho_0^2-2R\rho_0\cos\theta}\d\theta \\
+    & = \frac{2A(R^2-\rho_0^2)\cos\varphi_0}{2\pi}\int_0^{\pi}\frac{\cos\theta}{R^2+\rho_0^2-2R\rho_0\cos\theta}\d\theta \\
     & = \frac{2A(R^2-\rho_0^2)\cos\varphi_0}{2\pi}\frac{\pi\rho_0}{R(R^2-\rho_0^2)} \\
     & = \frac{A}{R}\rho_0\cos\varphi_0=\frac{A}{\alpha}\rho_0\cos\varphi_0.
   \end{align*}
@@ -892,16 +898,22 @@
 \end{exercise}
 
 \begin{solve}
-  \[G(M,M_0)=\frac{1}{2\pi}\left[\ln\frac{1}{\sqrt{(x-x_0)^2+(y-y_0)^2}}-\ln\frac{1}{\sqrt{(x-x_0)^2+(y+y_0)^2}}\right]\]
-  注意到$\frac{\partial}{\partial\vec{n}}=-\frac{\partial}{\partial y}$,故
-  \[\begin{split}
-  u(x_0,y_0)&=-\int_{\varGamma}f(x)\frac{\partial G(M,M_0)}{\partial\vec{n}}\diff x\\
-  &=\frac{1}{2\pi}\int_{-\infty}^{\infty}f(x)\frac{\partial}{\partial y}\left[\ln\frac{1}{\sqrt{(x-x_0)^2+(y-y_0)^2}}-\ln\frac{1}{\sqrt{(x-x_0)^2+(y+y_0)^2}}\right]\Bigg|_{y=0}\diff x\\
-  &=\frac{1}{2\pi}\int_{-\infty}^{\infty}f(x)\left(-\frac{1}{2}\frac{2(y-y_0)}{(x-x_0)^2+(y-y_0)^2}+\frac{1}{2}\frac{2(y+y_0)}{(x-x_0)^2+(y+y_0)^2}\right)\bigg|_{y=0}\diff x\\
-  &=\frac{1}{\pi}\int_{-\infty}^{\infty}f(x)\frac{y_0}{(x-x_0)^2+y_0^2}\diff x
-  \end{split}\]
+  \[ G(M,M_0) = \frac{1}{2\pi} \left[\ln\frac{1}{\sqrt{(x-x_0)^2+(y-y_0)^2}}
+      - \ln\frac{1}{\sqrt{(x-x_0)^2+(y+y_0)^2}}\right]. \]
+  注意到 $\frac{\partial}{\partial\vec{n}} = - \frac{\partial}{\partial y}$, 故
+  \begin{align*}
+  & \phantom{=} u(x_0,y_0) \\
+  & = -\int_{\varGamma}f(x) \frac{\partial G(M,M_0)}{\partial\vec{n}} \d x \\
+  & = \frac{1}{2\pi} \int_{-\infty}^{\infty}f(x) \frac{\partial}{\partial y}
+      \left[\ln\frac{1}{\sqrt{(x-x_0)^2+(y-y_0)^2}}-\ln\frac{1}{\sqrt{(x-x_0)^2+(y+y_0)^2}}\right]
+      \Bigg|_{y=0} \d x \\
+  & = \frac{1}{2\pi} \int_{-\infty}^{\infty} f(x)
+      \left(-\frac{1}{2} \frac{2(y-y_0)}{(x-x_0)^2+(y-y_0)^2}
+        + \frac{1}{2} \frac{2(y+y_0)}{(x-x_0)^2+(y+y_0)^2}\right)\bigg|_{y=0} \d x \\
+  & = \frac{1}{\pi}\int_{-\infty}^{\infty}f(x)\frac{y_0}{(x-x_0)^2+y_0^2} \d x.
+  \end{align*}
   因此二维调和方程在半平面上的狄利克雷问题的解为:
-  \[u(x,y)=\frac{1}{\pi}\int_{-\infty}^{\infty}\frac{f(\xi)y}{(\xi-x)^2+y^2}\diff\xi. \qedhere\]
+  \[u(x,y)=\frac{1}{\pi}\int_{-\infty}^{\infty}\frac{f(\xi)y}{(\xi-x)^2+y^2}\d\xi. \qedhere\]
 \end{solve}
 
 

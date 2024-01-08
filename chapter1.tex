@@ -179,8 +179,8 @@
   取 $(x,t) = (0,0)$, 得
   \[u(0,0) = F(0) + G(0) = \varphi(0) = \psi(0).\]
   从而
-  \[ \boxed{u(x,t) = \psi\left(\frac{x-at}{2}\right)
-    + \varphi\left(\frac{x+at}{2}\right)-\varphi(0).} \qedhere\]
+  \[ u(x,t) = \psi\left(\frac{x-at}{2}\right)
+    + \varphi\left(\frac{x+at}{2}\right)-\varphi(0). \qedhere\]
 \end{solve}
 
 
@@ -216,7 +216,7 @@
     F(0) + G(0) = 2C.
   \end{equation}
   If $x-at\geq 0$, then
-  \[ \boxed{u(x,t) = \frac12 \bigl(\varphi(x+at) + \varphi(x-at)\bigr).} \]
+  \[ u(x,t) = \frac12 \bigl(\varphi(x+at) + \varphi(x-at)\bigr). \]
   If $x-at\leq 0$, then by the boundary condition we have
   \begin{equation}\label{eq:a4}
     F'(-at) = \frac{ka-1}{ka+1} G'(at).
@@ -237,7 +237,7 @@
     & = - \frac{ka-1}{2(ka+1)} \varphi(at-x) + \frac{ka-1}{ka+1} C
         + \frac12\varphi(x+at) - C + C_1 \\
     & = \frac{ka-1}{2(ka+1)} \varphi(at-x) + \frac12 \varphi(x+at)
-        + \frac{ka}{ka+1} \varphi(0).
+        + \frac{ka}{ka+1} \varphi(0). \qedhere
   \end{align*}
 \end{solution}
 
@@ -290,7 +290,7 @@
   \[\begin{split}
     u(x,t)
     & = F(x-t)+G(x+t)=\psi\left(\frac{x-t}{1-k}\right)+\frac{1}{2}\left[\varphi_0(x+t)-\varphi_0\left(\frac{1+k}{1-k}(x-t)\right)\right] \\
-    & + \frac{1}{2}\int_{\frac{k+1}{1-k}(x-t)}^{x+t}\varphi_1(\xi) \d\xi
+    & \quad + \frac{1}{2}\int_{\frac{k+1}{1-k}(x-t)}^{x+t}\varphi_1(\xi) \d\xi. \qedhere
   \end{split}\]
 \end{solve}
 
@@ -336,8 +336,8 @@
     G(x+t) = \varphi\Bigl(\frac{x+t}{2}\Bigr) - F(0).
   \end{equation}
   By \eqref{eq:a9} and \eqref{eq:a11} we find
-  \[\boxed{u(x,t) = \varphi\biggl(\frac{x+t}{2}\biggr)
-    - \varphi\biggl(g(x-t) + \frac{x-t}{2}\biggr) + \psi(g(x-t)).}\]
+  \[ u(x,t) = \varphi\biggl(\frac{x+t}{2}\biggr)
+    - \varphi\biggl(g(x-t) + \frac{x-t}{2}\biggr) + \psi(g(x-t)). \qedhere \]
 \end{solution}
 
 
@@ -424,8 +424,8 @@
   \[A_k=\frac{2}{l}\int_0^l\frac{h}{l}x\sin \frac{(2k+1)\pi}{2l}x\diff x
     =(-1)^k\frac{8h}{(2k+1)^2\pi^2},\quad B_k = 0.\]
   因此
-  \[\boxed{u(x,t) = \sum_{k=0}^{\infty}(-1)^k\frac{8h}{(2k+1)^2\pi^2}\cos\frac{(2k+1)\pi at}{2l}
-    \sin\frac{(2k+1)\pi x}{2l}.}\qedhere\]
+  \[ u(x,t) = \sum_{k=0}^{\infty}(-1)^k\frac{8h}{(2k+1)^2\pi^2}\cos\frac{(2k+1)\pi at}{2l}
+    \sin\frac{(2k+1)\pi x}{2l}. \qedhere \]
 \end{solve}
 
 \begin{remark}
@@ -550,9 +550,9 @@
   \[B_k = \frac{2}{k\pi a}\int_0^l b\sinh x\sin\frac{k\pi}{l}x\diff x
     = (-1)^{k+1}\frac{2bl\sinh l}{a(l^2+k^2\pi^2)}.\]
   故原方程解为
-  \[ \boxed{u(x,t) = \frac{2bl^2\sinh l}{\pi a^2}
+  \[ u(x,t) = \frac{2bl^2\sinh l}{\pi a^2}
       \sum_{k=1}^{\infty}\frac{(-1)^{n+1}}{n(l^2+n^2\pi^2)}
-      \left(1-\cos\frac{n\pi at}{l}\right)\sin\frac{n\pi x}{l}.}\qedhere \]
+      \left(1-\cos\frac{n\pi at}{l}\right)\sin\frac{n\pi x}{l}. \qedhere \]
 \end{solve}
 
 
@@ -589,9 +589,9 @@
   \[ T_k(t) = e^{-bt} \biggl(A_k \sin \sqrt{\Bigl(\frac{k\pi a}{l}\Bigr)^2 - b^2} t
     + B_k \cos \sqrt{\Bigl(\frac{k\pi a}{l}\Bigr)^2 - b^2} t\biggr). \]
   Therefore,
-  \[\boxed{u(x,t) = e^{-bt} \sum_{k=1}^\infty \sin\frac{k\pi x}{l}
+  \[ u(x,t) = e^{-bt} \sum_{k=1}^\infty \sin\frac{k\pi x}{l}
       \biggl(A_k \sin \sqrt{\Bigl(\frac{k\pi a}{l}\Bigr)^2 - b^2} t
-      + B_k \cos \sqrt{\Bigl(\frac{k\pi a}{l}\Bigr)^2 - b^2} t\biggr).}\]
+      + B_k \cos \sqrt{\Bigl(\frac{k\pi a}{l}\Bigr)^2 - b^2} t\biggr). \]
   Combining with the initial value condition we have
   \[u|_{t=0} = \sum_{k=1}^\infty B_k \sin\frac{k\pi x}{l} = \frac{h}{l}x, \]
   and
@@ -599,8 +599,8 @@
     + \sum_{k=1}^\infty A_k \sqrt{\Bigl(\frac{k\pi a}{l}\Bigr)^2-b^2}
       \sin\frac{k\pi x}{l} = 0,\]
   from which we solve that
-  \[ \boxed{B_k = \frac{(-1)^{k+1}2h}{k\pi},\qquad
-    A_k = \frac{(-1)^{k+1}2bh}{k\pi\sqrt{\bigl(\frac{k\pi a}{l}\bigr)^2-b^2}}.} \]
+  \[ B_k = \frac{(-1)^{k+1}2h}{k\pi},\qquad
+    A_k = \frac{(-1)^{k+1}2bh}{k\pi\sqrt{\bigl(\frac{k\pi a}{l}\bigr)^2-b^2}}. \qedhere \]
 \end{solution}
 
 
@@ -681,7 +681,7 @@
         \bigl[ (x+at\sin\theta\cos\phi)^3 \\
     & \qquad + (y+at\sin\theta\phi)^2(z+at\cos\theta) \bigr] 
         a^2t^2\sin\theta \d \phi \d \theta\biggr) \\
-    & = x^3 + y^2z + 3a^2t^2x + a^2t^2z.
+    & = x^3 + y^2z + 3a^2t^2x + a^2t^2z. \qedhere
   \end{align*}
 \end{solve}
 
@@ -861,9 +861,9 @@
     v_t|_{t=0} = \e^{\frac{cz}{a}}\psi(x,y).
   \end{cases}\]
   由三维波动方程柯西问题解的 Poisson 公式得
-  \[v(x,y,z,t) = \frac{\partial}{\partial t}
+  \[ v(x,y,z,t) = \frac{\partial}{\partial t}
     \biggl(\frac{1}{4\pi a^2t}\iint_{S_{at}^M} \e^{\frac{c\zeta}{a}}\varphi(\xi,\eta)\d S\biggr)
-    + \frac{1}{4\pi a^2t}\iint_{S_{at}^M} \e^{\frac{c\zeta}{a}}\psi(\xi,\eta)\d S.\]
+    + \frac{1}{4\pi a^2t}\iint_{S_{at}^M} \e^{\frac{c\zeta}{a}}\psi(\xi,\eta)\d S. \qedhere \]
 \end{solve}
 
 
