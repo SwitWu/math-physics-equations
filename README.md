@@ -5,4 +5,4 @@
 
 ## License
 
-© 2023. This work is openly licensed via [CC BY-NC](https://creativecommons.org/licenses/by-nc/4.0/).
+© 2023--2024. This work is openly licensed via [CC BY-NC](https://creativecommons.org/licenses/by-nc/4.0/).
